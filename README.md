@@ -1,5 +1,7 @@
 # HypoEval: Hypothesis-Guided Evaluation for Natural Language Generation
-This repository provides the code implementation of HypoEval (TODO: update url), as well as zero-shot evaluators for summarization and story generation using training data from the datasets used in the paper.
+This repository provides the code implementation of HypoEval: Hypothesis-Guided Evaluation for Natural Language Generation (TODO: update url), as well as zero-shot evaluators for summarization and story generation using training data from the datasets used in the paper. With only 30 human annotations for each evaluated aspect, **HypoEval** first generates hypotheses that are decomposed dimensions of the evaluated aspect, and then uses a checklist-like approach to combine LLM's Likert scores on each hypothesis to acquire an overall score for an evaluated text. **HypoEval** provides automated interpretable evaluation of natural language generation, with high alignment with human evaluations.
+
+The hypothesis generation module of **HypoEval** is built upon [**HypoRefine**](https://arxiv.org/abs/2410.17309) and [**HypoGeniC**](https://arxiv.org/abs/2404.04326), check out the repository at [**ChicagoHAI/hypothesis-generation**](https://github.com/ChicagoHAI/hypothesis-generation).
 
 ![hypoeval_fig1.png](https://github.com/itea1001/HypoEval/blob/main/hypoeval_fig1.png?raw=true)
 
@@ -33,7 +35,7 @@ evaluation_scores = evaluator.batched_evaluate(aspect=evaluated_aspect, stories=
 
 ## Add new evaluated aspects for summmarization and story generation
 
-Adding a new evaluated aspect require a small-scale corpus of human evaluation scores on that aspect. Follow the steps below:
+Adding a new evaluated aspect requires a small-scale corpus of human evaluation scores on that aspect. Follow the steps below:
 
 1. Preprocess the human evaluation scores similar to `data/summeval/train_continuous_coherence.json` or `data/hanna/train_continuous_coherence.json`:
 
