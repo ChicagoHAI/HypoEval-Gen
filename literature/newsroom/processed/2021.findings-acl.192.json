@@ -1,0 +1,1720 @@
+{
+    "paper_id": "2021",
+    "header": {
+        "generated_with": "S2ORC 1.0.0",
+        "date_generated": "2025-02-14T13:47:07.356962Z"
+    },
+    "title": "Is Human Scoring the Best Criteria for Summary Evaluation?",
+    "authors": [
+        {
+            "first": "Oleg",
+            "middle": [],
+            "last": "Vasilyev",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Primer Technologies Inc. San",
+                "location": {
+                    "settlement": "Francisco",
+                    "country": "California"
+                }
+            },
+            "email": ""
+        },
+        {
+            "first": "John",
+            "middle": [],
+            "last": "Bohannon",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Primer Technologies Inc. San",
+                "location": {
+                    "settlement": "Francisco",
+                    "country": "California"
+                }
+            },
+            "email": ""
+        }
+    ],
+    "year": "",
+    "venue": null,
+    "identifiers": {},
+    "abstract": "A summary quality measure is judged by how well it correlates with quality scores produced by human annotators. A higher correlation with human scores is considered to be a decisive indicator of a better measure. In this work we present observations that cast doubt on this view. We also show a possibility of an alternative indicator for selecting the best measure from a family of measures, a criterion that does not rely on human scores.",
+    "pdf_parse": {
+        "paper_id": "2021",
+        "_pdf_hash": "",
+        "abstract": [
+            {
+                "text": "A summary quality measure is judged by how well it correlates with quality scores produced by human annotators. A higher correlation with human scores is considered to be a decisive indicator of a better measure. In this work we present observations that cast doubt on this view. We also show a possibility of an alternative indicator for selecting the best measure from a family of measures, a criterion that does not rely on human scores.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            }
+        ],
+        "body_text": [
+            {
+                "text": "The goal of summarization is to convey important and only important information of the text in a fluent, comprehensible and concise summary, preserving the factual consistency with the text.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "There are several families of automated measures of summary quality. For example, Gabriel et al. (2020) classified the automated measures into four types: question-answering, text reconstruction, semantic similarity and lexical overlap. Each of these types has families of measures, for example SUM-QE (Xenouleas et al., 2019) , APES (Eyal et al., 2019) , Summa-QA (Scialom et al., 2019) , QAEval (Deutsch et al., 2020) and FEQA (Durmus et al., 2020) in question-answering, BLANC (Vasilyev et al., 2020a ) in text reconstruction, BERTScore (Zhang et al., 2020) , MoverScore (Zhao et al., 2019) and SUPERT (Gao et al., 2020) in semantic similarity, ROUGE (Lin, 2004) and Jensen-Shannon (Louis and Nenkova, 2009) in lexical overlap.",
+                "cite_spans": [
+                    {
+                        "start": 82,
+                        "end": 103,
+                        "text": "Gabriel et al. (2020)",
+                        "ref_id": "BIBREF6"
+                    },
+                    {
+                        "start": 302,
+                        "end": 326,
+                        "text": "(Xenouleas et al., 2019)",
+                        "ref_id": "BIBREF17"
+                    },
+                    {
+                        "start": 334,
+                        "end": 353,
+                        "text": "(Eyal et al., 2019)",
+                        "ref_id": "BIBREF4"
+                    },
+                    {
+                        "start": 365,
+                        "end": 387,
+                        "text": "(Scialom et al., 2019)",
+                        "ref_id": "BIBREF14"
+                    },
+                    {
+                        "start": 397,
+                        "end": 419,
+                        "text": "(Deutsch et al., 2020)",
+                        "ref_id": "BIBREF2"
+                    },
+                    {
+                        "start": 429,
+                        "end": 450,
+                        "text": "(Durmus et al., 2020)",
+                        "ref_id": "BIBREF3"
+                    },
+                    {
+                        "start": 480,
+                        "end": 503,
+                        "text": "(Vasilyev et al., 2020a",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 540,
+                        "end": 560,
+                        "text": "(Zhang et al., 2020)",
+                        "ref_id": "BIBREF18"
+                    },
+                    {
+                        "start": 574,
+                        "end": 593,
+                        "text": "(Zhao et al., 2019)",
+                        "ref_id": "BIBREF19"
+                    },
+                    {
+                        "start": 605,
+                        "end": 623,
+                        "text": "(Gao et al., 2020)",
+                        "ref_id": "BIBREF7"
+                    },
+                    {
+                        "start": 654,
+                        "end": 665,
+                        "text": "(Lin, 2004)",
+                        "ref_id": "BIBREF12"
+                    },
+                    {
+                        "start": 685,
+                        "end": 710,
+                        "text": "(Louis and Nenkova, 2009)",
+                        "ref_id": "BIBREF13"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "A high correlation with human evaluation scores is currently accepted as the crucial criterion for choosing a good evaluation measure. Arguably, the factual faithfulness can be annotated objectively, with detailed classification of factual errors (Kryscinski et al., 2020; Huang et al., 2020; Vasilyev et al., 2020b; Gabriel et al., 2020) . However, other summary qualities are subjective; this forces researchers to be careful in design and usage of human annotations (Bhandari et al., 2020; Fabbri et al., 2020; Iskender et al., 2021) . Annotation scores depend on the types of texts and on the qualification of annotators. For example, there is a big difference in expert and crowd-sourced scores in (Fabbri et al., 2020) foot_0 .",
+                "cite_spans": [
+                    {
+                        "start": 247,
+                        "end": 272,
+                        "text": "(Kryscinski et al., 2020;",
+                        "ref_id": "BIBREF11"
+                    },
+                    {
+                        "start": 273,
+                        "end": 292,
+                        "text": "Huang et al., 2020;",
+                        "ref_id": "BIBREF9"
+                    },
+                    {
+                        "start": 293,
+                        "end": 316,
+                        "text": "Vasilyev et al., 2020b;",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 317,
+                        "end": 338,
+                        "text": "Gabriel et al., 2020)",
+                        "ref_id": "BIBREF6"
+                    },
+                    {
+                        "start": 469,
+                        "end": 492,
+                        "text": "(Bhandari et al., 2020;",
+                        "ref_id": "BIBREF1"
+                    },
+                    {
+                        "start": 493,
+                        "end": 513,
+                        "text": "Fabbri et al., 2020;",
+                        "ref_id": "BIBREF5"
+                    },
+                    {
+                        "start": 514,
+                        "end": 536,
+                        "text": "Iskender et al., 2021)",
+                        "ref_id": "BIBREF10"
+                    },
+                    {
+                        "start": 703,
+                        "end": 724,
+                        "text": "(Fabbri et al., 2020)",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "Annotators are biased in favor of anything that makes the scoring easier: extractiveness of the summary, and focus of the summary on the top part of the document (Ziegler et al., 2020) . The annotation process itself differs from how the summary quality is assessed by a typical human reader. A human reader does not have a goal of scoring a summary, but rather uses the summary to guess the content of the text.",
+                "cite_spans": [
+                    {
+                        "start": 162,
+                        "end": 184,
+                        "text": "(Ziegler et al., 2020)",
+                        "ref_id": "BIBREF20"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "The contribution of this work:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "1. We provide an example of a false 'improvement' of an automated evaluation measure: a dubious modification, imitating a human annotator behavior, can increase the correlation with human scores. For a contrast, we also provide an example of a true improvement that increases correlation with human scores for a good reason. 2. We explore an alternative criterion for selecting an optimal evaluation measure from a family of measures, the criterion not relying on human scores. We provide evidence that the criterion is robust across different kinds of texts and summaries.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "For our demonstration we will use BLANC family of evaluation measures, because it is easily interpretable as an analogy to a human reader that uses the summary to guess the content of the text. Two families defined in (Vasilyev et al., 2020a) differ by their setup. The BLANC-help family gets information from the summary by having the model read the summary when reading and reconstructing the text. The BLANC-tune family gets information from the summary by lightly tuning the model on the summary before reading and reconstructing the text. Measures in each of the families, BLANChelp and BLANC-tune, may differ by the parameters defining the setup.",
+                "cite_spans": [
+                    {
+                        "start": 218,
+                        "end": 242,
+                        "text": "(Vasilyev et al., 2020a)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "After reading a summary, an annotator may chose not to review carefully the whole text, but to consider in detail only the parts that look most similar to the summary. We can imitate this by using only the part of the text that is most related to the given summary. In modifying BLANC this way, it is reasonable to expect that correlation with human scores will increase, but this would make a false 'improvement' of the measure.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "In Appendix we provide two examples -Figures 6 and 7 -illustrating the bias that we seek to explore in this section. Each example has a summary that truly attempts to cover all important facts, and a summary that we intentionally wrote to cover only a very limited part of text. To create a falsely 'improved' measure, we seek to explore the bias of annotator giving more attention to parts of text most similar to the summary.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 45,
+                        "end": 46,
+                        "text": "6",
+                        "ref_id": "FIGREF4"
+                    },
+                    {
+                        "start": 51,
+                        "end": 52,
+                        "text": "7",
+                        "ref_id": "FIGREF5"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "To create a biased BLANC, we can calculate BLANC separately for each sentence of the text, and select n sentences with the highest score. We can consider these selected sentences as the 'text' to deal with, and calculate BLANC on this 'text'. We create such limited-text BLANC from BLANChelpfoot_1 . For our illustration we use average expert scores of 1600 text-summary pairs in the dataset SummEval (Fabbri et al., 2020) .",
+                "cite_spans": [
+                    {
+                        "start": 401,
+                        "end": 422,
+                        "text": "(Fabbri et al., 2020)",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "Compared to BLANC, the limited text BLANC has indeed higher Spearman correlation with average expert, as shown by thin lines in Figure 1 . In this and other figures through this section all p-values are below 0.05.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 135,
+                        "end": 136,
+                        "text": "1",
+                        "ref_id": "FIGREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "For Appendix examples, see results in Tables 1 and 2 .",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 45,
+                        "end": 46,
+                        "text": "1",
+                        "ref_id": "TABREF0"
+                    },
+                    {
+                        "start": 51,
+                        "end": 52,
+                        "text": "2",
+                        "ref_id": "TABREF1"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "We can imagine a human expert paying more attention to several (say three or five) most 'promising' (most similar to the summary) sentences of the text. In evaluating relevance, this might be not very different from working with full text. But for other qualities (coherence, consistency, fluency) the correlation increases.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "Naturally, for a human it is easier to review a contiguous piece of text rather than separated pieces, even if this might diminish legitimacy of evaluation of all qualities, including relevance. And, no surprise, BLANC for such contiguous part of text correlates with human scores even better -as shown by thick lines in Figure 1 .",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 328,
+                        "end": 329,
+                        "text": "1",
+                        "ref_id": "FIGREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "Figure 2 illustrates the same trends when the resulting BLANC is calculated for each selected sentence separately, and then averaged over the sentences. Figure 3 shows the increase of correlations when the text is restricted not by the number of sentences but by a threshold on BLANC of a sentence. Selection of a part of the text is used in SU-PERT multi-document evaluation measure (Gao et al., 2020) as a tool for creating 'reference' from each document and then evaluating a summary on the created references. In the context of BLANC here, the selection of a part of the text is done differently and has a clear interpretation: instead of estimating usefulness of the summary in guessing the whole text, we estimate how much the summary would help to guess only the most 'relevant' part of the text. Here 'relevant' means the part of the text for which the summary turned out to be most helpful. This is equivalent to using only the most easy (for annotator, after reading the summary) part of the text. The summary may as well relate only to a small piece of text of no importance. This means that the evaluation measure became worse, even though the correlation with human scores is stronger.",
+                "cite_spans": [
+                    {
+                        "start": 384,
+                        "end": 402,
+                        "text": "(Gao et al., 2020)",
+                        "ref_id": "BIBREF7"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 7,
+                        "end": 8,
+                        "text": "2",
+                        "ref_id": "FIGREF1"
+                    },
+                    {
+                        "start": 160,
+                        "end": 161,
+                        "text": "3",
+                        "ref_id": "FIGREF2"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "The human bias exploited by the limitedtext BLANC does not necessarily manifest itself through a low inter-annotator agreement. The reported in SummEval (Fabbri et al., 2020) interannotator agreement of experts is 0.71, which is an acceptable value (Artstein and Poesio, 2008) . While achieving a reasonable inter-annotator agreement is an important problem in human annotations, our example shows that another problem may be in the nature of the human evaluation of summary qualities, where a summary is presented to human for scoring (rather than for guessing about the text content), and the text is presented to facili-tate the scoring.",
+                "cite_spans": [
+                    {
+                        "start": 153,
+                        "end": 174,
+                        "text": "(Fabbri et al., 2020)",
+                        "ref_id": "BIBREF5"
+                    },
+                    {
+                        "start": 249,
+                        "end": 276,
+                        "text": "(Artstein and Poesio, 2008)",
+                        "ref_id": "BIBREF0"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Example of False Improvement: Limited Comparison with Text",
+                "sec_num": "2"
+            },
+            {
+                "text": "Learning More from Summary",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Example of True Improvement:",
+                "sec_num": "3"
+            },
+            {
+                "text": "In this section we provide an example of a legitimate increase of correlations with human scores, as opposed to the described in previous section false 'improvement'. We can combine BLANC-help and BLANC-tune by tuning the model on the summary (BLANC-tune), and then using the tuned model to read the summary while doing Cloze task on the text (BLANC-help).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Example of True Improvement:",
+                "sec_num": "3"
+            },
+            {
+                "text": "Such full BLANC version is equivalent to a human that first learns the summary, and then, while guessing missed words in the text, is still looking at the summary again and again. Using both opportunities to learn from the summary makes sense, it should legitimately extract more help from the summary. The worst that may happen is that a model used by BLANC-help is already so perfect in reading the summary that its additional tuning on the summary will not improve the measure (but will not hurt either).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Example of True Improvement:",
+                "sec_num": "3"
+            },
+            {
+                "text": "As expected, the full BLANC has substantially higher correlations with annotations of experts on the 1600 text-summary pairs of (Fabbri et al., 2020) . Compared to BLANC-help, the Spearman correlation of full BLANC with human scores can increase by 13%-18% for coherence, 2%-3% for consistency,13%-15% for fluency, and 7%-8% for relevance, -all this depending on the number of epochs (10-20) and learning rate (1.0e-4 to 2.0e-4) of the BLANC-tune used.",
+                "cite_spans": [
+                    {
+                        "start": 128,
+                        "end": 149,
+                        "text": "(Fabbri et al., 2020)",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Example of True Improvement:",
+                "sec_num": "3"
+            },
+            {
+                "text": "As we have seen in section 2, the correlation with human scores is not always a reliable method to select the best evaluation measure. The fact that we were able to recognize the falsity of 'improvement' in section 2 and the legitimacy of improvement in section 3 suggests that we may find a no-human criterion, at least for some setups.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "In previous sections we used BLANC-help as an initial version for our modifications. As stated in Vasilyev et al. (2020b) , based on the dataset introduced in there 3 , BLANC-help with interval gap = 2 between masking locations in the text provided the highest correlations with human scores. It was noted that BLANC's average score across the dataset was also the highest at this setup, implying that BLANC extracted maximal help from the summaries. Such coincidence is not a rule: the \"max-help\" measure, selected for having maximal average score, is not always the same as the \"max-human\" measure, selected for having maximal correlation with human scores.",
+                "cite_spans": [
+                    {
+                        "start": 98,
+                        "end": 121,
+                        "text": "Vasilyev et al. (2020b)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "The max-help criterion -selection of a measure that has highest average score -makes sense under two conditions:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "1. The measure is being selected from a family of measures that have the same definition of the output score -as assessment of a usefulness of a summary. The score may be derived, for example, from how many text tokens were successfully reconstructed with help of the summary (BLANC), or from how many questions about the text were successfully answered with help of the summary (QA-based measures). The condition is that the definition is fixed for the family. 2. The average score is being measured with a large enough dataset representing the domain on which we are interested to use the measure.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "The meaning of the criterion is simple: the better is the measure in extracting useful information from summaries, the better it should be in judging summaries by their usefulness. The criterion does not require human scoring. All we need is a measurement of an average score.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "The max-help criterion can be credible if it does not depend too strongly on the types of texts and summaries. In order to verify this assumption, we considered four types of summaries (and the corresponding texts): (1) CNN summaries from the CNN / Daily Mail dataset (Hermann et al., 2015) ;",
+                "cite_spans": [
+                    {
+                        "start": 268,
+                        "end": 290,
+                        "text": "(Hermann et al., 2015)",
+                        "ref_id": "BIBREF8"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "(2) Daily Mail summaries from the CNN / Daily Mail dataset; (3) First two sentences from random daily news; (4) Random two sentences from random daily news.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "The random daily news were selected as three random news documents per day over one year, with the summaries of the document being two first and two random sentences. We used 1000 samples for each of the four types of summaries.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "We intentionally selected summaries of so different styles and quality: if the criterion selects the same best measure for so different types of summaries, then it is indeed a very robust criterion.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "For BLANC-help family, we found that for all four datasets the optimal setup (accordingly to the max-help criterion) happens to be the same: gap = 2; minimal length of whole-word token allowed to be masked is 6 characters L normal = 6; the wordsplit tokens are always masked (L lead = 1 for first token, and L f ollow = 1 for follow-up tokens).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "This setup is almost the same as the parameters found in (Vasilyev et al., 2020b) to maximise correlation with human scores, except L normal and L f ollow which have low influence. The question we asked: does the 'optimal' max-help evaluation measure remain optimal (or near-optimal) for different kinds of texts and summaries? Figure 4 provides convincing evidence for a positive answer.",
+                "cite_spans": [
+                    {
+                        "start": 57,
+                        "end": 81,
+                        "text": "(Vasilyev et al., 2020b)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 335,
+                        "end": 336,
+                        "text": "4",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "Figure 4 shows the average BLANC-help value obtained with sub-optimal (different from maxhelp) setup. We consider a change of gap and gap mask (number of tokens allowed to be masked at each masking location) to explore a less frequent and a more frequent masking, and a change in the token length thresholds for masking tokens. Remarkably, the average BLANC-help value drops in each case for all four datasets in a similar manner. The token length thresholds have almost no influence, making a drop just a few percents. Change in frequency of masking has a larger effect, leading to a drop 10%-20%.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 7,
+                        "end": 8,
+                        "text": "4",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "Figure 4 : Drop of mean BLANC-help value when parameters differ from optimal. The drop is shown as a fraction of the optimal mean BLANC value. The summaries probed are: CNN and DM (from the CNN/Daily Mail dataset), Top and Rand (first two sentences and random two sentences from random news articles). The parameters probed are: 'gap 3/1' is gap = 3 and gap mask = 1; 'gap 3/2' is gap = 3 and gap mask = 2; 'toks-normal 5' is L normal = 5; 'toks-lead 2' is L lead = 2; 'toks-follow 2' is L f ollow = 2.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 7,
+                        "end": 8,
+                        "text": "4",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "For BLANC-tune family, similar to BLANChelp, the max-help optimal setup is the same for all four datasets: gap = 3; number of tokens allowed to be masked at each masking location for infer-ence gap mask = 2; for tuning gap tune = 4 and gap mask tune = 3; L normal = 6; L lead = 1; L f ollow = 1; probability of replacement of a masked token by another random token at tuning p replace = 0.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "Probability p replace = 0 differs from the value 0.1 used in the standard BERT training, but p replace has only weak influence on the BLANC-tune. Figure 5 shows a few examples of changes of the setup, which illustrate that the optimal measure remains optimal across all four datasets. The demonstrated evidence for robustness suggests that in finding an optimal measure we do not need even human summaries: we can apply the max-help criterion utilizing random sentences from the texts.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 153,
+                        "end": 154,
+                        "text": "5",
+                        "ref_id": "FIGREF3"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Max-Help Criterion and its robustness",
+                "sec_num": "4"
+            },
+            {
+                "text": "In this paper, we critically reviewed the assumption that maximal correlation with human scores defines the best evaluation measure for summarization; we provided observations supporting our scepticism. Using good interpretability of BLANC evaluation measure, we provided examples of both illegitimate 'improvement' and legitimate improvement of the correlation of BLANC scores with human scores.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "5"
+            },
+            {
+                "text": "We stated the motivation for an alternative criterion for choosing an optimal summary evaluation measure: the maximal average extracted usefulness of summary. We provided evidence that the criterion is robust across very different kinds of summaries, including such 'summaries' as first sentences or random sentences of the text. This means that the criterion can be applied without the need of human summaries.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "5"
+            },
+            {
+                "text": "While in this work we used BLANC, we think that similar observations and the same conclusions could be made using a question-answering based evaluation measure. the second summary concentrates on the attitude of the Dursleys to the Potters, and does not provide any other information.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "5"
+            },
+            {
+                "text": "In Figure 7 we again provide two summaries, this time we wrote them for the text shown in Figure 8 , taken from SummEval dataset (Fabbri et al., 2020) . Again, as shown in Table 2 , the original BLANC gives higher score to the overall more useful wide-coverage summary. The falsely 'improved' limited-text BLANC gives higher score to the narrow-coverage summary which focuses only on information about Antonio Inoki and ignores his query in the parliament.",
+                "cite_spans": [
+                    {
+                        "start": 129,
+                        "end": 150,
+                        "text": "(Fabbri et al., 2020)",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 10,
+                        "end": 11,
+                        "text": "7",
+                        "ref_id": "FIGREF5"
+                    },
+                    {
+                        "start": 97,
+                        "end": 98,
+                        "text": "8",
+                        "ref_id": "FIGREF7"
+                    },
+                    {
+                        "start": 178,
+                        "end": 179,
+                        "text": "2",
+                        "ref_id": "TABREF1"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "5"
+            },
+            {
+                "text": "The scores by the limited-text BLANC are higher than the scores by the original BLANC. The reason is that only text sentences with highest scores are selected, and the less the number of the sentences, the higher is the average score. Naturally, for the wide-coverage summary the score increase is not as great as for the narrow-coverage summary. ",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "5"
+            },
+            {
+                "text": "https://github.com/Yale-LILY/SummEval",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "https://github.com/PrimerAI/blanc",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "https://github.com/PrimerAI/blanc",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "J.K.Rowling (1997). Harry Potter And the Sorcerer's Stone. Bloomsbury",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            }
+        ],
+        "back_matter": [
+            {
+                "text": "We thank Nidhi Vyas and Delenn Chin for review of the paper and valuable feedback.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Acknowledgments",
+                "sec_num": null
+            },
+            {
+                "text": "In Figure 6 we provide two toy summaries, each summary is supposed to summarize the first four paragraphs of 'Harry Potter' book 4 . In order to illustrate how the false improvement described in Section 2 affects ranking of summaries, we intentionally wrote one summary with 'wide coverage' (attempting to cover all the most important facts), and another summary with 'narrow coverage' (focusing on a limited part of the text).The original BLANC, judging the summaries by how useful they are in predicting tokens of the text, gives higher score to the wide-coverage summary, -see Table 1 . The falsely 'improved' BLANClimited-text BLANC of section 2 -gives higher score to the narrow-coverage summary. It does not matter whether the small part of text covered by the second summary is important or not, the limitedtext BLANC makes judgement by how well the summary covered that part of the text. In this case,",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 10,
+                        "end": 11,
+                        "text": "6",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 586,
+                        "end": 587,
+                        "text": "1",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "A Examples of bad judgement by falsely 'improved' measure",
+                "sec_num": null
+            }
+        ],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "b0",
+                "title": "Survey article: Inter-coder agreement for computational linguistics",
+                "authors": [
+                    {
+                        "first": "Ron",
+                        "middle": [],
+                        "last": "Artstein",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Massimo",
+                        "middle": [],
+                        "last": "Poesio",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2008,
+                "venue": "Computational Linguistics",
+                "volume": "34",
+                "issue": "4",
+                "pages": "555--596",
+                "other_ids": {
+                    "DOI": [
+                        "10.1162/coli.07-034-R2"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Ron Artstein and Massimo Poesio. 2008. Survey ar- ticle: Inter-coder agreement for computational lin- guistics. Computational Linguistics, 34(4):555- 596.",
+                "links": null
+            },
+            "BIBREF1": {
+                "ref_id": "b1",
+                "title": "Reevaluating evaluation in text summarization",
+                "authors": [
+                    {
+                        "first": "Manik",
+                        "middle": [],
+                        "last": "Bhandari",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pranav",
+                        "middle": [],
+                        "last": "Narayan Gour",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Atabak",
+                        "middle": [],
+                        "last": "Ashfaq",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pengfei",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Graham",
+                        "middle": [],
+                        "last": "Neubig",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "9347--9359",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Manik Bhandari, Pranav Narayan Gour, Atabak Ash- faq, Pengfei Liu, and Graham Neubig. 2020. Re- evaluating evaluation in text summarization. In Pro- ceedings of the 2020 Conference on Empirical Meth- ods in Natural Language Processing, pages 9347- 9359. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF2": {
+                "ref_id": "b2",
+                "title": "Towards question-answering as an automatic metric for evaluating the content quality of a summary",
+                "authors": [
+                    {
+                        "first": "Daniel",
+                        "middle": [],
+                        "last": "Deutsch",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tania",
+                        "middle": [],
+                        "last": "Bedrax-Weiss",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dan",
+                        "middle": [],
+                        "last": "Roth",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2010.00490"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Daniel Deutsch, Tania Bedrax-Weiss, and Dan Roth. 2020. Towards question-answering as an automatic metric for evaluating the content quality of a sum- mary. arXiv, arXiv:2010.00490.",
+                "links": null
+            },
+            "BIBREF3": {
+                "ref_id": "b3",
+                "title": "FEQA: A question answering evaluation framework for faithfulness assessment in abstractive summarization",
+                "authors": [
+                    {
+                        "first": "Esin",
+                        "middle": [],
+                        "last": "Durmus",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "He",
+                        "middle": [],
+                        "last": "He",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mona",
+                        "middle": [],
+                        "last": "Diab",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+                "volume": "",
+                "issue": "",
+                "pages": "5055--5070",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Esin Durmus, He He, and Mona Diab. 2020. FEQA: A question answering evaluation framework for faith- fulness assessment in abstractive summarization. In Proceedings of the 58th Annual Meeting of the Asso- ciation for Computational Linguistics, pages 5055- 5070. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF4": {
+                "ref_id": "b4",
+                "title": "Question answering as an automatic evaluation metric for news article summarization",
+                "authors": [
+                    {
+                        "first": "Matan",
+                        "middle": [],
+                        "last": "Eyal",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tal",
+                        "middle": [],
+                        "last": "Baumel",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Michael",
+                        "middle": [],
+                        "last": "Elhadad",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+                "volume": "1",
+                "issue": "",
+                "pages": "3938--3948",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Matan Eyal, Tal Baumel, and Michael Elhadad. 2019. Question answering as an automatic evaluation met- ric for news article summarization. In Proceedings of the 2019 Conference of the North American Chap- ter of the Association for Computational Linguistics: Human Language Technologies, Volume 1, pages 3938-3948. Association for Computational Linguis- tics.",
+                "links": null
+            },
+            "BIBREF5": {
+                "ref_id": "b5",
+                "title": "SummEval: Reevaluating summarization evaluation",
+                "authors": [
+                    {
+                        "first": "Alexander",
+                        "middle": [
+                            "R"
+                        ],
+                        "last": "Fabbri",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Wojciech",
+                        "middle": [],
+                        "last": "Kry\u015bci\u0144ski",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Bryan",
+                        "middle": [],
+                        "last": "Mccann",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Caiming",
+                        "middle": [],
+                        "last": "Xiong",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Richard",
+                        "middle": [],
+                        "last": "Socher",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dragomir",
+                        "middle": [],
+                        "last": "Radev",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2007.12626v4"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Alexander R. Fabbri, Wojciech Kry\u015bci\u0144ski, Bryan McCann, Caiming Xiong, Richard Socher, and Dragomir Radev. 2020. SummEval: Re- evaluating summarization evaluation. arXiv, arXiv:2007.12626v4.",
+                "links": null
+            },
+            "BIBREF6": {
+                "ref_id": "b6",
+                "title": "Go figure! A meta evaluation of factuality in summarization. arXiv",
+                "authors": [
+                    {
+                        "first": "Saadia",
+                        "middle": [],
+                        "last": "Gabriel",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Asli",
+                        "middle": [],
+                        "last": "Celikyilmaz",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Rahul",
+                        "middle": [],
+                        "last": "Jha",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yejin",
+                        "middle": [],
+                        "last": "Choi",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jianfeng",
+                        "middle": [],
+                        "last": "Gao",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2010.12834"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Saadia Gabriel, Asli Celikyilmaz, Rahul Jha, Yejin Choi, and Jianfeng Gao. 2020. Go figure! A meta evaluation of factuality in summarization. arXiv, arXiv:2010.12834.",
+                "links": null
+            },
+            "BIBREF7": {
+                "ref_id": "b7",
+                "title": "SU-PERT: Towards new frontiers in unsupervised evaluation metrics for multi-document summarization",
+                "authors": [
+                    {
+                        "first": "Yang",
+                        "middle": [],
+                        "last": "Gao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Wei",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Steffen",
+                        "middle": [],
+                        "last": "Eger",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+                "volume": "",
+                "issue": "",
+                "pages": "1347--1354",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Yang Gao, Wei Zhao, and Steffen Eger. 2020. SU- PERT: Towards new frontiers in unsupervised evalu- ation metrics for multi-document summarization. In Proceedings of the 58th Annual Meeting of the Asso- ciation for Computational Linguistics, pages 1347- 1354. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF8": {
+                "ref_id": "b8",
+                "title": "Teaching machines to read and comprehend",
+                "authors": [
+                    {
+                        "first": "Karl",
+                        "middle": [],
+                        "last": "Moritz Hermann",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tom\u00e1\u0161",
+                        "middle": [],
+                        "last": "Ko\u010disk\u00fd",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Edward",
+                        "middle": [],
+                        "last": "Grefenstette",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Lasse",
+                        "middle": [],
+                        "last": "Espeholt",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Will",
+                        "middle": [],
+                        "last": "Kay",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mustafa",
+                        "middle": [],
+                        "last": "Suleyman",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Phil",
+                        "middle": [],
+                        "last": "Blunsom",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2015,
+                "venue": "Advances in Neural Information Processing Systems",
+                "volume": "28",
+                "issue": "",
+                "pages": "1693--1701",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Karl Moritz Hermann, Tom\u00e1\u0161 Ko\u010disk\u00fd, Edward Grefen- stette, Lasse Espeholt, Will Kay, Mustafa Suleyman, and Phil Blunsom. 2015. Teaching machines to read and comprehend. In Advances in Neural Informa- tion Processing Systems, volume 28, pages 1693- 1701. Curran Associates, Inc.",
+                "links": null
+            },
+            "BIBREF9": {
+                "ref_id": "b9",
+                "title": "What have we achieved on text summarization?",
+                "authors": [
+                    {
+                        "first": "Dandan",
+                        "middle": [],
+                        "last": "Huang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Leyang",
+                        "middle": [],
+                        "last": "Cui",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sen",
+                        "middle": [],
+                        "last": "Yang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Guangsheng",
+                        "middle": [],
+                        "last": "Bao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kun",
+                        "middle": [],
+                        "last": "Wang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jun",
+                        "middle": [],
+                        "last": "Xie",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yue",
+                        "middle": [],
+                        "last": "Zhang",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "446--469",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Dandan Huang, Leyang Cui, Sen Yang, Guangsheng Bao, Kun Wang, Jun Xie, and Yue Zhang. 2020. What have we achieved on text summarization? In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing, pages 446-469. Association for Computational Linguis- tics.",
+                "links": null
+            },
+            "BIBREF10": {
+                "ref_id": "b10",
+                "title": "Reliability of human evaluation for text summarization: Lessons learned and challenges ahead",
+                "authors": [
+                    {
+                        "first": "Neslihan",
+                        "middle": [],
+                        "last": "Iskender",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tim",
+                        "middle": [],
+                        "last": "Polzehl",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sebastian",
+                        "middle": [],
+                        "last": "M\u00f6ller",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2021,
+                "venue": "Proceedings of the Workshop on Human Evaluation of NLP Systems (HumEval)",
+                "volume": "",
+                "issue": "",
+                "pages": "86--96",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Neslihan Iskender, Tim Polzehl, and Sebastian M\u00f6ller. 2021. Reliability of human evaluation for text sum- marization: Lessons learned and challenges ahead. In Proceedings of the Workshop on Human Evalua- tion of NLP Systems (HumEval), pages 86-96. Asso- ciation for Computational Linguistics (2021).",
+                "links": null
+            },
+            "BIBREF11": {
+                "ref_id": "b11",
+                "title": "Evaluating the factual consistency of abstractive text summarization",
+                "authors": [
+                    {
+                        "first": "Wojciech",
+                        "middle": [],
+                        "last": "Kryscinski",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Bryan",
+                        "middle": [],
+                        "last": "Mccann",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Caiming",
+                        "middle": [],
+                        "last": "Xiong",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Richard",
+                        "middle": [],
+                        "last": "Socher",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "9332--9346",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Wojciech Kryscinski, Bryan McCann, Caiming Xiong, and Richard Socher. 2020. Evaluating the factual consistency of abstractive text summarization. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing, pages 9332-9346. Association for Computational Linguis- tics.",
+                "links": null
+            },
+            "BIBREF12": {
+                "ref_id": "b12",
+                "title": "ROUGE: A package for automatic evaluation of summaries",
+                "authors": [
+                    {
+                        "first": "Chin-Yew",
+                        "middle": [],
+                        "last": "Lin",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2004,
+                "venue": "Proceedings of Workshop on Text Summarization Branches Out",
+                "volume": "",
+                "issue": "",
+                "pages": "74--81",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Chin-Yew Lin. 2004. ROUGE: A package for au- tomatic evaluation of summaries. In Proceedings of Workshop on Text Summarization Branches Out, pages 74-81. Association for Computational Lin- guistics.",
+                "links": null
+            },
+            "BIBREF13": {
+                "ref_id": "b13",
+                "title": "Automatically evaluating content selection in summarization without human models",
+                "authors": [
+                    {
+                        "first": "Annie",
+                        "middle": [],
+                        "last": "Louis",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ani",
+                        "middle": [],
+                        "last": "Nenkova",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2009,
+                "venue": "Proceedings of the 2009 Conference on Empirical Methods in Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "306--314",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Annie Louis and Ani Nenkova. 2009. Automatically evaluating content selection in summarization with- out human models. In Proceedings of the 2009 Con- ference on Empirical Methods in Natural Language Processing, pages 306-314. Association for Compu- tational Linguistics.",
+                "links": null
+            },
+            "BIBREF14": {
+                "ref_id": "b14",
+                "title": "Answers unite! Unsupervised metrics for reinforced summarization models",
+                "authors": [
+                    {
+                        "first": "Thomas",
+                        "middle": [],
+                        "last": "Scialom",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sylvain",
+                        "middle": [],
+                        "last": "Lamprier",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Benjamin",
+                        "middle": [],
+                        "last": "Piwowarski",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jacopo",
+                        "middle": [],
+                        "last": "Staiano",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "3246--3256",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Thomas Scialom, Sylvain Lamprier, Benjamin Pi- wowarski, and Jacopo Staiano. 2019. Answers unite! Unsupervised metrics for reinforced summa- rization models. In Proceedings of the 2019 Con- ference on Empirical Methods in Natural Language Processing and the 9th International Joint Confer- ence on Natural Language Processing, pages 3246- 3256. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF15": {
+                "ref_id": "b15",
+                "title": "Fill in the BLANC: Human-free quality estimation of document summaries",
+                "authors": [
+                    {
+                        "first": "Oleg",
+                        "middle": [],
+                        "last": "Vasilyev",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Vedant",
+                        "middle": [],
+                        "last": "Dharnidharka",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "John",
+                        "middle": [],
+                        "last": "Bohannon",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the First Workshop on Evaluation and Comparison of NLP Systems",
+                "volume": "",
+                "issue": "",
+                "pages": "11--20",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Oleg Vasilyev, Vedant Dharnidharka, and John Bohan- non. 2020a. Fill in the BLANC: Human-free quality estimation of document summaries. In Proceedings of the First Workshop on Evaluation and Compari- son of NLP Systems, pages 11-20. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF16": {
+                "ref_id": "b16",
+                "title": "Sensitivity of BLANC to human-scored qualities of text summaries. arXiv",
+                "authors": [
+                    {
+                        "first": "Oleg",
+                        "middle": [],
+                        "last": "Vasilyev",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Vedant",
+                        "middle": [],
+                        "last": "Dharnidharka",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Nicholas",
+                        "middle": [],
+                        "last": "Egan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Charlene",
+                        "middle": [],
+                        "last": "Chambliss",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "John",
+                        "middle": [],
+                        "last": "Bohannon",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2010.06716"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Oleg Vasilyev, Vedant Dharnidharka, Nicholas Egan, Charlene Chambliss, and John Bohannon. 2020b. Sensitivity of BLANC to human-scored qualities of text summaries. arXiv, arXiv:2010.06716.",
+                "links": null
+            },
+            "BIBREF17": {
+                "ref_id": "b17",
+                "title": "SUM-QE: A BERT-based summary quality estimation model",
+                "authors": [
+                    {
+                        "first": "Stratos",
+                        "middle": [],
+                        "last": "Xenouleas",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Prodromos",
+                        "middle": [],
+                        "last": "Malakasiotis",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Marianna",
+                        "middle": [],
+                        "last": "Apidianaki",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ion",
+                        "middle": [],
+                        "last": "Androutsopoulos",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "6005--6011",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Stratos Xenouleas, Prodromos Malakasiotis, Marianna Apidianaki, and Ion Androutsopoulos. 2019. SUM- QE: A BERT-based summary quality estimation model. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natu- ral Language Processing, pages 6005-6011. Associ- ation for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF18": {
+                "ref_id": "b18",
+                "title": "BERTScore: Evaluating text generation with BERT. arXiv",
+                "authors": [
+                    {
+                        "first": "Tianyi",
+                        "middle": [],
+                        "last": "Zhang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Varsha",
+                        "middle": [],
+                        "last": "Kishore",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Felix",
+                        "middle": [],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kilian",
+                        "middle": [
+                            "Q"
+                        ],
+                        "last": "Weinberger",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yoav",
+                        "middle": [],
+                        "last": "Artzi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:1904.09675v3"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian Q. Weinberger, and Yoav Artzi. 2020. BERTScore: Evaluating text generation with BERT. arXiv, arXiv:1904.09675v3.",
+                "links": null
+            },
+            "BIBREF19": {
+                "ref_id": "b19",
+                "title": "MoverScore: Text generation evaluating with contextualized embeddings and earth mover distance",
+                "authors": [
+                    {
+                        "first": "Wei",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Maxime",
+                        "middle": [],
+                        "last": "Peyrard",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Fei",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yang",
+                        "middle": [],
+                        "last": "Gao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Christian",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Meyer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Steffen",
+                        "middle": [],
+                        "last": "Eger",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "563--578",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Wei Zhao, Maxime Peyrard, Fei Liu, Yang Gao, Chris- tian M. Meyer, and Steffen Eger. 2019. MoverScore: Text generation evaluating with contextualized em- beddings and earth mover distance. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th Interna- tional Joint Conference on Natural Language Pro- cessing, pages 563-578. Association for Computa- tional Linguistics.",
+                "links": null
+            },
+            "BIBREF20": {
+                "ref_id": "b20",
+                "title": "Fine-tuning language models from human preferences. arXiv",
+                "authors": [
+                    {
+                        "first": "M",
+                        "middle": [],
+                        "last": "Daniel",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Nisan",
+                        "middle": [],
+                        "last": "Ziegler",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jeffrey",
+                        "middle": [],
+                        "last": "Stiennon",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tom",
+                        "middle": [
+                            "B"
+                        ],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Alec",
+                        "middle": [],
+                        "last": "Brown",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dario",
+                        "middle": [],
+                        "last": "Radford",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Paul",
+                        "middle": [],
+                        "last": "Amodei",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Geoffrey",
+                        "middle": [],
+                        "last": "Christiano",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Irving",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:1909.08593v2"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Daniel M. Ziegler, Nisan Stiennon, Jeffrey Wu, Tom B. Brown, Alec Radford, Dario Amodei, Paul Chris- tiano, and Geoffrey Irving. 2020. Fine-tuning lan- guage models from human preferences. arXiv, arXiv:1909.08593v2.",
+                "links": null
+            }
+        },
+        "ref_entries": {
+            "FIGREF0": {
+                "uris": null,
+                "fig_num": "1",
+                "text": "Figure 1: Factor by which Spearman correlation of BLANC with human scores increases when only part of text is used for BLANC. The text part is selected as sentences with top BLANC values (thin lines) or as contiguous sentences with highest BLANC (thick lines).",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF1": {
+                "uris": null,
+                "fig_num": "2",
+                "text": "Figure 2: Factor by which Spearman correlation of BLANC with human scores increases when only part of text is used for BLANC. The text part is selected as sentences with top BLANC values (thin lines) or as contiguous sentences having highest average BLANC (thick lines). The resulting BLANC is calculated as average over BLANC of the sentences.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF2": {
+                "uris": null,
+                "fig_num": "3",
+                "text": "Figure 3: Factor by which Spearman correlation of BLANC with human scores increases when only part of text is used for BLANC. The text part is selected as sentences with BLANC exceeding threshold.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF3": {
+                "uris": null,
+                "fig_num": "5",
+                "text": "Figure5: Drop of mean BLANC-tune value when parameters differ from optimal. The drop is shown as a fraction of the optimal mean BLANC value. The summaries probed are: CNN and DM (from the CNN/Daily Mail dataset), Top and Rand (first two sentences and random two sentences from random news articles). The parameters probed are: 'gap-infer 2/1' is gap = 2 and gap mask = 1; 'gap-tune 2/1' is gap tune = 2 and gap mask tune = 1; 'p-replace 0.1' is p replace = 0.1; 'toks-normal 4' is L normal = 4; 'tune-rand' is making tokens masking random rather than even at tuning.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF4": {
+                "uris": null,
+                "fig_num": "6",
+                "text": "Figure 6: Example of a summary with a wide coverage (left) and a narrow coverage (right). Both summaries are supposed to cover first four paragraphs of 'Harry Potter And the Sorcerer's Stone' by J.K.Rowling.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF5": {
+                "uris": null,
+                "fig_num": "7",
+                "text": "Figure 7: Example of a summary with a wide coverage (left) and a narrow coverage (right). Both summaries are supposed to cover the same text taken from CNN/Daily Mail dataset. The text is shown in Figure 8.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF7": {
+                "uris": null,
+                "fig_num": "8",
+                "text": "Figure 8: Example of text from SummEval dataset.",
+                "type_str": "figure",
+                "num": null
+            },
+            "TABREF0": {
+                "text": "Scores of BLANC versions for wide and narrow coverage summaries of Figure6. Top row is the original BLANC. Lower rows are for falsely 'improved' BLANC with selection of n top text sentences, as described in Section 2.",
+                "content": "<table/>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            },
+            "TABREF1": {
+                "text": "Scores of BLANC versions for wide and narrow coverage summaries of Figure7. Top row is the original BLANC. Lower rows are for falsely 'improved' BLANC with selection of n top text sentences, as described in Section 2.",
+                "content": "<table/>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            }
+        }
+    }
+}

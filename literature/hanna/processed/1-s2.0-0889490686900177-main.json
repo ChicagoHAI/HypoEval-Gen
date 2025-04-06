@@ -1,0 +1,934 @@
+{
+    "paper_id": "1-s2",
+    "header": {
+        "generated_with": "S2ORC 1.0.0",
+        "date_generated": "2025-02-24T17:02:39.315222Z"
+    },
+    "title": "Essay Examination Prompts and the Teaching of Academic Writing",
+    "authors": [
+        {
+            "first": "Daniel",
+            "middle": [],
+            "last": "Horowitz",
+            "suffix": "",
+            "affiliation": {},
+            "email": ""
+        }
+    ],
+    "year": "",
+    "venue": null,
+    "identifiers": {},
+    "abstract": "hundred eighty-four essay examination prompts from 15 academic departments at Western Illinois University were classified into four main categories and a number of subcategories on the basis of the type of response they required. Specific content was then removed from each prompt, leaving organizational \"frames\" that correspond to each prompt type. These \"frames\" are listed and suggestions for using the typology in the classroom are given.\nThe purpose of this paper is to present a typology of essay examination prompts and to show how it can be used to help foreign students sharpen their essay exam-taking skills. The typology is based on 284 prompts sent to me by members of the faculty of Western Illinois University in response to my written request for: (a) recent tests containing questions requiring students to write anything from a few sentences to a fully developed essay; and (b) handouts on which instructors assigned \"papers\" of any kind, book or article reviews, \"take home\" exams, and so on.\nOf approximately 750 faculty members contacted, 38 sent responses, 36 of which contained usable data. The responses that fell into the second category (out-of-class writing assignments) were discussed in an earlier paper (Horowitz, 1986) ; here I will focus on the essay prompts, which came from 29 courses in 15 departments (see Table 1 ).",
+    "pdf_parse": {
+        "paper_id": "1-s2",
+        "_pdf_hash": "",
+        "abstract": [
+            {
+                "text": "hundred eighty-four essay examination prompts from 15 academic departments at Western Illinois University were classified into four main categories and a number of subcategories on the basis of the type of response they required. Specific content was then removed from each prompt, leaving organizational \"frames\" that correspond to each prompt type. These \"frames\" are listed and suggestions for using the typology in the classroom are given.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            },
+            {
+                "text": "The purpose of this paper is to present a typology of essay examination prompts and to show how it can be used to help foreign students sharpen their essay exam-taking skills. The typology is based on 284 prompts sent to me by members of the faculty of Western Illinois University in response to my written request for: (a) recent tests containing questions requiring students to write anything from a few sentences to a fully developed essay; and (b) handouts on which instructors assigned \"papers\" of any kind, book or article reviews, \"take home\" exams, and so on.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            },
+            {
+                "text": "Of approximately 750 faculty members contacted, 38 sent responses, 36 of which contained usable data. The responses that fell into the second category (out-of-class writing assignments) were discussed in an earlier paper (Horowitz, 1986) ; here I will focus on the essay prompts, which came from 29 courses in 15 departments (see Table 1 ).",
+                "cite_spans": [
+                    {
+                        "start": 221,
+                        "end": 237,
+                        "text": "(Horowitz, 1986)",
+                        "ref_id": "BIBREF3"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 336,
+                        "end": 337,
+                        "text": "1",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            }
+        ],
+        "body_text": [
+            {
+                "text": "107",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "Because the responses were unevenly distributed, I have not tried to draw any conclusions about the distribution of prompt types among the various departments. I did find, however, that within the 284 prompts there were both sufficient variety and uniformity to create a useful, if preliminary, typology of essay examination prompts.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "The most direct way to classify essay examination prompts is by the actual instructional verbs they contain, as was done by Mallows (1980) . This approach would be of value if a uniform code of instructional verb usage were followed, but this is not the case at either British (Swales, 1982) or American universities. For example, even though all three of the following examples use the same instructional verb, describe, it seems highly counterintuitive to put them into the same category:",
+                "cite_spans": [
+                    {
+                        "start": 124,
+                        "end": 138,
+                        "text": "Mallows (1980)",
+                        "ref_id": "BIBREF10"
+                    },
+                    {
+                        "start": 277,
+                        "end": 291,
+                        "text": "(Swales, 1982)",
+                        "ref_id": "BIBREF15"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "Example 1: Describe the causes of the War of 1812. Example 2: Describe the technologies associated with horticulture and also those associated with agriculture. Example 3: Describe the relationship between population growth, urbanization, and the demographic transition.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "Example 1 requires a discussion of historical causes; Example 2, a listing and perhaps a physical description; and Example 3, a discussion of the interrelationships among three abstract concepts. The meaning of describe varies so greatly among these prompts that there is little psdagogical value in placing them under one heading.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "Various other schemes used to classify academic writing tasks were designed to handle a much broader range than the present study comprehends.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "For example, Kiniry and Strenski (1985) proposed a scheme to classify \"quizzes, examinations, reports, and papers\" (p. 192). Purves, Sijter, Takala, and Vtihapassi (1984) developed a \"system intended to both describe and classify current writing assignments . . . for an international study of written composition\" (p. 385). Bridgeman and Carlson (1984) , Johns (1981 Johns ( , 1985)) , Kroll (1979), and Hostler (1980) each conducted writing task surveys for which they constructed lists of task types. These lists included examination essays as one type of writing task, among others, but did not distinguish among different types of prompts. Although each of these classification schemes has merit within its own context, none has the \"delicacy of focus\" (Halliday, 1976, p. 24 ) required for classifying a relatively large body of essay prompts in a pedagogically useful way.",
+                "cite_spans": [
+                    {
+                        "start": 13,
+                        "end": 39,
+                        "text": "Kiniry and Strenski (1985)",
+                        "ref_id": "BIBREF8"
+                    },
+                    {
+                        "start": 325,
+                        "end": 353,
+                        "text": "Bridgeman and Carlson (1984)",
+                        "ref_id": "BIBREF1"
+                    },
+                    {
+                        "start": 356,
+                        "end": 367,
+                        "text": "Johns (1981",
+                        "ref_id": "BIBREF5"
+                    },
+                    {
+                        "start": 368,
+                        "end": 384,
+                        "text": "Johns ( , 1985))",
+                        "ref_id": "BIBREF6"
+                    },
+                    {
+                        "start": 387,
+                        "end": 404,
+                        "text": "Kroll (1979), and",
+                        "ref_id": "BIBREF9"
+                    },
+                    {
+                        "start": 405,
+                        "end": 419,
+                        "text": "Hostler (1980)",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 758,
+                        "end": 780,
+                        "text": "(Halliday, 1976, p. 24",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "I chose instead to follow an approach similar to Swales' (1982) . His method was \"to form the instructional verbs . . . into a limited set of super-ordinate groups\" (p. 16). In the present study, the concept of instructional verb was expanded to include all organizational markers. Prompts were placed in the same group if their organizational markers were judged to have performed equivalent or nearly equivalent functions within the context of the complete prompt. The specific content material was then removed, leaving \"prompt frames\" such as the following, all from the category \"dictionary definition\": In this approach, then, a typology of essay prompts consists of a relatively small number of organization categories and a relatively large number of frames that are the linguistic realizations of those categories. These frames vary along a continuum, from those that make use of members of a relatively closed system of instructional verbs (as in Example 4) to those that exploit more general lexical resources (as in Example 6).",
+                "cite_spans": [
+                    {
+                        "start": 49,
+                        "end": 63,
+                        "text": "Swales' (1982)",
+                        "ref_id": "BIBREF15"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "These \"lexical\" frames, such as 'What is . . . ?\" and \"Why is . . . ?,\" are obviously capable of pointing to more than one pattern of organization and therefore appear in more than one category. Although a preponderance of this type of frame would lead to an indistinctiveness in the categories-and would call into question the separability of form and content demands within the prompts-repetition is the exception rather than the rule, as a conscious effort was made to include within each frame the most likely organizational information evoked by a prompt.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "Despite this effort to make the frames as inclusive as possible, the analysis given here does not exhaust the organi~tiona1 potential of prompts. In other words, although there is a great deai of orga~tional i~ormation co~only given to a writer in an essay prompt, this analysis concentrates on only one, the primary organizational instruction. Others (C. M. Johns, 1976; Swales, 1982) have noted the importance of secondary instructions that tell the writer what persona or point of view to assume, which sources to draw from, what to be sure to include or exclude, and so on. Understanding these clues is vital to being able to mold one's answer to the prompt; however, this discussion will not include further mention of them.",
+                "cite_spans": [
+                    {
+                        "start": 359,
+                        "end": 371,
+                        "text": "Johns, 1976;",
+                        "ref_id": "BIBREF7"
+                    },
+                    {
+                        "start": 372,
+                        "end": 385,
+                        "text": "Swales, 1982)",
+                        "ref_id": "BIBREF15"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "Fmally, it is reasonable to ask about the fundamental nature of the categories I will propose. To begin with, it will be seen that the categories do not have hard and fast boundaries; rather, they blend into one another at the \"edges.\" They can best be thought of as those areas on the continuum of hums co~tion that have special significance in modern academia. They are the forms into which the English-speaking world pours its academic knowledge, the places where that knowledge is found; and, not unlike Aristotle's to@;, the places where arguments are found.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "It is also certain that these areas are culturally determined, a fact that adds to their pedagogic value in an ESL/EFL program. Indeed, it is just as interesting to note what is not there as what is. For example, no question asked a student to draw a moral lesson, though this may be common in other cultures; and only one asked for a prediction about the future. Of course, the absence of these types may only be a reflection of gaps in the data. Nevertheless, the general idea-that these categories represent cultura~y determined areas on the continuum of human cognition-would, I believe, remain valid no matter how much the data were expanded.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methods of Classification",
+                "sec_num": null
+            },
+            {
+                "text": "At the broadest level of analysis, there are four tasks that an essay prompt can require a student to perform: _ C. Critical thinking (\"Is it probable that one day machines will be smarter than men?\")",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "The Typology",
+                "sec_num": null
+            },
+            {
+                "text": "There is a multidimensional continuum within this category running from prompts that require one short, rhetorically specified answer to those that simply name a concept and ask the writer to give an extended description of its salient characteristics. The following is a list of frames corresponding to each subcategory. Here are some data designed to test the hypothesis ****. Analyze the data as best you can and write some of the important conclusions.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "I. Display Familiarity with a Concept",
+                "sec_num": null
+            },
+            {
+                "text": "Two assumptions underlie my suggestions for using the typology: first, that foreign students lack skills in writing examination essays and so need instruction; and second, that this instruction should aim to familiarize students with this typology (or a similar one produced for a specific purpose) and with some of the sentence-and discourse-level structures that might be especially useful for answering each type of prompt.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "The first assumption is supported not only by my personal experience, but also by a number of other researchers. Swales (1982) quotes from an interview with a British professor: \"The overseas students' major problem is this question of how they answer an examination question; what we would frequently get from students is an answer to a question which didn't exist\" (p. 13). Houghton (1984) also notes that \"Overseas Students . . . are likely to be handicapped to a certain extent in attempting to master the rules of [writing academic essays in English]\" (p. 47) and goes on to discuss those rules and why they present difficulties.",
+                "cite_spans": [
+                    {
+                        "start": 113,
+                        "end": 126,
+                        "text": "Swales (1982)",
+                        "ref_id": "BIBREF15"
+                    },
+                    {
+                        "start": 376,
+                        "end": 391,
+                        "text": "Houghton (1984)",
+                        "ref_id": "BIBREF4"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "As for the second assumption, it seems likely that students who become familiar with the standard \"display cases\" in which they will be asked to show off their knowledge will have better study skills because they will more accurately be able to predict what questions will appear on a test. In addition, faced with examination questions they have not seen before, these students would be better able to hazard reasonable guesses about what their instructor was asking for and, under the pressure of time, use the structures they learned to shape their answers accordingly. As Purves (1986) writes, I think it is important for the United States teacher of the non-native student to make clear to the students that what they are going to learn in a composition course is not the way to think and write . . but the particular form of these aspects of writing that is valued in the academies of the United States. (p. 150) A course that aims to familiarize students with various methods of paragraph and short essay development may sound reminiscent of the approach common to many writing textbooks, which concentrate on one type of organization after another, assigning students to write \"process\" paragraphs or to find a topic suitable for a \"cause/effect\" essay. This textbook presentation, however, differs in two significant ways from the approach advocated here. First, most textbook categories are not based on a study of foreign students' academic writing needs and therefore tend to be \"all purpose\" rather than specifically designed for one type of language use. Second, textbooks place too much emphasis on organization, relegating content to the position of a necessary evil.",
+                "cite_spans": [
+                    {
+                        "start": 576,
+                        "end": 589,
+                        "text": "Purves (1986)",
+                        "ref_id": "BIBREF14"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "In contrast, the approach advocated here tries to strike a balance between specific content and organization because, as the evidence presented earlier for the interchangeability of instructional verbs such as explain, describe, and discussindicates, the successful interpretation of any prompt requires an apprecia-tion of the interplay between organizational markers and specific content. There is, in other words, no point in studying organizational markers (or the corresponding methods of paragraph development) in isolation from specific content, because each provides the context for the other's interpretation.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "To illustrate how these principles can be put into practice, let us imagine that an EAP teacher has designed a unit on plate tectonics (continental drift) that includes a number of readings and a guest lecture given by a member of the geology department. The following are some ideas for using such material:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "1. Using the frames presented here as a guide, teachers can devise questions about the readings and the lecture that students must answer in complete, paraphrased sentences. Teachers might even include redundant questions (\"What causes earthquakes?, \" \"Why do earthquakes occur?\") and make it part of the task for students to discover this redundancy.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "2. Teachers can distribute copies of the typology and have students compose prompts based on the readings and the lecture. Students can then evaluate each others' prompts, deciding if they are in the correct form, if they are relevant to the subject, if they can be answered from the reading, and so on. Students can also be assigned to answer each others' prompts.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "3. Teachers can have students paraphrase teacher-or student-generated prompts in as many ways as possible. This would demonstrate the many ways that the same information can be asked for.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "4. After the unit is completed, teachers should give a timed essay test. I have found that for advanced students, three questions in a 50-minute period is both challenging and possible. If the topic is fairly detailed, students should be allowed to use their notes, or better yet, a prepared, one-page note sheet. Preparing such note sheets forces students to go over their longer notes to decide what is and is not essential. If the topic has been studied extensively or is in the students' common major field, teachers might want to give a closed-book exam.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "5. Before the test is given, students should be assigned the task of \"psyching it out,\" writing those questions they feel most likely to be on a comprehensive exam covering the given topic. This assignment provides a great deal of useful material for classroom discussion.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "6. The students' answers to the essay prompts should be examined, compared, discussed, and so on, not so much for their grammatical accuracy as for their appropriateness to the prompt. \"Answering the question\" should be the overriding criterion in evaluating such essays.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "7. Teachers can present students with lists of useful paragraph strategies on which essay structures can be modeled. For example, a unit on dictionary-style definitions might include work on the \"concept-class-characteristics\" structure of definitions (e.g., a telescope is an instrument that magnifies distant objects), the grammatical resources available for realizing those structures, and ways that definitions can be extended through description, analogies, examples, and so on.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "8. After an essay exam, teachers can point out (or students can find) those sentence-and discourse-level structures that seemed most useful for answering the question. Teachers may also want to make up exercises that would reinforce these structures even further. Cloze and sentence-combining exercises are especially useful for this. 9. When choosing topics and composing questions over the course of a semester, teachers should seek a balance among topics that lend themselves to the different types of essay prompts discussed in this paper. By the end of the course, students should have written time-pressured essays corresponding to a variety of prompt types.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Suggestions for Using the Typology in the Classroom",
+                "sec_num": null
+            },
+            {
+                "text": "The greatest strength of this approach is its diversity. Essay prompts from a number of different university departments were put together into a common typology; thus, it is most useful for teachers working with undergraduates, who normally take a fairly wide range of courses. This is also its greatest weakness. Those who teach more narrowly focused ESP classes may find this typology too general. My suggestion to these teachers is to replicate and extend this study by asking faculty members of the appropriate department to send them representative essay questions, analyzing and classifying those questions, and then following the suggestions for teaching given here. An excellent example of a more specific typology is Armbruster, Anderson, Bruning, and Meyer (1984) , who classified over 300 questions from middle school history textbooks. Although their prompts came from this source, their method was much the same as that of this study and provides a useful model for those who are motivated to carry on this type of analysis in more specific fields of study.",
+                "cite_spans": [
+                    {
+                        "start": 727,
+                        "end": 774,
+                        "text": "Armbruster, Anderson, Bruning, and Meyer (1984)",
+                        "ref_id": "BIBREF0"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": null
+            },
+            {
+                "text": "(Received June 1986) ",
+                "cite_spans": [
+                    {
+                        "start": 15,
+                        "end": 20,
+                        "text": "1986)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": null
+            }
+        ],
+        "back_matter": [
+            {
+                "text": " Johns, 1976; Swales, 1982) , as well as textbooks (Williams, 1982) have made careful distinctions among markers such as describe, explain, and discuss, my research indicates that all of these serve this same signaling function; therefore, there is no pedagogic value in teaching students to distinguish among them. Indeed, this category is the most content-centered, giving students a relatively wide choice in organizing their answers; it is, in a sense, the limiting case in which the content dimension is central. The following are common: ",
+                "cite_spans": [
+                    {
+                        "start": 1,
+                        "end": 13,
+                        "text": "Johns, 1976;",
+                        "ref_id": "BIBREF7"
+                    },
+                    {
+                        "start": 14,
+                        "end": 27,
+                        "text": "Swales, 1982)",
+                        "ref_id": "BIBREF15"
+                    },
+                    {
+                        "start": 51,
+                        "end": 67,
+                        "text": "(Williams, 1982)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ENGLISHFORSPECJFICPURPOSES",
+                "sec_num": null
+            },
+            {
+                "text": "A. Process. This category provided especially clear evidence that there is no consistent difference between explain and describe, which were used interchangeably. ",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. Display Familiarity with a Process",
+                "sec_num": null
+            },
+            {
+                "text": "Argumentation may be defined as \"the discursive techniques which make it possible to evoke or further people's assent to the theses presented for their acceptance\" (Perelman, 1963, p. 155) . In this sense, argumentation is more ambitious than exposition, in which supporting detail is chosen and arranged to promote an audience's understanding of a topic, not its assent to a thesis.'Working from this definition, we can easily test whether a given prompt is meant to elicit an argumentative or expository response by adding \"Convince the reader that . . . \" to the beginning of the prompt and asking whether the 1 This dichotomy is somewhat muddied by the fact that all essay examination writing contains an argumentative element, namely the writer's attempt to persuade the reader/instructor to proffer an acceptable grade in a course. This intention must be hidden, however, because of the social convention that states that an expository exam essay is to be written as if the reader did not already understand the ideas being presented-as if a prompt were really a question-and that an argumentative essay is to be written as if the reader did not already agree with the thesis-as if a prompt were really part of a Socratic dialogue. Thus, essay examination writing is doubly false, in that writers must hide their true intention (to pass the course) behind a wall of prose designed to do what has already been done. The only exceptions to this are prompts in the \"critical thinking\" subcategory, where the writer has a real communicative intention-to defend an original thesis.resulting prompt is essentially the same as the original one. If it is, the prompt falls into this fourth category. Consider these superficially similar prompts: The absurdity of \"Convince the reader that people study history\" is immediately apparent; this prompt relates to goals, not argumentation. Examples 8 and 9 also fail the test; they are concerned with causes. Example 10, however, passes the test: \"Convince the reader that the tag on the leg of a stuffed bird should give the leg and bill colors but not the feather colors\" would elicit essentially the same response as the original prompt, as would Example 11, which must be slightly reworded: \"Convince the reader that stealing eggs . . . is good, and convince the reader that stealing eggs . . . is bad.\"This category has three subcategories. \"General argument\" contains prompts in which the argumentation to be presented is \"public domain,\" in counterdistinction to the prompts in \"ascribed argument,\" where the argumentation \"belongs\" to some individual or group. Examples of \"general argument\" prompts are: ",
+                "cite_spans": [
+                    {
+                        "start": 164,
+                        "end": 188,
+                        "text": "(Perelman, 1963, p. 155)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "IV. Display Familiarity with Argumentation",
+                "sec_num": null
+            }
+        ],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "b0",
+                "title": "What did you mean by that question: A taxonomy of American history questions",
+                "authors": [
+                    {
+                        "first": "B",
+                        "middle": [
+                            "B"
+                        ],
+                        "last": "Armbruster",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "H",
+                        "middle": [],
+                        "last": "Anderson",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "H",
+                        "middle": [],
+                        "last": "Bruning",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "L",
+                        "middle": [
+                            "A"
+                        ],
+                        "last": "Meyer",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1984,
+                "venue": "Center for the Study of Reading)",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Armbruster, B. B., Anderson, H., Bruning, H., & Meyer, L. A. (1984). What did you mean by that question: A taxonomy of American history questions (Technical Report No. 308, Center for the Study of Reading). Cambridge, MA: Bolt, Beranek, & Newman.",
+                "links": null
+            },
+            "BIBREF1": {
+                "ref_id": "b1",
+                "title": "Survey of academic writing tasks",
+                "authors": [
+                    {
+                        "first": "B",
+                        "middle": [],
+                        "last": "Bridgeman",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "S",
+                        "middle": [
+                            "B"
+                        ],
+                        "last": "Carlson",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1984,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "247--280",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Bridgeman, B., & Carlson, S. B. (1984). Survey of academic writing tasks. Written Communication l(2), 247 -280.",
+                "links": null
+            },
+            "BIBREF2": {
+                "ref_id": "b2",
+                "title": "Cohesion in English",
+                "authors": [
+                    {
+                        "first": "M",
+                        "middle": [
+                            "A K"
+                        ],
+                        "last": "Halliday",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "R",
+                        "middle": [],
+                        "last": "Hasan",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1976,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Halliday, M. A. K., & Hasan, R. (1976). Cohesion in English. London: Longman.",
+                "links": null
+            },
+            "BIBREF3": {
+                "ref_id": "b3",
+                "title": "What professors actually require: Academic tasks for the ESL classroom",
+                "authors": [
+                    {
+                        "first": "D",
+                        "middle": [],
+                        "last": "Horowitz",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1986,
+                "venue": "TESOL Quarterly",
+                "volume": "2",
+                "issue": "3",
+                "pages": "445--462",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Horowitz, D. (1986). What professors actually require: Academic tasks for the ESL classroom. TESOL Quarterly 2a3), 445 -462.",
+                "links": null
+            },
+            "BIBREF4": {
+                "ref_id": "b4",
+                "title": "Overseas students writing essays in English",
+                "authors": [
+                    {
+                        "first": "D",
+                        "middle": [],
+                        "last": "Houghton",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1984,
+                "venue": "The ESP classroom",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Houghton, D. (1984). Overseas students writing essays in English. In G. James (Ed.), The ESP classroom. Exeter: The University of Exeter.",
+                "links": null
+            },
+            "BIBREF5": {
+                "ref_id": "b5",
+                "title": "Necessary English: A faculty survey",
+                "authors": [
+                    {
+                        "first": "A",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Johns",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1981,
+                "venue": "TESOL Quarterly",
+                "volume": "15",
+                "issue": "",
+                "pages": "51--57",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Johns, A. M. (1981). Necessary English: A faculty survey. TESOL Quarterly 15(l), 51-57.",
+                "links": null
+            },
+            "BIBREF6": {
+                "ref_id": "b6",
+                "title": "Academic writing standards: A questionnaire",
+                "authors": [
+                    {
+                        "first": "A",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Johns",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1985,
+                "venue": "TECFORS",
+                "volume": "8",
+                "issue": "",
+                "pages": "11--14",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Johns, A. M. (1985). Academic writing standards: A questionnaire. TECFORS 8(l), 11-14.",
+                "links": null
+            },
+            "BIBREF7": {
+                "ref_id": "b7",
+                "title": "Examination questions",
+                "authors": [
+                    {
+                        "first": "C",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Johns",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1976,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Johns, C. M. (1976). Examination questions. Student handout, University of Aston, Birmingham.",
+                "links": null
+            },
+            "BIBREF8": {
+                "ref_id": "b8",
+                "title": "Sequencing expository writing: A recursive approach",
+                "authors": [
+                    {
+                        "first": "M",
+                        "middle": [],
+                        "last": "Kiniry",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "E",
+                        "middle": [],
+                        "last": "Strenski",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1985,
+                "venue": "College Composition and Communication",
+                "volume": "36",
+                "issue": "2",
+                "pages": "191--202",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Kiniry, M., & Strenski, E. (1985). Sequencing expository writing: A recursive approach. College Composition and Communication 36(2), 191-202.",
+                "links": null
+            },
+            "BIBREF9": {
+                "ref_id": "b9",
+                "title": "A survey of the writing needs of foreign and American college freshman",
+                "authors": [
+                    {
+                        "first": "B",
+                        "middle": [],
+                        "last": "Kroll",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1979,
+                "venue": "English Language Teaching Journal",
+                "volume": "33",
+                "issue": "3",
+                "pages": "219--227",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Kroll, B. (1979). A survey of the writing needs of foreign and American college freshman. English Language Teaching Journal 33(3), 219 -227.",
+                "links": null
+            },
+            "BIBREF10": {
+                "ref_id": "b10",
+                "title": "Instructional verbs used in examination papers set in 1979 for students taking a higher national diploma in mechanical engineering at Oxford Polytechnic",
+                "authors": [
+                    {
+                        "first": "D",
+                        "middle": [],
+                        "last": "Mallows",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1980,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Mallows, D. (1980). Instructional verbs used in examination papers set in 1979 for students taking a higher national diploma in mechanical engineering at Oxford Polytechnic. Mimeo.",
+                "links": null
+            },
+            "BIBREF11": {
+                "ref_id": "b11",
+                "title": "A survey of academic needs for advanced ESL",
+                "authors": [
+                    {
+                        "first": "S",
+                        "middle": [
+                            "E"
+                        ],
+                        "last": "Ostler",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1980,
+                "venue": "TESOL Quarterly",
+                "volume": "14",
+                "issue": "4",
+                "pages": "489--502",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Ostler, S. E. (1980). A survey of academic needs for advanced ESL. TESOL Quarterly 14(4), 489 -502.",
+                "links": null
+            },
+            "BIBREF12": {
+                "ref_id": "b12",
+                "title": "The idea of justice and the problem of argument",
+                "authors": [
+                    {
+                        "first": "C",
+                        "middle": [],
+                        "last": "Perelman",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1963,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Perelman, C. (1963). The social contexts of argumentation. In C. Perelman (Ed.), The idea of justice and the problem of argument (J. Petrie, Trans.). London: Routledge and Paul.",
+                "links": null
+            },
+            "BIBREF13": {
+                "ref_id": "b13",
+                "title": "Towards a domainreferenced system for classifying composition assignments",
+                "authors": [
+                    {
+                        "first": "A",
+                        "middle": [
+                            "C"
+                        ],
+                        "last": "Purves",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "A",
+                        "middle": [],
+                        "last": "Soter",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "S",
+                        "middle": [],
+                        "last": "Takala",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "A",
+                        "middle": [],
+                        "last": "Vahapassi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1984,
+                "venue": "Research in the Teaching of English i",
+                "volume": "8",
+                "issue": "4",
+                "pages": "385--416",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Purves, A. C., Soter, A., Takala, S., & Vahapassi, A. (1984). Towards a domain- referenced system for classifying composition assignments. Research in the Teaching of English i8(4), 385 -416.",
+                "links": null
+            },
+            "BIBREF14": {
+                "ref_id": "b14",
+                "title": "Rhetorical communities, the international student, and basic writing",
+                "authors": [
+                    {
+                        "first": "A",
+                        "middle": [
+                            "C"
+                        ],
+                        "last": "Purves",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1986,
+                "venue": "Journal of Basic Writing",
+                "volume": "5",
+                "issue": "",
+                "pages": "38--51",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Purves, A. C. (1986). Rhetorical communities, the international student, and basic writing. Journal of Basic Writing, 5(l), 38-51.",
+                "links": null
+            },
+            "BIBREF15": {
+                "ref_id": "b15",
+                "title": "Examining Examination Papers",
+                "authors": [
+                    {
+                        "first": "J",
+                        "middle": [],
+                        "last": "Swales",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1982,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Swales, J. (1982). Examining Examination Papers. English Language Research",
+                "links": null
+            }
+        },
+        "ref_entries": {
+            "FIGREF0": {
+                "num": null,
+                "uris": null,
+                "type_str": "figure",
+                "fig_num": "4",
+                "text": "Define . . . Example 5: Give a definition of . . . Example 6: What is . . . ?"
+            },
+            "FIGREF1": {
+                "num": null,
+                "uris": null,
+                "type_str": "figure",
+                "fig_num": null,
+                "text": "I. Display familiarity with a concept. II. Display familiarity with the relation between/among concepts. III. Display familiarity with a process. IV. Display familiarity with argumentation."
+            },
+            "FIGREF2": {
+                "num": null,
+                "uris": null,
+                "type_str": "figure",
+                "fig_num": null,
+                "text": "I. Display familiarity with a concept. A. Dictionary-style definition (\"Define the term contropposto.\") B. Example (\"Give examples of positive and negative sanctions.\") C. Significance (\"Identify and explain the significance of five of the following: Paul of Tarsus; Livy; Charles Martel; Benedict; Charlemagne; Justinian; Muhammad.\") D. Physical description (\"Describe the glycocalyx, including its chemical composition, in various groups of platyhehnmthes.\") E. Function/purpose (\"List and explain . . . the five major functions that governments attempt to perform in modem capitalistically oriented society.\") F. Unspecified (\"Describe Bloom's taxonomy of cognitive learning.\") II. Display familiarity with the relation between/among concepts. A. Similarities and differences 1. Description of differences (\"How do naturalistic studies contrast with laboratory experiments on external and internal validity?\") 2. Accounting for differences (\"Give three reasons why basalt flows . . . might vary in thickness.\") 3. Classification (\"Discuss in detail and name the different types of silicate structure and why they are different. Give examples of minerals in each structural group.\") B. Cause and result 1. Historical cause (\"What caused and encouraged the growth of warlordism in China?\") 2. Goal (\"Indicate [Alexander Hamilton's] complex motivation in pursuing [his economic program].)\" 3. Contributing factors (\"What factors other than innate intelligence contribute positively to cognitive development and success in school?\") 4. Result (\"What are two effects of social typing?\") 5. Processof causation(\". . explain how changes in the rate of interest will cause changes in the equilibrium level of Gross National Product.\") C. Unspecified (\"Define and describe the relationship between anomie, deviance, and urbanization.\") III. Display familiarity with a process. A. Process (\"Describe the process of \"intermediation\" . . . [in] agricultural finance.\") B. Narration (\"Write an essay about the history of sculpture in the round during the Middle Ages.\") IV. Display familiarity with argumentation. A. General argument (\"Summarize the arguments for and against slavery\") B. Ascribed argument (\"Describe the justifications used by the Child Savers for removing deoendent las well as delinouentl children from their homes and placing them in detention fa&ies.\")'"
+            },
+            "FIGREF3": {
+                "num": null,
+                "uris": null,
+                "type_str": "figure",
+                "fig_num": null,
+                "text": "of ****. What is meant by ****? What does **** mean? What is/are ****? B. Example. Although many prompts required the student to give examples, only two of them asked only for an example. Give an example/examples of ****. C. Significance. This group included prompts asking about the significance of a person, group, or concept. What is/was the significance of ****? Explain the significance of ****. Tell why **** is important to ****. What is ****'s importance to *a**? Tell what role **** played in ****. Who were ****? D. PhysicalDescription. Eight of the 12 questions in this category came from art courses, where questions such as \"What is a mosaic?\" would of necessity require a physical description. Describe a ****. Give a description of ****. What are ****? E. Function/Purpose. Describe the function(s) of ****. Tell about ****'s function(s). What purpose did **** serve? Explain the purpose of ****. What are ****'s used for? F. Unspectjied. There were a relatively large number of frames that prompted students to display fam~a~ty with a given concept, theory, or problem or to give details about something. ~though previous analyses of instructional verbs (C. AI."
+            },
+            "TABREF1": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table/>",
+                "text": "outlines these categories and their subcategories, with an example of each type of question."
+            },
+            "TABREF2": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table/>",
+                "text": ""
+            }
+        }
+    }
+}

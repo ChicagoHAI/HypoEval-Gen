@@ -1,0 +1,1041 @@
+{
+    "paper_id": "09",
+    "header": {
+        "generated_with": "S2ORC 1.0.0",
+        "date_generated": "2025-02-24T17:03:00.639016Z"
+    },
+    "title": "An Analytical Rubric for Assessing Creativity in Creative Writing",
+    "authors": [
+        {
+            "first": "Hamideh",
+            "middle": [],
+            "last": "Mozaffari",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Guilan University",
+                "location": {
+                    "settlement": "Rasht",
+                    "country": "Iran"
+                }
+            },
+            "email": ""
+        }
+    ],
+    "year": "",
+    "venue": null,
+    "identifiers": {},
+    "abstract": "Assessment is a crucial component of teaching creative writing. However, the discipline lags far behind its composition and literary counterparts to develop a plausible method for evaluating creativity. Therefore, after reviewing the past and current literature on the topic, this study describes the design and implementation of an analytical rubric which encompasses four major qualities of creative language (image, characterization, voice and story). The reliability and validity of the proposed rubric are also empirically evaluated. The result reveals that the rubric provides the sufficient reliability and validity value reported in the literature for rubrics. Besides, the article includes some sample analyses to explicate its application.",
+    "pdf_parse": {
+        "paper_id": "09",
+        "_pdf_hash": "",
+        "abstract": [
+            {
+                "text": "Assessment is a crucial component of teaching creative writing. However, the discipline lags far behind its composition and literary counterparts to develop a plausible method for evaluating creativity. Therefore, after reviewing the past and current literature on the topic, this study describes the design and implementation of an analytical rubric which encompasses four major qualities of creative language (image, characterization, voice and story). The reliability and validity of the proposed rubric are also empirically evaluated. The result reveals that the rubric provides the sufficient reliability and validity value reported in the literature for rubrics. Besides, the article includes some sample analyses to explicate its application.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            }
+        ],
+        "body_text": [
+            {
+                "text": "Assessment is the primary concern of all educational settings. Marks provide students with significant information about their performance and progress and further enable outsiders to make decisions based on students' qualifications (Harmer, 2007) . However, it is not without limitations. Many assessment techniques lack sufficient validity and reliability (Baer & McKool, 2009) and low marks might lead to low self-esteem and subsequently discourage students (Kroll, 1997) . Theses pros and cons would intensify in evaluating creative writing since \"here students produce and are therefore in charge of the content to some degree; they are personally involved in what comes from their own imagination. Teachers also function as individual readers with their own tastes and prejudices\" (Kroll, 1997, p. 1) .",
+                "cite_spans": [
+                    {
+                        "start": 233,
+                        "end": 247,
+                        "text": "(Harmer, 2007)",
+                        "ref_id": "BIBREF6"
+                    },
+                    {
+                        "start": 358,
+                        "end": 379,
+                        "text": "(Baer & McKool, 2009)",
+                        "ref_id": "BIBREF1"
+                    },
+                    {
+                        "start": 461,
+                        "end": 474,
+                        "text": "(Kroll, 1997)",
+                        "ref_id": "BIBREF8"
+                    },
+                    {
+                        "start": 787,
+                        "end": 806,
+                        "text": "(Kroll, 1997, p. 1)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "I. INTRODUCTION",
+                "sec_num": null
+            },
+            {
+                "text": "The question of whether creative writing can be assessed or not is hotly debated. The argument rests on the common misconception that subjective criteria (teachers' likes and dislikes) are the sole source of estimating creativity in a piece of writing (Kantor, 1972; Newman, 2007) . The idea is so influential that Carey (2005), like many others, posits that \"the evaluation of works of art is purely subjective and thus cannot be codified\" (p. 52 as cited in Newman, 2007) .",
+                "cite_spans": [
+                    {
+                        "start": 252,
+                        "end": 266,
+                        "text": "(Kantor, 1972;",
+                        "ref_id": "BIBREF7"
+                    },
+                    {
+                        "start": 267,
+                        "end": 280,
+                        "text": "Newman, 2007)",
+                        "ref_id": "BIBREF12"
+                    },
+                    {
+                        "start": 460,
+                        "end": 473,
+                        "text": "Newman, 2007)",
+                        "ref_id": "BIBREF12"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "I. INTRODUCTION",
+                "sec_num": null
+            },
+            {
+                "text": "In contrast, May (2007) criticizes the assumption and argues that to objectify evaluation teachers should endeavor to set standard criteria for evaluating creative works. Rubrics or grading grids are the best ways to ensure objectivity in creativity assessment (Blomer, 2011) . However, the discipline heavily suffers from such standards as Newman (2007) maintains \"creative writing courses do not have as yet the explicit national standards or benchmarks for assessment that have been compiled for many other long-established subjects\" (p. 26). Thus, the present study attempts to develop an assessment rubric which encompasses the major qualities of creative language.",
+                "cite_spans": [
+                    {
+                        "start": 13,
+                        "end": 23,
+                        "text": "May (2007)",
+                        "ref_id": "BIBREF9"
+                    },
+                    {
+                        "start": 261,
+                        "end": 275,
+                        "text": "(Blomer, 2011)",
+                        "ref_id": "BIBREF2"
+                    },
+                    {
+                        "start": 341,
+                        "end": 354,
+                        "text": "Newman (2007)",
+                        "ref_id": "BIBREF12"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "I. INTRODUCTION",
+                "sec_num": null
+            },
+            {
+                "text": "Assessment is one of the most challenging parts of teaching creative writing (Kator, 1972; England, 2009) . Literature reveals that methods of creativity assessment are either based on a specific theory of creativity (such as divergent thinking theory as in divergent thinking tests), attributes theoretically linked to creativity (such as originality, voice, etc. as in rubrics) or judgment of experts of the field (as in consensual assessment technique). In what follows we provide a brief explanation on each of these methods.",
+                "cite_spans": [
+                    {
+                        "start": 77,
+                        "end": 90,
+                        "text": "(Kator, 1972;",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 91,
+                        "end": 105,
+                        "text": "England, 2009)",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "II. LITERATURE REVIEW",
+                "sec_num": null
+            },
+            {
+                "text": "One of the most widely used theories of creativity is divergent thinking. In fact, it is an idea generation technique (such as brainstorming) which seeks possible ways to generate various ideas about something (Richards & Schmidt, 2002) . The concept is so influential that Silvia (2008) , like many others, posits that creative thinking necessitates divergent thinking. Accordingly, various tests have been developed to assess creativity based on this concept. However, most divergent thinking tests (Torrance Test of Creative Thinking, Verbal Creativity Test, etc.) are based on the question of how many uses one can imagine for various objects and therefore lack sufficient validity for evaluating creativity in domains such as writing (Baer & Mckool, 2009) .",
+                "cite_spans": [
+                    {
+                        "start": 210,
+                        "end": 236,
+                        "text": "(Richards & Schmidt, 2002)",
+                        "ref_id": "BIBREF14"
+                    },
+                    {
+                        "start": 274,
+                        "end": 287,
+                        "text": "Silvia (2008)",
+                        "ref_id": "BIBREF17"
+                    },
+                    {
+                        "start": 739,
+                        "end": 760,
+                        "text": "(Baer & Mckool, 2009)",
+                        "ref_id": "BIBREF1"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "A. Assessment Techniques Based on Theories of Creativity",
+                "sec_num": null
+            },
+            {
+                "text": "Primarily employed in research settings, consensual assessment technique is a new method for assessing creativity in which a group of experts rate the creativity of products such as a theory, research design, story, painting, etc. In fact, judges are not required to follow any specific set of standards that is, evaluation is primarily based on their expert knowledge of creativity in a specific domain. Despite the fact that this method benefits from high degrees of validity, it has two major drawbacks: (a) It is highly resource intensive since it requires an average panel of 10 expert judges, and (b) it is based on subjective judgment of experts who rely on their sense of what is creative in a specific domain to rate creativity (Baer & Mckool, 2009) .",
+                "cite_spans": [
+                    {
+                        "start": 737,
+                        "end": 758,
+                        "text": "(Baer & Mckool, 2009)",
+                        "ref_id": "BIBREF1"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "B. Consensual Assessment Technique",
+                "sec_num": null
+            },
+            {
+                "text": "Rubrics are one of the major tools for assessing writing which incorporate a set of prominent characteristics relevant to a specific type of discourse (Weigle, 2002) . Several rubrics have been developed to evaluate creativity in creative writing. However, they either contain criteria which are too general (e.g. voice is distinctive, work is original, scenes and events are memorable, etc.), irrelevant to creativity (e.g. spelling, grammar, punctuation and syntax are correct, organization is clear, etc.) or left some important aspects behind. We look at some of such criteria in the following.",
+                "cite_spans": [
+                    {
+                        "start": 151,
+                        "end": 165,
+                        "text": "(Weigle, 2002)",
+                        "ref_id": "BIBREF18"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "C. Assessment Techniques Based on Attributes of Creativity",
+                "sec_num": null
+            },
+            {
+                "text": "Many of the criteria on which the current rubrics are based lack clarity and are therefore hard to measure. Peter (1990, np.), for instance, considers the capacity \"to move the audience\" as the most crucial criteria for assessing creative works. But, how far is it possible to examine the extent to which a piece of writing has moved the audience. Similarly, while Kroll (1997) refers to originality as another quality associates with creativity, he does not delineate what this originality might involve and how it can be traced in the text. Moreover, the criteria set by most institutions across UK suffer from the same problem as the following assessment guideline reveals:",
+                "cite_spans": [
+                    {
+                        "start": 365,
+                        "end": 377,
+                        "text": "Kroll (1997)",
+                        "ref_id": "BIBREF8"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "C. Assessment Techniques Based on Attributes of Creativity",
+                "sec_num": null
+            },
+            {
+                "text": "The work will be striking and original; phrases, lines, characters, descriptions, moments, dramatic events or explorations of fictional settings may be eloquent and memorable. The subject-matter of the work will have been explored intelligently, with insight and breadth of viewpoint. An impressive knowledge and understanding of both form and subject-matter will be evident. Creative writing \u2026will show a clear understanding of the reader's needs and those of genre. (May, 2007 p. 73) On the other hand, some of the criteria are hardly related to creativity in language. It is certainly true that qualities such as organization and mechanics are crucial for every piece of writing. However, the criteria set for evaluating writing depend on the purpose one wants to achieve (May, 2007) . Since the primary purpose of creative writing is to achieve creativity in language, its assessment should focus on such features. Nonetheless, in the guidelines that Saskatchewan (1998) and later NCTE (2004) set for creativity assessment more than half of the scores is devoted to non-creative features (mechanics, organization and structure). Moreover, Durham University's (2013) rubric marks creative writings for aspects such as tense and conjunctions. This problem has even penetrated assessment at M.A. level. Correctness of grammar, vocabulary, syntax and spelling are among the key criteria which Newman (2007) sets out for evaluation of creative writing.",
+                "cite_spans": [
+                    {
+                        "start": 468,
+                        "end": 485,
+                        "text": "(May, 2007 p. 73)",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 775,
+                        "end": 786,
+                        "text": "(May, 2007)",
+                        "ref_id": "BIBREF9"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "C. Assessment Techniques Based on Attributes of Creativity",
+                "sec_num": null
+            },
+            {
+                "text": "Thus, it can be concluded that validity of creativity tests for evaluating creative writing heavily depends on the validity of the theory upon which it is based. However, most theories of creativity have proved to be invalid for assessing creativity in writing (Baer & McKool, 2009) . Consensual assessment technique, on the other hand, suffers from the problem of subjectivity and resource intensiveness. Although rubrics (especially analytical types) are one of the most reliable methods of evaluating writing, the major problem arises from the criteria on which they are developed (Blomer, 2011) . In other words, it often happens that rubrics contain attributes which are irrelevant to creativity or are too hard to measure. Thus this study explores the field to identify the major qualities of creative language and to develop a rubric accordingly.",
+                "cite_spans": [
+                    {
+                        "start": 261,
+                        "end": 282,
+                        "text": "(Baer & McKool, 2009)",
+                        "ref_id": "BIBREF1"
+                    },
+                    {
+                        "start": 584,
+                        "end": 598,
+                        "text": "(Blomer, 2011)",
+                        "ref_id": "BIBREF2"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "C. Assessment Techniques Based on Attributes of Creativity",
+                "sec_num": null
+            },
+            {
+                "text": "Rubrics are one of the most widely used tools of assessing writing. To put it simply, a rubric is \"a set of criteria for grading assignments\" (Rezaie & Lovorn, 2010). Generally, they are of two types: (a) holistic rubrics which evaluate the overall quality of writing, and (b) analytical rubrics which focus on different aspects of writing (Weigle, 2002) . The contemporary research on assessment has proved the significance of analytical scales for a more reliable assessment of creativity (Jonsson & Savingby, 2007). The idea is so influential that Shraplin and Morris (2013), like many others, regard analytical marking as the most reliable and consistent method of assessing creative writing. They further argue that an optimal analytical marking should encompass qualities of creative writing and set categories of achievement to describe how far each quality has been achieved. As stated earlier, although the literature includes several grading grids, most of them suffer from lack of validity and reliability. Thus, this study attempts to develop an analytical rubric which encompasses major qualities theoretically linked to creativity. To this end, the literature on qualities of creative language was reviewed. It was found that creative writing includes 4 major qualities including image, voice, characterization and story (Burroway, 2011; Mills, 2006) . All criteria together with their descriptors are presented in Table 1 . In what follows there is a brief explanation on each of these attributes.",
+                "cite_spans": [
+                    {
+                        "start": 340,
+                        "end": 354,
+                        "text": "(Weigle, 2002)",
+                        "ref_id": "BIBREF18"
+                    },
+                    {
+                        "start": 1335,
+                        "end": 1351,
+                        "text": "(Burroway, 2011;",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 1352,
+                        "end": 1364,
+                        "text": "Mills, 2006)",
+                        "ref_id": "BIBREF11"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 1435,
+                        "end": 1436,
+                        "text": "1",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "1. Image: Image is so central to the discipline that Burroway (2011) refers to creative writing as imaginative writing. Mills (2006) even goes further and maintains that \"no one can write anything of significance\u2026 unless imagination is allowed to play a part in the process\" (p. 12). An image is \"a word or series of words that evoke one or more of our senses\" (Burroway, 2011, p. 15) . According to Burroway, creative writing is a kind of vivid writing which refrains from three major elements of flat writing including: (a) abstractions: concepts which cannot be experienced through the senses (love), (b) generalizations: words which include too many of a specific group and thus cannot be visualized (everything), and (c) judgments: tell the reader directly how to think about something instead of showing it (she was very lazy). Generally, there are two ways of creating images (Burroway, 2011, p. 17):",
+                "cite_spans": [
+                    {
+                        "start": 361,
+                        "end": 384,
+                        "text": "(Burroway, 2011, p. 15)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "1). Concrete significant details: details which appeal to senses (concrete) and suggest ideas beyond the surface (significant). To fully comprehend how details can create images, look at the following examples:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "-John was very lazy.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "-John was bored with the TV show, but the remote control was on the far corner of the room, so he just watched it anyway. \"Sara be in soon, and she could fetch the remote control for me then\", he thought.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "The first example is in fact the kind of writing which is characterized as flat since it contains judgment (we are told how to think about Peter). Instead, the second paragraph provides several details which allow us to draw our own conclusion about the character and in turn proves to be more convincing.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "2). Literary tropes: literary figures such as metaphor, simile, personification, etc. are a powerful tool for writers to create images which appeals to the readers' senses. The following example would clarify how Morrison (1994, p. 26 as cited in Mills, 2006 ) uses literary figures to add color to the text.",
+                "cite_spans": [
+                    {
+                        "start": 247,
+                        "end": 258,
+                        "text": "Mills, 2006",
+                        "ref_id": "BIBREF11"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "-Saturdays were lonesome days.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "-Those Saturdays sat on my head like a coal scuttle, and if mama was fussing, as she was now, it was like somebody throwing stones at it.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "The first sentence imparts the information directly. However, the use of personification (sitting is a human characteristic which is used for Saturday) and simile (when mother was fussing it was like throwing stone at the head) in the second paragraph creates a clear picture in the mind of the reader signifying that Saturdays were very lonesome days and mother's fussing was something terribly uncomfortable.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "Furthermore, Mills (2006) adds that the use of \"speaking and thinking voices\" in a text is another powerful means of creating images (p. 1). This effect can be easily seen in the following text:",
+                "cite_spans": [
+                    {
+                        "start": 13,
+                        "end": 25,
+                        "text": "Mills (2006)",
+                        "ref_id": "BIBREF11"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "Following her mother with her eyes, pressuring the lace of her bag, she started to talk: \"May\u2026 May I\u2026 May I stay at home tonight? I\u2026 I have to study..",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "III. DESIGN OF THE ANALYTICAL RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "When we read these lines it is as if one is experiencing the same situation and the speaking voices resonate in the mind of the audience.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": ".\" Pounding the cup of tea on the table, uncle John said: \"You have to study that philosophical book of Dr. Ross, am I right Sarah? Don't you want to stop it?\"",
+                "sec_num": null
+            },
+            {
+                "text": "2. Voice: Voice is \"external manifestation in language of the writer's sensibility: how she sees the world; her values and what she is attracted to in terms of subject matter.\" (Alden, 2010) . Unlike speech which is replete with aural clues such as rhythm, tone, etc. that help the hearer to recognize the voices, writer's only asset is diction (the choice of vocabulary and syntax). In the case of creative writing, vocabulary and syntax are primarily employed to create images and it is the richness of these images that makes writer's voice original and appealing (Mills, 2006 , Burroway, 2011) .",
+                "cite_spans": [
+                    {
+                        "start": 177,
+                        "end": 190,
+                        "text": "(Alden, 2010)",
+                        "ref_id": "BIBREF0"
+                    },
+                    {
+                        "start": 567,
+                        "end": 579,
+                        "text": "(Mills, 2006",
+                        "ref_id": "BIBREF11"
+                    },
+                    {
+                        "start": 580,
+                        "end": 597,
+                        "text": ", Burroway, 2011)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": ".\" Pounding the cup of tea on the table, uncle John said: \"You have to study that philosophical book of Dr. Ross, am I right Sarah? Don't you want to stop it?\"",
+                "sec_num": null
+            },
+            {
+                "text": "3. Characterization: All the genres in creative writing (short story, novel, poetry, playwriting, nonfiction and fiction) are replete with major and minor characters. Thus, for a writer the development of convincing characters is of considerable importance. There are two distinct ways of characterization: (a) Direct characterization in which the writer directly tells the reader what a character is like and is usually accomplished through description, and (b) indirect characterization in which the writer gives the reader some information and allows him/her to draw his/her own conclusion about the kind of person the character is. This is often accomplished through: (a) action: what a character does through the narrative, (b) thought: what a character thinks about, how a character thinks about his/her surrounding, (c) dialogue: what a character says and how it is said, (d) setting: where and when a character is situated in, and (e) symbol: objects and details which signify various information about a character such as names, entertaining choices, etc. (Saskatchewan, 1998). Burroway (2011) , like many others, admits that indirect characterization which employs concrete significant details is the way through which creative writers develop their characters. The following example would better clarify this distinction.",
+                "cite_spans": [
+                    {
+                        "start": 1087,
+                        "end": 1102,
+                        "text": "Burroway (2011)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": ".\" Pounding the cup of tea on the table, uncle John said: \"You have to study that philosophical book of Dr. Ross, am I right Sarah? Don't you want to stop it?\"",
+                "sec_num": null
+            },
+            {
+                "text": "-Stanley was very angry. -Stanley's eyes blazed as he surveyed the room. The corners of his mouth pointed in a decidedly southerly direction. Carol moved aside as he stalked past her.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": ".\" Pounding the cup of tea on the table, uncle John said: \"You have to study that philosophical book of Dr. Ross, am I right Sarah? Don't you want to stop it?\"",
+                "sec_num": null
+            },
+            {
+                "text": "Given the above-mentioned illustrations, it is quite obvious that in the first sentence the character is developed directly while in the second it is the characters' action which imparts the same information about him.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": ".\" Pounding the cup of tea on the table, uncle John said: \"You have to study that philosophical book of Dr. Ross, am I right Sarah? Don't you want to stop it?\"",
+                "sec_num": null
+            },
+            {
+                "text": "4. Story: Literally, story refers to a narrative which puts events in a sequence from A to Z. Story as a quality of creative language implies that instead of conveying a purpose (to inform, to enlighten, to entertain, etc.) through a formal statement, the writer provides the reader with some information which allows the reader to draw his/her own conclusion about the purpose of the text (Mills, 2006) . For instance, the familiar fable the hare and the tortoise signifies that slow and steady always wins.",
+                "cite_spans": [
+                    {
+                        "start": 390,
+                        "end": 403,
+                        "text": "(Mills, 2006)",
+                        "ref_id": "BIBREF11"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": ".\" Pounding the cup of tea on the table, uncle John said: \"You have to study that philosophical book of Dr. Ross, am I right Sarah? Don't you want to stop it?\"",
+                "sec_num": null
+            },
+            {
+                "text": "To estimate how far each criterion is achieved in each piece of writing, four levels of achievement are set. They include excellent, good, fair and poor which are defined as follows:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": ".\" Pounding the cup of tea on the table, uncle John said: \"You have to study that philosophical book of Dr. Ross, am I right Sarah? Don't you want to stop it?\"",
+                "sec_num": null
+            },
+            {
+                "text": "1). Excellent: Writing in this category demonstrates an excellent use of the criterion.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": ".\" Pounding the cup of tea on the table, uncle John said: \"You have to study that philosophical book of Dr. Ross, am I right Sarah? Don't you want to stop it?\"",
+                "sec_num": null
+            },
+            {
+                "text": "2). Good: For writings which fall in this level the criterion is partially achieved.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "THEORY AND PRACTICE IN LANGUAGE STUDIES",
+                "sec_num": "2216"
+            },
+            {
+                "text": "3). Fair: In this category, the criterion is minimally achieved. 4). Poor: Writing in this category does not meet the criterion in any respect. For a detailed explanation of how these criteria might be applied to students' writing, refer to Appendices section which includes some sample analyses. ",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "THEORY AND PRACTICE IN LANGUAGE STUDIES",
+                "sec_num": "2216"
+            },
+            {
+                "text": "Reliability is one of the major criteria on which the effectiveness of rubrics depends. In general, reliability refers to consistency of measurement. This might mean how far a test or rubric measures consistently over subsequent ratings (intra-rater reliability) or among various raters (inter-rater reliability) (Mackey & Gass, 2005) . To explore the reliability of the proposed rubric, 32 samples of creative writing from two distinct classes were collected and analyzed using the rubric. In fact, Iranian English curriculum does not include any creative writing courses. However, due to the requirements of an M.A. thesis conducted in Guilan University, two literature classes were employed to teach creative writing. Thus, the writings of these two classes were used for investigating the reliability of the rubric. To this end, two individual raters evaluated the whole sample using the analytical rubric. Approximately two weeks later, the same raters repeated the evaluation. Correlation coefficient for scores given by two different raters (inter-rater reliability) and for subsequent ratings (intra-rater reliability) was 0.79 and 0.89, respectively. Although these values are not extremely high, according to Brown, Glasswell and Harland (2004) a reliability index of 0.70 proves to be sufficient for structured rubrics.",
+                "cite_spans": [
+                    {
+                        "start": 313,
+                        "end": 334,
+                        "text": "(Mackey & Gass, 2005)",
+                        "ref_id": "BIBREF10"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "IV. EVALUATING RELIABILITY OF THE RUBRIC",
+                "sec_num": null
+            },
+            {
+                "text": "Validity is still another contributing factor to the quality of a rubric. It refers to how far a rubric measures what it purports to measure (Mackey & Gass, 2005) . To estimate whether the proposed rubric truly measures creativity in writing, we explored how far the grades assigned using the rubric correlated with an experienced teacher's ranking of the same sample. To this end, firstly the average score was calculated across the two graders for all the 32 papers. Due to the absence of creative writing in Iranian English curriculum, there was no possibility to find an expert of creative writing in the country. However, a distinguished professor of literature helped us in this regard. Sixteen papers which represented a range of average scores were selected from the sample to be evaluated by the judge. He was asked to rank-order the papers based on his knowledge of what creativity in writing might involve. Finally, the Spearman rankorder correlation coefficient between the judge's rankings and the rankings based on the average score of the papers using the rubric was calculated. The correlation coefficient between the two sets of score was 0.70. Furthermore, the mean Spearman rank-order correlation coefficient between rankings of the two raters who assessed the writings with the rubric was 0.61. Thus, the correlation between rankings of those who used the rubric and the judge who applied his own criteria is comparable to the correlation between raters who used the rubric and the same explicitly stated criteria. This result signifies the validity of the rubric.",
+                "cite_spans": [
+                    {
+                        "start": 141,
+                        "end": 162,
+                        "text": "(Mackey & Gass, 2005)",
+                        "ref_id": "BIBREF10"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "V. EVALUATING VALIDITY OF THE RUBRIC",
+                "sec_num": null
+            }
+        ],
+        "back_matter": [
+            {
+                "text": "First and foremost, I would like to thank Prof. J. Hassaskhah, my supervisor, who contributed a lot in conducting every step of this project. She has never hesitated to give me suggestions and encouragement. Besides this, my heartful thanks go to my family whose love and encouragement is everlasting.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ACKNOWLEDGMENT",
+                "sec_num": null
+            },
+            {
+                "text": "Despite the widespread use of rubrics for evaluating creative writing, most of them suffer from lack of reliability and validity (especially construct validity). In other words, they contain criteria which are either too general too be easily measured, irrelevant to creativity in writing (mechanics, organization, etc.) or even left some crucial aspects of creativity behind. This study tried to bring together the most crucial features of creativity and to exclude the irrelevant ones. The proposed analytical rubric proved to be a useful tool for assessing creativity which benefits from sufficient values of validity and reliability. However, further empirical research is required to substantiate the results.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "annex",
+                "sec_num": null
+            },
+            {
+                "text": "The following examples are taken from Imaginative writing: The elements of craft (Burroway, 2011) . Example 1: (Flat writing) Debbie was a very stubborn and completely independent person and was always doing things her way despite her parents' efforts to get her to conform. Her father was an executive in a dress manufacturing company and was able to afford his family all the luxuries and comforts of life. But Debbie was completely indifferent to her family's affluence.Analysis:-Image: poor, the work is replete with judgments and generalizations: Judgment: She was stubborn-She was independent-She was indifferent to her family's affluence. Generalization: She was doing her way-Parents' effort-All the luxuries of life and comfort.-Characterization: poor, the character is developed directly through mere description.-Voice: poor, there is no image to make the work appealing.-Story: poor, the purpose is conveyed directly rather than through narrative (the reader is directly told that Debbie is stubborn and indifferent to her family).Example 2: (Creative writing) Debbie would wear a tank top to a tea party if she pleased, with fluorescent earrings and ankle-strap sandals. \"Oh, sweetheart,\"Mrs. Chiddister would stand in the doorway wringing her hands. \"It's not nice.\" \"Not who?\" Debbie would say, and add a fringed belt. Mr. Chiddister was Artistic Director of the Boston branch of Cardin, and had a high respect for what he called \"elegant textures,\" which ranged from handwoven tweed to gold filigree, and which he willingly offered his daughter. Debbie preferred her laminated bangles.Analysis:-Image: excellent, the work is free from abstractions, generalizations and judgments. Instead, it provides some details which imply the same concepts:Debbie would wear a tank top to a tea party if she pleased, Debbie preferred her laminated bangles \uf0e0 she was stubborn.\"Not who?\" Debbie would say, and add a fringed belt \uf0e0 she was indifferent.Mr. Chiddister was Artistic Director of the Boston branch of Cardin, and had a high respect for what he called \"elegant textures,\" which ranged from handwoven tweed to gold filigree, and which he willingly offered his daughter, but she preferred her laminated bangles \uf0e0 her parents' effort, her parents' affluence.-Characterization: excellent, the personality of the character is revealed through her actions rather than directly.-Voice: excellent, as the above-mentioned examples show the work is replete with images to make the voice appealing.-Story: excellent, narrative is employed to convey the purpose (Debbi is stubborn and indifferent to her family).",
+                "cite_spans": [
+                    {
+                        "start": 81,
+                        "end": 97,
+                        "text": "(Burroway, 2011)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "APPENDIX Sample analysis:",
+                "sec_num": null
+            }
+        ],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "b0",
+                "title": "What is voice in creative writing",
+                "authors": [
+                    {
+                        "first": "P",
+                        "middle": [
+                            "B"
+                        ],
+                        "last": "Alden",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2010,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Alden, P. B. (2010). What is voice in creative writing? http://www.paulettealden.com/articles/voice-lessons-2 (accessed 15/6/2013).",
+                "links": null
+            },
+            "BIBREF1": {
+                "ref_id": "b1",
+                "title": "Assessing creativity using the consensual assessment technique",
+                "authors": [
+                    {
+                        "first": "J",
+                        "middle": [],
+                        "last": "Baer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "S",
+                        "middle": [
+                            "S"
+                        ],
+                        "last": "Mckool",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2009,
+                "venue": "Handbook of research on assessment technologies, methods and applications in higher education",
+                "volume": "",
+                "issue": "",
+                "pages": "65--77",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Baer, J. & S. S. McKool. (2009). Assessing creativity using the consensual assessment technique. In S. Schreiner (ed.), Handbook of research on assessment technologies, methods and applications in higher education. Hershey, PA: Information Science Reference, 65-77.",
+                "links": null
+            },
+            "BIBREF2": {
+                "ref_id": "b2",
+                "title": "Assessment in creative writing",
+                "authors": [
+                    {
+                        "first": "Y",
+                        "middle": [],
+                        "last": "Blomer",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2011,
+                "venue": "Wascana Review",
+                "volume": "43",
+                "issue": "",
+                "pages": "61--73",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Blomer, Y. (2011). Assessment in creative writing. Wascana Review 43, 61-73.",
+                "links": null
+            },
+            "BIBREF3": {
+                "ref_id": "b3",
+                "title": "Accuracy in the scoring of writing: Studies of reliability and validity using a New Zealand writing assessment system. Assessing Writing",
+                "authors": [
+                    {
+                        "first": "G",
+                        "middle": [
+                            "T L"
+                        ],
+                        "last": "Brown",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "K",
+                        "middle": [],
+                        "last": "Glasswell",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "D",
+                        "middle": [],
+                        "last": "Harland",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2004,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "105--121",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Brown, G. T. L., K. Glasswell & D. Harland. (2004). Accuracy in the scoring of writing: Studies of reliability and validity using a New Zealand writing assessment system. Assessing Writing 9, 105-121.",
+                "links": null
+            },
+            "BIBREF5": {
+                "ref_id": "b5",
+                "title": "Writing wrongs. Creative Writing: Teaching Theory and Practice",
+                "authors": [
+                    {
+                        "first": "J",
+                        "middle": [],
+                        "last": "England",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2009,
+                "venue": "",
+                "volume": "1",
+                "issue": "",
+                "pages": "1--14",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "England, J. (2009). Writing wrongs. Creative Writing: Teaching Theory and Practice 1, 1-14.",
+                "links": null
+            },
+            "BIBREF6": {
+                "ref_id": "b6",
+                "title": "The practice of English language teaching",
+                "authors": [
+                    {
+                        "first": "J",
+                        "middle": [],
+                        "last": "Harmer",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2007,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Harmer, J. (2007). The practice of English language teaching. England: Pearson Education.",
+                "links": null
+            },
+            "BIBREF7": {
+                "ref_id": "b7",
+                "title": "Evaluating creative writing: A different ball game",
+                "authors": [
+                    {
+                        "first": "K",
+                        "middle": [],
+                        "last": "Kantor",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1972,
+                "venue": "The English Journal",
+                "volume": "64",
+                "issue": "",
+                "pages": "72--74",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Kantor, K. (1972). Evaluating creative writing: A different ball game. The English Journal 64, 72-74.",
+                "links": null
+            },
+            "BIBREF8": {
+                "ref_id": "b8",
+                "title": "A or C: Can we assess creative writing fairly? Text",
+                "authors": [
+                    {
+                        "first": "J",
+                        "middle": [],
+                        "last": "Kroll",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1997,
+                "venue": "",
+                "volume": "1",
+                "issue": "",
+                "pages": "1--7",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Kroll, J. (1997). A or C: Can we assess creative writing fairly? Text 1, 1-7.",
+                "links": null
+            },
+            "BIBREF9": {
+                "ref_id": "b9",
+                "title": "Doing creative writing",
+                "authors": [
+                    {
+                        "first": "S",
+                        "middle": [],
+                        "last": "May",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2007,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "May, S. (2007). Doing creative writing. New York: Routledge.",
+                "links": null
+            },
+            "BIBREF10": {
+                "ref_id": "b10",
+                "title": "Second language research",
+                "authors": [
+                    {
+                        "first": "A",
+                        "middle": [],
+                        "last": "Mackey",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "S",
+                        "middle": [],
+                        "last": "Gass",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2005,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Mackey, A. & S. Gass. (2005). Second language research. New Jersey: Lawrence Erlbaum Associates.",
+                "links": null
+            },
+            "BIBREF11": {
+                "ref_id": "b11",
+                "title": "The Routledge creative writing coursebook",
+                "authors": [
+                    {
+                        "first": "P",
+                        "middle": [],
+                        "last": "Mills",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2006,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Mills, P. (2006). The Routledge creative writing coursebook. New York: Routledge.",
+                "links": null
+            },
+            "BIBREF12": {
+                "ref_id": "b12",
+                "title": "The evaluation of creative writing at M.A. level (UK)",
+                "authors": [
+                    {
+                        "first": "J",
+                        "middle": [],
+                        "last": "Newman",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2007,
+                "venue": "The handbook of teaching creative writing",
+                "volume": "",
+                "issue": "",
+                "pages": "24--36",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Newman, J. (2007). The evaluation of creative writing at M.A. level (UK). In S. Earnshaw (ed.), The handbook of teaching creative writing. Edinburg: Edinburg University Press, 24-36.",
+                "links": null
+            },
+            "BIBREF13": {
+                "ref_id": "b13",
+                "title": "Applause, applause: Evaluating creative response and projects",
+                "authors": [
+                    {
+                        "first": "Ch",
+                        "middle": [],
+                        "last": "Peters",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1990,
+                "venue": "Paper presented at the annual meeting of the National Council of Teachers of English",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Peters, Ch. (1990). Applause, applause: Evaluating creative response and projects. Paper presented at the annual meeting of the National Council of Teachers of English, Atlanta, GA.",
+                "links": null
+            },
+            "BIBREF14": {
+                "ref_id": "b14",
+                "title": "Dictionary of language teaching and applied linguistics",
+                "authors": [
+                    {
+                        "first": "J",
+                        "middle": [
+                            "C"
+                        ],
+                        "last": "Richards",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "R",
+                        "middle": [],
+                        "last": "Schmidt",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2002,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Richards, J. C. & R. Schmidt. (2002). Dictionary of language teaching and applied linguistics. New York: Pearson Education.",
+                "links": null
+            },
+            "BIBREF15": {
+                "ref_id": "b15",
+                "title": "Creative writing 20: A curriculum guide for secondary level",
+                "authors": [
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Saskachewan",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1998,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Saskachewan. (1998). Creative writing 20: A curriculum guide for secondary level. Regina: Saskachewan Education.",
+                "links": null
+            },
+            "BIBREF16": {
+                "ref_id": "b16",
+                "title": "The assessment of creative writing in senior secondary English: A colloquy concerning criteria",
+                "authors": [
+                    {
+                        "first": "E",
+                        "middle": [],
+                        "last": "Sharplin",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "G",
+                        "middle": [],
+                        "last": "Morris",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2013,
+                "venue": "",
+                "volume": "47",
+                "issue": "",
+                "pages": "49--65",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Sharplin, E. & G. Morris. (2013). The assessment of creative writing in senior secondary English: A colloquy concerning criteria. English in Education 47, 49-65.",
+                "links": null
+            },
+            "BIBREF17": {
+                "ref_id": "b17",
+                "title": "Discernment and creativity: How well can people identify their most creative ideas? Psychology of Aesthetics, Creativity, and the Arts",
+                "authors": [
+                    {
+                        "first": "P",
+                        "middle": [
+                            "J"
+                        ],
+                        "last": "Silvia",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2008,
+                "venue": "",
+                "volume": "2",
+                "issue": "",
+                "pages": "139--146",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Silvia, P. J. (2008). Discernment and creativity: How well can people identify their most creative ideas? Psychology of Aesthetics, Creativity, and the Arts 2, 139-146.",
+                "links": null
+            },
+            "BIBREF18": {
+                "ref_id": "b18",
+                "title": "Hamideh Mozaffari, born in Rasht, Iran. Acquired the B.A. of English literature from Guilan University, Rasht city, Iran in 2010. Now, studying TEFL at M.A. level in Guilan University",
+                "authors": [
+                    {
+                        "first": "S",
+                        "middle": [
+                            "C"
+                        ],
+                        "last": "Weigle",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2002,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Weigle, S. C. (2002). Assessing writing. New York: Cambridge University Press. Hamideh Mozaffari, born in Rasht, Iran. Acquired the B.A. of English literature from Guilan University, Rasht city, Iran in 2010. Now, studying TEFL at M.A. level in Guilan University. She works in Shokuh Institute now as a part-time teacher of English as a foreign language.",
+                "links": null
+            }
+        },
+        "ref_entries": {
+            "TABREF0": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table><tr><td/><td/><td>.</td><td/><td/></tr><tr><td/><td/><td>CREATIVE WRITING RUBRIC</td><td/><td/></tr><tr><td>Criteria</td><td>4. Excellent</td><td>3. Good</td><td>2. Fair</td><td>1. Poor</td></tr><tr><td/><td>Maximal use of significant</td><td>Several use of significant</td><td>Minimal use of</td><td>No use of significant</td></tr><tr><td/><td>details (there is no or just 1</td><td>details (they are</td><td>significant details (they</td><td>details (sole use of</td></tr><tr><td>Image</td><td>abstraction, generalization</td><td>significantly more than</td><td>are significantly less</td><td>abstractions,</td></tr><tr><td/><td>and judgment)</td><td>abstractions,</td><td>than abstractions,</td><td>generalizations and</td></tr><tr><td/><td/><td>generalizations and</td><td>generalizations and</td><td>judgments)</td></tr><tr><td/><td/><td>judgments)</td><td>judgments)</td><td/></tr><tr><td/><td>Maximal use of characters'</td><td>Several use of characters'</td><td>Minimal use of</td><td>No use of characters'</td></tr><tr><td/><td>physical appearance, action,</td><td>physical appearance,</td><td>characters' physical</td><td>physical appearance,</td></tr><tr><td/><td>thought, symbol, etc. to</td><td>action, thought, symbol,</td><td>appearance, action,</td><td>action, thought,</td></tr><tr><td/><td>reveal characters (complete</td><td>etc. to reveal characters</td><td>thought, symbol, etc. to</td><td>symbol, etc. to</td></tr><tr><td>Characterization</td><td>indirect characterization)</td><td/><td>reveal characters</td><td>reveal characters</td></tr><tr><td/><td/><td/><td/><td>(complete direct</td></tr><tr><td/><td/><td/><td/><td>characterization)</td></tr><tr><td/><td>Maximal use of images to</td><td>Several use of images to</td><td>Minimal use of images</td><td>No use of images to</td></tr><tr><td/><td>make the voice appealing</td><td>make the voice</td><td>to make the voice</td><td>make the voice</td></tr><tr><td>Voice</td><td/><td>appealing</td><td>appealing</td><td>appealing</td></tr><tr><td/><td>The use of narrative to</td><td/><td/><td>No use of narrative</td></tr><tr><td/><td>convey purpose.</td><td>-</td><td>-</td><td>to convey purpose</td></tr><tr><td>Story</td><td/><td/><td/><td>( purpose is</td></tr><tr><td/><td/><td/><td/><td>conveyed through</td></tr><tr><td/><td/><td/><td/><td>formal statement)</td></tr></table>",
+                "text": ""
+            }
+        }
+    }
+}

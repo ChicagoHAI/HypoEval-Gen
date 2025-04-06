@@ -1,0 +1,2369 @@
+{
+    "paper_id": "2020",
+    "header": {
+        "generated_with": "S2ORC 1.0.0",
+        "date_generated": "2025-02-24T17:02:37.322686Z"
+    },
+    "title": "UNION: An Unreferenced Metric for Evaluating Open-ended Story Generation",
+    "authors": [
+        {
+            "first": "Jian",
+            "middle": [],
+            "last": "Guan",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "State Key Lab of Intelligent Technology and Systems",
+                "institution": "Tsinghua University",
+                "location": {
+                    "postCode": "100084",
+                    "settlement": "Beijing",
+                    "country": "China"
+                }
+            },
+            "email": "j-guan19@mails.tsinghua.edu.cn"
+        },
+        {
+            "first": "Minlie",
+            "middle": [],
+            "last": "Huang",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "State Key Lab of Intelligent Technology and Systems",
+                "institution": "Tsinghua University",
+                "location": {
+                    "postCode": "100084",
+                    "settlement": "Beijing",
+                    "country": "China"
+                }
+            },
+            "email": "aihuang@tsinghua.edu.cn"
+        }
+    ],
+    "year": "",
+    "venue": null,
+    "identifiers": {},
+    "abstract": "Despite the success of existing referenced metrics (e.g., BLEU and MoverScore), they correlate poorly with human judgments for openended text generation including story or dialog generation because of the notorious oneto-many issue: there are many plausible outputs for the same input, which may differ substantially in literal or semantics from the limited number of given references. To alleviate this issue, we propose UNION, a learnable UNreferenced metrIc for evaluating Open-eNded story generation, which measures the quality of a generated story without any reference. Built on top of BERT, UNION is trained to distinguish human-written stories from negative samples and recover the perturbation in negative stories. We propose an approach of constructing negative samples by mimicking the errors commonly observed in existing NLG models, including repeated plots, conflicting logic, and long-range incoherence. Experiments on two story datasets demonstrate that UNION is a reliable measure for evaluating the quality of generated stories, which correlates better with human judgments and is more generalizable than existing state-of-theart metrics. * Corresponding author\nJack was at the bar.\nHe noticed a phone on the floor. He was going to take it to lost and found. But it started ringing on the way. Jack answered it and returned it to the owner's friends.\nSample 1 (Reasonable, B=0.29, M=0.49, U=1.00) On the way out he noticed a phone on the floor. He asked around if anybody owned it. Eventually he gave it to the bartender. They put it into their lost and found box.\nSample 2 (Reasonable, B=0.14, M=0.27, U=1.00) He had a drinking problem. He kept having more beers. After a while he passed out. When he waked up, he was surprised to find that he lost over a hundred dollars.\nSample 3 (Unreasonable, B=0.20, M=0.35, U=0.00) He was going to get drunk and get drunk. The bartender told him it was already time to leave. Jack started drinking. Jack wound up returning but cops came on the way home.",
+    "pdf_parse": {
+        "paper_id": "2020",
+        "_pdf_hash": "",
+        "abstract": [
+            {
+                "text": "Despite the success of existing referenced metrics (e.g., BLEU and MoverScore), they correlate poorly with human judgments for openended text generation including story or dialog generation because of the notorious oneto-many issue: there are many plausible outputs for the same input, which may differ substantially in literal or semantics from the limited number of given references. To alleviate this issue, we propose UNION, a learnable UNreferenced metrIc for evaluating Open-eNded story generation, which measures the quality of a generated story without any reference. Built on top of BERT, UNION is trained to distinguish human-written stories from negative samples and recover the perturbation in negative stories. We propose an approach of constructing negative samples by mimicking the errors commonly observed in existing NLG models, including repeated plots, conflicting logic, and long-range incoherence. Experiments on two story datasets demonstrate that UNION is a reliable measure for evaluating the quality of generated stories, which correlates better with human judgments and is more generalizable than existing state-of-theart metrics. * Corresponding author",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            },
+            {
+                "text": "Jack was at the bar.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            },
+            {
+                "text": "He noticed a phone on the floor. He was going to take it to lost and found. But it started ringing on the way. Jack answered it and returned it to the owner's friends.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            },
+            {
+                "text": "Sample 1 (Reasonable, B=0.29, M=0.49, U=1.00) On the way out he noticed a phone on the floor. He asked around if anybody owned it. Eventually he gave it to the bartender. They put it into their lost and found box.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            },
+            {
+                "text": "Sample 2 (Reasonable, B=0.14, M=0.27, U=1.00) He had a drinking problem. He kept having more beers. After a while he passed out. When he waked up, he was surprised to find that he lost over a hundred dollars.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            },
+            {
+                "text": "Sample 3 (Unreasonable, B=0.20, M=0.35, U=0.00) He was going to get drunk and get drunk. The bartender told him it was already time to leave. Jack started drinking. Jack wound up returning but cops came on the way home.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            }
+        ],
+        "body_text": [
+            {
+                "text": "Significant advances have been witnessed with neural encoder-decoder paradigm (Sutskever et al., 2014) , transformer-based architecture (Vaswani et al., 2017) and large-scale pretraining models (Devlin et al., 2019; Radford et al., 2019) in a wide array of natural language generation (NLG) tasks including machine translation (Bahdanau et al., 2015) , story generation (Fan et al., 2018; Guan et al., 2020) , and many more. However, the research is increasingly hindered by the lack of effec-Table 1 : Generated story samples given the same leading context from ROCStories (Mostafazadeh et al., 2016) . B stands for BLEU (Papineni et al., 2002) , M for MoverScore (Zhao et al., 2019) , and U for UNION. A story can be reasonable even if it is dissimilar to the reference with a low BLEU score (B=0.14 in Sample 2), or unreasonable even if it has a large MoverScore (M=0.35 in Sample 3). In contrast, UNION is more reliable for evaluating story generation.",
+                "cite_spans": [
+                    {
+                        "start": 78,
+                        "end": 102,
+                        "text": "(Sutskever et al., 2014)",
+                        "ref_id": "BIBREF21"
+                    },
+                    {
+                        "start": 136,
+                        "end": 158,
+                        "text": "(Vaswani et al., 2017)",
+                        "ref_id": "BIBREF23"
+                    },
+                    {
+                        "start": 194,
+                        "end": 215,
+                        "text": "(Devlin et al., 2019;",
+                        "ref_id": "BIBREF2"
+                    },
+                    {
+                        "start": 216,
+                        "end": 237,
+                        "text": "Radford et al., 2019)",
+                        "ref_id": "BIBREF15"
+                    },
+                    {
+                        "start": 327,
+                        "end": 350,
+                        "text": "(Bahdanau et al., 2015)",
+                        "ref_id": "BIBREF0"
+                    },
+                    {
+                        "start": 370,
+                        "end": 388,
+                        "text": "(Fan et al., 2018;",
+                        "ref_id": "BIBREF3"
+                    },
+                    {
+                        "start": 389,
+                        "end": 407,
+                        "text": "Guan et al., 2020)",
+                        "ref_id": "BIBREF6"
+                    },
+                    {
+                        "start": 574,
+                        "end": 601,
+                        "text": "(Mostafazadeh et al., 2016)",
+                        "ref_id": "BIBREF13"
+                    },
+                    {
+                        "start": 622,
+                        "end": 645,
+                        "text": "(Papineni et al., 2002)",
+                        "ref_id": "BIBREF14"
+                    },
+                    {
+                        "start": 665,
+                        "end": 684,
+                        "text": "(Zhao et al., 2019)",
+                        "ref_id": "BIBREF27"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 499,
+                        "end": 500,
+                        "text": "1",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "tive evaluation metrics, particularly for open-ended text generation tasks such as story generation.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "Since human evaluation is time-consuming, expensive, and difficult to reproduce, the community commonly uses automatic metrics for evaluation. Previous studies in conditional language generation tasks (e.g., machine translation) have developed several successful referenced metrics, which roughly quantify the lexical overlap (e.g., BLEU (Papineni et al., 2002) ) or semantic entailment (e.g., MoverScore (Zhao et al., 2019 )) between a generated sample and the reference. However, such referenced metrics correlate poorly with human judgments when evaluating open-ended text generation (Liu et al., 2016) due to the one-tomany nature (Zhao et al., 2017) , as illustrated in Table 1 . Specifically, a generated sample can be reasonable if it is coherent to the given input, and self-consistent within its own context but not necessarily being similar to the reference in literal or semantics, as shown in Sample 2 and 3.",
+                "cite_spans": [
+                    {
+                        "start": 338,
+                        "end": 361,
+                        "text": "(Papineni et al., 2002)",
+                        "ref_id": "BIBREF14"
+                    },
+                    {
+                        "start": 405,
+                        "end": 423,
+                        "text": "(Zhao et al., 2019",
+                        "ref_id": "BIBREF27"
+                    },
+                    {
+                        "start": 587,
+                        "end": 605,
+                        "text": "(Liu et al., 2016)",
+                        "ref_id": "BIBREF11"
+                    },
+                    {
+                        "start": 635,
+                        "end": 654,
+                        "text": "(Zhao et al., 2017)",
+                        "ref_id": "BIBREF26"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 681,
+                        "end": 682,
+                        "text": "1",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "To address the one-to-many issue, unreferenced metrics are proposed to measure the quality of a generated sample without any reference. Kannan and Vinyals (2017) presented a learnable, unreferenced metric which measures the text quality by learning to distinguish human-written texts from generated samples. However, the discriminatorbased metric can easily lead to over-fitting to specific data (Garbacea et al., 2019) or model bias since the quality of generated texts varies substantially across different NLG models. As a matter of fact, the generalization or robustness issue is critical for any learnable metrics.",
+                "cite_spans": [
+                    {
+                        "start": 136,
+                        "end": 161,
+                        "text": "Kannan and Vinyals (2017)",
+                        "ref_id": "BIBREF9"
+                    },
+                    {
+                        "start": 396,
+                        "end": 419,
+                        "text": "(Garbacea et al., 2019)",
+                        "ref_id": "BIBREF4"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "Therefore, we propose UNION, a learnable UNreferenced metrIc for evaluating Open-eNded story generation. UNION learns to distinguish human-written stories from negative samples autoconstructed by generating perturbations of humanwritten stories. It is trained without dependence on specific NLG models or any human annotation, making it more generalizable to distribution drift (Sellam et al., 2020) than the discriminator-based metric and those metrics which learn from human preference (e.g., Adem (Lowe et al., 2017) ). To capture commonly observed issues in generated stories, such as repeated plots, conflicting logic, and inter-sentence incoherence, we adopt four negative sampling techniques to construct negative samples, including repetition, substitution, reordering, and negation alteration. In addition, we design an auxiliary reconstruction objective for UNION, which recovers the perturbation from a negative sample. This objective is shown to further improve the performance of UNION.",
+                "cite_spans": [
+                    {
+                        "start": 378,
+                        "end": 399,
+                        "text": "(Sellam et al., 2020)",
+                        "ref_id": "BIBREF17"
+                    },
+                    {
+                        "start": 500,
+                        "end": 519,
+                        "text": "(Lowe et al., 2017)",
+                        "ref_id": "BIBREF12"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "Our contributions are summarized as follows: I. We propose a learnable unreferenced metric UNION for evaluating open-ended story generation to alleviate the one-to-many issue of referenced metrics. UNION does not depend on any output of NLG models or human annotation. II. Extensive experimentsfoot_0 show that UNION cor-relates better with human judgments than state-ofthe-art metrics, and is more generalizable to data drift (samples from different datasets) and quality drift (samples with different quality levels).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "Automatic evaluation is crucial for language generation tasks. We roughly divide existing metrics into referenced, unreferenced, and hybrid metrics, according to whether they rely on human-written references when calculating the metric score. Referenced metrics usually measure how similar a generated text is to the reference text. Therefore, they are developed mainly for conditional language generation tasks such as machine translation and text summarization, where plausible outputs are largely limited within the semantics of input. Commonly used referenced metrics include wordoverlap based (e.g., BLEU (Papineni et al., 2002) , ROUGE (Lin, 2004) ) and embedding based metrics (e.g., BertScore (Zhang* et al., 2020) , Mover-Score (Zhao et al., 2019) ). However, referenced metrics are reported to correlate poorly with human judgments in open-ended generation tasks including open-domain dialog generation (Liu et al., 2016) and story generation, where the input contains only limited information for generation, and there are many plausible outputs for the same input, which can vary substantially in literal or semantics. Unreferenced metrics measure the quality of a sample without any reference. The most classic unreferenced metric is perplexity, which measures how likely a sample is generated by a given language model trained on human-written texts. However, recent work has shown that natural language is rarely the most probable text (Holtzman et al., 2020) , and perplexity is inadequate to measure quality (Hashimoto et al., 2019) . Therefore, perplexity may not indicate the actual text quality well. Discriminator-based metric (Kannan and Vinyals, 2017) measures how easily a discriminator distinguishes the generated samples from human-written texts. However, training such a discriminator can be easily over-fitted to a specific dataset, thereby leading to poor generalization and low correlation with human judgments (Garbacea et al., 2019) . In addition to the above point-wise metrics which score an individual sample, Semeniuta et al. (2019) proposed the Fr\u00e9chet InferSent Distance (FID) to evaluate the model-level quality and diversity of generated samples, by computing the Fr\u00e9chet dis-tance between the Gaussian distribution fitted to human text embeddings and that to generated sample embeddings. However, in real data, the distribution of embeddings may be far from Gaussian. Recently, Zhou and Xu (2020) proposed to evaluate sample-level quality by comparing a pair of samples, and further adopted a skill rating system to evaluate model-level quality based on the samplelevel pair-wise comparison. However, it is unlikely to evaluate a single sample without access to its references. Hybrid metrics combine referenced and unreferenced metrics. For open-domain dialog system evaluation, Lowe et al. (2017) proposed a learnable metric Adem to learn from the human-annotated score of a response given its post and ground truth. However, such a metric shows very poor generalization and is not robust to easy attacks such as simple word substitution or random word shuffle (Sai et al., 2019) . Furthermore, RUBER and its variants (Tao et al., 2018; Ghazarian et al., 2019) evaluate a response by directly averaging a nonlearnable referenced embedding similarity score and a learnable unreferenced post-response relatedness score that is learned by applying negative sampling without human annotations. However, merely measuring input-output relatedness is not sufficient for evaluating long text generation, as the intrinsic coherence and consistency within the generated text is a critical factor. Additionally, some metrics which learn from human preference achieve substantial results in conditional language generation, e.g., RUSE (Shimanaka et al., 2018) and BLEURT (Sellam et al., 2020) . RUSE trained a regression model to score a reference-candidate pair using their sentence embeddings. And BLEURT used multiple automatic metrics (e.g., BLEU) as supervision signals for pretraining on synthetic data, and was fine-tuned on human judgments. However, BLEURT heavily relies on the quality of automatic metrics, but there are yet no such reliable metrics for open-ended text generation.",
+                "cite_spans": [
+                    {
+                        "start": 610,
+                        "end": 633,
+                        "text": "(Papineni et al., 2002)",
+                        "ref_id": "BIBREF14"
+                    },
+                    {
+                        "start": 642,
+                        "end": 653,
+                        "text": "(Lin, 2004)",
+                        "ref_id": "BIBREF10"
+                    },
+                    {
+                        "start": 701,
+                        "end": 722,
+                        "text": "(Zhang* et al., 2020)",
+                        "ref_id": "BIBREF25"
+                    },
+                    {
+                        "start": 737,
+                        "end": 756,
+                        "text": "(Zhao et al., 2019)",
+                        "ref_id": "BIBREF27"
+                    },
+                    {
+                        "start": 913,
+                        "end": 931,
+                        "text": "(Liu et al., 2016)",
+                        "ref_id": "BIBREF11"
+                    },
+                    {
+                        "start": 1451,
+                        "end": 1474,
+                        "text": "(Holtzman et al., 2020)",
+                        "ref_id": "BIBREF8"
+                    },
+                    {
+                        "start": 1525,
+                        "end": 1549,
+                        "text": "(Hashimoto et al., 2019)",
+                        "ref_id": "BIBREF7"
+                    },
+                    {
+                        "start": 1648,
+                        "end": 1674,
+                        "text": "(Kannan and Vinyals, 2017)",
+                        "ref_id": "BIBREF9"
+                    },
+                    {
+                        "start": 1941,
+                        "end": 1964,
+                        "text": "(Garbacea et al., 2019)",
+                        "ref_id": "BIBREF4"
+                    },
+                    {
+                        "start": 2045,
+                        "end": 2068,
+                        "text": "Semeniuta et al. (2019)",
+                        "ref_id": "BIBREF18"
+                    },
+                    {
+                        "start": 2419,
+                        "end": 2437,
+                        "text": "Zhou and Xu (2020)",
+                        "ref_id": "BIBREF28"
+                    },
+                    {
+                        "start": 2821,
+                        "end": 2839,
+                        "text": "Lowe et al. (2017)",
+                        "ref_id": "BIBREF12"
+                    },
+                    {
+                        "start": 3104,
+                        "end": 3122,
+                        "text": "(Sai et al., 2019)",
+                        "ref_id": "BIBREF16"
+                    },
+                    {
+                        "start": 3161,
+                        "end": 3179,
+                        "text": "(Tao et al., 2018;",
+                        "ref_id": "BIBREF22"
+                    },
+                    {
+                        "start": 3180,
+                        "end": 3203,
+                        "text": "Ghazarian et al., 2019)",
+                        "ref_id": "BIBREF5"
+                    },
+                    {
+                        "start": 3766,
+                        "end": 3790,
+                        "text": "(Shimanaka et al., 2018)",
+                        "ref_id": "BIBREF19"
+                    },
+                    {
+                        "start": 3802,
+                        "end": 3823,
+                        "text": "(Sellam et al., 2020)",
+                        "ref_id": "BIBREF17"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Related Work",
+                "sec_num": "2"
+            },
+            {
+                "text": "UNION is expected to measure the overall quality of a generated story. In this section, we begin with common issues that can be observed in the output of NLG models. We then propose four negative sampling techniques based on the observations. Afterward, we introduce how UNION is trained and used for story evaluation. The overall paradigm of UNION is shown in Figure 1 .",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 368,
+                        "end": 369,
+                        "text": "1",
+                        "ref_id": "FIGREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Methodology",
+                "sec_num": "3"
+            },
+            {
+                "text": "BERT \ud835\udc97 [,-.] \ud835\udc97 \ud835\udc941 \ud835\udc97 \ud835\udc947 \ud835\udc97 \ud835\udc942 \ud835\udc97 [.34] [CLS] \ud835\udc5f ' \ud835\udc5f ( \ud835\udc5f ) [SEP]",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methodology",
+                "sec_num": "3"
+            },
+            {
+                "text": "... ",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Methodology",
+                "sec_num": "3"
+            },
+            {
+                "text": "The key aspect of UNION is the construction of negative samples, which provides a range of lexical, syntactic, and semantic variations to simulate the errors made by NLG models. Therefore, we first present our empirical observations regarding the question \"What makes a story unreasonable for NLG models?\".",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Empirical Observations",
+                "sec_num": "3.1"
+            },
+            {
+                "text": "We analyzed 381 unreasonable stories generated by various NLG models like Plan&Write (Yao et al., 2019) and fine-tuned GPT-2 (Radford et al., 2019) base on ROCStories (Mostafazadeh et al., 2016) , and summarized four major types of errors, including repeated plots (repeating similar texts), poor coherence (with unrelated keywords or events but a reasonable main plot), conflicting logic (wrong causal or temporal relationship), and chaotic scenes (difficult to understand or with multiple previous errors). To facilitate understanding of the error types, we resorted to manual annotation of all the unreasonable stories. And seven annotators were hired for each story (see the full details in Section 4.2). In addition to the four error types, we also provide annotators with an option Others. We summarize the proportion of stories annotated with different error types in Table 2 2 . We can see that the four error types are the major issues of unreasonable stories, which provides rationales of constructing negative samples for evaluating generated stories. Besides, all the Spearman correlations between every two error types are less than 0.15 (p-value > 0.01), suggesting that different error types correlate weakly with each other. Furthermore, the stories annotated with 1/2/3/4 errors constitute 23.36%/36.48%/34.65%/4.46% of the annotated stories, respectively. Most of the unreasonable stories have more than one error, which motivates us to simultaneously apply multiple sampling techniques to construct negative samples.",
+                "cite_spans": [
+                    {
+                        "start": 85,
+                        "end": 103,
+                        "text": "(Yao et al., 2019)",
+                        "ref_id": "BIBREF24"
+                    },
+                    {
+                        "start": 125,
+                        "end": 147,
+                        "text": "(Radford et al., 2019)",
+                        "ref_id": "BIBREF15"
+                    },
+                    {
+                        "start": 167,
+                        "end": 194,
+                        "text": "(Mostafazadeh et al., 2016)",
+                        "ref_id": "BIBREF13"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 881,
+                        "end": 886,
+                        "text": "2 2 .",
+                        "ref_id": "TABREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Empirical Observations",
+                "sec_num": "3.1"
+            },
+            {
+                "text": "We construct negative samples to cover as many aforementioned issues of unreasonable stories as possible. Since using machine-generated texts as negative samples will easily lead to poor generalization (over-fitting to specific data or model bias (Garbacea et al., 2019 )), we devise four negative sampling techniques to automatically construct a large number of negative samples from human-written stories as follows: Repetition: Generating repetitive texts is commonly observed in many state-of-the-art NLG models (Fan et al., 2018; Radford et al., 2019) , where the models focus repeatedly on what they have recently generated, particularly with maximumlikelihood based decoding strategies (Holtzman et al., 2020) . To address the issue, we introduce lexical and sentence-level repetition to construct negative samples using two policies-we either repeat an N-gram (N=1,2,3,4) in a random sentence, or randomly select a sentence to repeat and remove the following sentence to keep the sentence number unchanged. Substitution: The coherence of a story is mainly embodied through the relationship between keywords in the context (Clark et al., 2018; Guan et al., 2020) . Therefore, we create incoherent samples by random keywords and sentence substitution, respectively at word level and sentence level. For word-level substitution, we replace random 15% keywords in a story with their corresponding antonyms (e.g., replace \"deny\" with \"con-firm\"), otherwise with another random keyword sampled from all the keywords of the same part-ofspeech (POS), according to the mention frequency. We use the commonsense knowledge base Con-ceptNet (Speer and Havasi, 2012) foot_2 for keyword recognition and antonym query. ConceptNet consists of commonsense triples like (h, r, t), meaning that the head concept h has a relation r with the tail concept t, e.g., (evaluation, IsA, judgment). We regard those words which are heads or tails in ConceptNet as keywords. And given an keyword, we look up those keywords as its antonyms with which have negated relations, including Antonym, NotDesires, NotCapableOf, and NotHasProperty. If no antonym is found for a keyword, we perform replacement with a random keyword of the same POS. And we adopt NLTKfoot_3 for POS tagging.",
+                "cite_spans": [
+                    {
+                        "start": 247,
+                        "end": 269,
+                        "text": "(Garbacea et al., 2019",
+                        "ref_id": "BIBREF4"
+                    },
+                    {
+                        "start": 516,
+                        "end": 534,
+                        "text": "(Fan et al., 2018;",
+                        "ref_id": "BIBREF3"
+                    },
+                    {
+                        "start": 535,
+                        "end": 556,
+                        "text": "Radford et al., 2019)",
+                        "ref_id": "BIBREF15"
+                    },
+                    {
+                        "start": 693,
+                        "end": 716,
+                        "text": "(Holtzman et al., 2020)",
+                        "ref_id": "BIBREF8"
+                    },
+                    {
+                        "start": 1130,
+                        "end": 1150,
+                        "text": "(Clark et al., 2018;",
+                        "ref_id": "BIBREF1"
+                    },
+                    {
+                        "start": 1151,
+                        "end": 1169,
+                        "text": "Guan et al., 2020)",
+                        "ref_id": "BIBREF6"
+                    },
+                    {
+                        "start": 1637,
+                        "end": 1661,
+                        "text": "(Speer and Havasi, 2012)",
+                        "ref_id": "BIBREF20"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Constructing Negative Samples",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "For sentence-level substitution, we randomly replace a sentence in a story with another one sampled from the rest of stories in the dataset.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Constructing Negative Samples",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Reordering: Conflicting logic usually results from wrong causal relationship and temporal dependency in the context. Therefore, we randomly reorder the sentences in a story to create negative stories with conflicting plot.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Constructing Negative Samples",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Negation Alteration: Negation words such as \"not\" are crucial for language generation tasks because they may flip the semantics of a sentence, which is also an important cause of conflicting logic. We perform negation alteration by adding or removing negation words using rules for different types of verbsfoot_4 . Since there may be multiple error types in a generated story, we apply different sampling techniques simultaneously to construct a negative sample. We first sample the number (n) of techniques from {1,2,3,4} with a distribution {50%, 20%, 20%, 10%}. We then sample a technique without replacement from {repetition, substitution, reordering, negation alteration} with a distribution {10%, 30%, 40%, 20%} until the total number of techniques (n) is reached. Last, we apply the sampled techniques on a human-written story to obtain a perturbated sample. A constructed example is shown in Table 3 .",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 906,
+                        "end": 907,
+                        "text": "3",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Constructing Negative Samples",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Ken was out jogging one morning.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Leading Context",
+                "sec_num": null
+            },
+            {
+                "text": "The weather was crisp and cool. Ken felt good and energetic. He decided to keep jogging longer than normal. Ken went several more miles out of his way.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Reference By Human",
+                "sec_num": null
+            },
+            {
+                "text": "The weather was crisp and cool and cool. Ken felt bad and energetic. Ken DID NOT GO several more miles out of his way. He decided to keep jogging longer than normal. Table 3 : An example of negative sample construction. The repeated bigram is in italic, the substituted keyword is underlined, the reordered sentences are indicated in bold, and the altered negation words are CAPI-TALIZED.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 172,
+                        "end": 173,
+                        "text": "3",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Auto-Constructed Negative Sample",
+                "sec_num": null
+            },
+            {
+                "text": "Let {s n , r n , y n } N n=1 denote the training dataset of size N for training the UNION metric, where s n is a human-written story or an auto-constructed negative sample, r n is the corresponding original story of s n . If s n is a negative sample, y n = 0, otherwise y n = 1 where s n is exactly the same as r n in this case. y n \u2208 {0, 1} indicates whether s n is written by human. For better story understanding, we leverage BERT (Devlin et al., 2019) to obtain contextualized representations of the input. Given a story s n = (s 1 , s 2 , \u2022 \u2022 \u2022 , s p ) of length p (each s i is a word), BERT outputs a sequence of contextualized vectors:",
+                "cite_spans": [
+                    {
+                        "start": 434,
+                        "end": 455,
+                        "text": "(Devlin et al., 2019)",
+                        "ref_id": "BIBREF2"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "v [CLS] , v s 1 , \u2022 \u2022 \u2022 , v sp , v [SEP] = BERT(s n ), (1)",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "where v [CLS] and v [SEP] are the representation for the special tokens [CLS] and [SEP], respectively. We add a task-specific linear layer on top of the [CLS] vector to predict the UNION score, indicating the probability that s n is written by human:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "EQUATION",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [
+                    {
+                        "start": 0,
+                        "end": 8,
+                        "text": "EQUATION",
+                        "ref_id": "EQREF",
+                        "raw_str": "\u0177n = sigmoid(W c v [CLS] + b c ),",
+                        "eq_num": "(2)"
+                    }
+                ],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "where W c and b c are trainable parameters. We use the cross entropy loss to optimize the prediction objective as follows:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "L C n = -y n log \u0177n -(1 -y n ) log (1 -\u0177n ). (3)",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "In addition to the main prediction task, we devise an auxiliary reconstruction task which requires to reconstruct the corresponding human-written story r n from perturbated story s n . Therefore, we add an additional linear layer at the last layer of BERT, which takes as input the vectors output from the last transformer block and computes a probability distribution over the entire vocabulary through a softmax layer, formally as follows:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "EQUATION",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [
+                    {
+                        "start": 0,
+                        "end": 8,
+                        "text": "EQUATION",
+                        "ref_id": "EQREF",
+                        "raw_str": "P (r i |s n ) = softmax(W r v s i + b r ),",
+                        "eq_num": "(4)"
+                    }
+                ],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "where ri is the predicted i-th token, W r and b r are the parameters of the additional linear layer. Then the model is trained by minimizing the negative log-likelihood:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "EQUATION",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [
+                    {
+                        "start": 0,
+                        "end": 8,
+                        "text": "EQUATION",
+                        "ref_id": "EQREF",
+                        "raw_str": "L R n = - 1 p p i=1 log P (r i = r i |s n ),",
+                        "eq_num": "(5)"
+                    }
+                ],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "where r i is the i-th token in human-written story r n . The combined loss function L of the full model is computed as follows:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "EQUATION",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [
+                    {
+                        "start": 0,
+                        "end": 8,
+                        "text": "EQUATION",
+                        "ref_id": "EQREF",
+                        "raw_str": "L = 1 N N n=1 (L C n + \u03bbL R n ),",
+                        "eq_num": "(6)"
+                    }
+                ],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "where \u03bb is an adjustable hyperparameter.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "We fine-tune all the parameters of UNION on the training dataset, including the BERT and the two additional linear layers. In practical use, UNION can measure the quality of a new generated sample \u015d by taking \u015d as input to predict the corresponding score \u0177.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Modeling",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "We conducted extensive experiments to evaluate UNION on two story datasets. First, we compared UNION against existing text generation metrics. Then, we assessed its generalization on distribution drifts, including dataset drift and quality drift. Last, we measured the effect of each negative sampling technique with ablation studies.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Experiment",
+                "sec_num": "4"
+            },
+            {
+                "text": "We compared UNION with the following three kinds of metrics as baselines: Referenced metrics: sentence BLEU score (geometric mean of 1-gram up to 4-gram) (Papineni et al., 2002) to measure the lexical similarity between a candidate sample and its reference, and MoverScore (Zhao et al., 2019) to measure the semantic similarity. Unreferenced metrics: Perplexityfoot_5 computed by the GPT-2 model (Radford et al., 2019) , and a discriminative evaluator (DisScore) (Kannan and Vinyals, 2017) that is trained based on BERT to distinguish generated samples from human-written stories. Hybrid metrics: RUBER-BERT (Ghazarian et al., 2019) which improves the original RU-BER (Tao et al., 2018) with contextualized embeddings from BERT, and the supervised metric BLEURT (Sellam et al., 2020) that is fine-tuned on human judgments after pretraining on large-scale synthetic data with multiple automatic metrics as supervision signals.",
+                "cite_spans": [
+                    {
+                        "start": 154,
+                        "end": 177,
+                        "text": "(Papineni et al., 2002)",
+                        "ref_id": "BIBREF14"
+                    },
+                    {
+                        "start": 273,
+                        "end": 292,
+                        "text": "(Zhao et al., 2019)",
+                        "ref_id": "BIBREF27"
+                    },
+                    {
+                        "start": 396,
+                        "end": 418,
+                        "text": "(Radford et al., 2019)",
+                        "ref_id": "BIBREF15"
+                    },
+                    {
+                        "start": 463,
+                        "end": 489,
+                        "text": "(Kannan and Vinyals, 2017)",
+                        "ref_id": "BIBREF9"
+                    },
+                    {
+                        "start": 608,
+                        "end": 632,
+                        "text": "(Ghazarian et al., 2019)",
+                        "ref_id": "BIBREF5"
+                    },
+                    {
+                        "start": 668,
+                        "end": 686,
+                        "text": "(Tao et al., 2018)",
+                        "ref_id": "BIBREF22"
+                    },
+                    {
+                        "start": 762,
+                        "end": 783,
+                        "text": "(Sellam et al., 2020)",
+                        "ref_id": "BIBREF17"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Baselines",
+                "sec_num": "4.1"
+            },
+            {
+                "text": "In addition, we also reported the performance of the referenced and unreferenced versions in RUBER-BERT, denoted as RUBER r -BERT and RUBER u -BERT, respectively.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Baselines",
+                "sec_num": "4.1"
+            },
+            {
+                "text": "We set the parameters of UNION by following the uncased base version of Devlin et al. (2019) : the transformer has 12 layers, 768 dimensional hidden states, and 12 attention heads. We used batch size 10, and learning rate 5e-5. The scale factor \u03bb is set to 0.1. We directly used public pretrained parameters of BERTfoot_6 or GPT-2foot_7 (base version) for all the baselines.",
+                "cite_spans": [
+                    {
+                        "start": 72,
+                        "end": 92,
+                        "text": "Devlin et al. (2019)",
+                        "ref_id": "BIBREF2"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Baselines",
+                "sec_num": "4.1"
+            },
+            {
+                "text": "We used two datasets for evaluation, ROC-Stories (ROC for short) (Mostafazadeh et al., 2016) and WritingPrompts (WP) (Fan et al., 2018) . The ROC dataset contains 98,161 fivesentence human-written stories, with an average length of 49.4 words. To achieve better generalization performance, we followed Guan et al. (2020) to make delexilization by masking all the male/female/unknown names with placeholders [MALE]/[FEMALE]/[NEUTRAL], respectively.",
+                "cite_spans": [
+                    {
+                        "start": 65,
+                        "end": 92,
+                        "text": "(Mostafazadeh et al., 2016)",
+                        "ref_id": "BIBREF13"
+                    },
+                    {
+                        "start": 117,
+                        "end": 135,
+                        "text": "(Fan et al., 2018)",
+                        "ref_id": "BIBREF3"
+                    },
+                    {
+                        "start": 302,
+                        "end": 320,
+                        "text": "Guan et al. (2020)",
+                        "ref_id": "BIBREF6"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Data Preparation",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "The WP dataset consists of 303,358 stories paired with writing prompts collected from an online forum. The average length of the prompt/story is 28.4/734.5 respectively, much longer than those in ROC. Since it is still challenging for state-ofthe-art NLG models to maintain a reasonable plot through the whole story, and hard to obtain acceptable annotation agreement in manual evaluation of long stories, we retained about 200 words (with correct sentence boundary) from the start and truncated the rest in WP for subsequent experiments.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Data Preparation",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "We randomly selected 90%/5%/5% stories from both datasets for training/validation/test of UNION and learnable baseline metrics, and created the evaluation set for all the metrics by generating stories based on the test sets of the datasets with state-of-the-art story generation models. The story generation models include fusion convolutional seq2seq model (Fan et al., 2018) , plan&write (Yao et al., 2019) , fine-tuned GPT-2 (Radford et al., 2019) , and knowledge-enhanced GPT-2 (Guan et al., 2020) .",
+                "cite_spans": [
+                    {
+                        "start": 358,
+                        "end": 376,
+                        "text": "(Fan et al., 2018)",
+                        "ref_id": "BIBREF3"
+                    },
+                    {
+                        "start": 390,
+                        "end": 408,
+                        "text": "(Yao et al., 2019)",
+                        "ref_id": "BIBREF24"
+                    },
+                    {
+                        "start": 428,
+                        "end": 450,
+                        "text": "(Radford et al., 2019)",
+                        "ref_id": "BIBREF15"
+                    },
+                    {
+                        "start": 482,
+                        "end": 501,
+                        "text": "(Guan et al., 2020)",
+                        "ref_id": "BIBREF6"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Data Preparation",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "The data statistics are shown in Table 4 . The number of negative samples for learning the metrics when necessary is the same as that of humanwritten stories on each dataset. Specifically, we created negative samples for DisScore by generating stories with above NLG models. For RUBER u -BERT, a given leading context is appended by a randomly sampled continuation. All the stories in the evaluation set are manually labeled. In addition, we annotated another 400 stories in ROC and 200 in WP for training BLEURTfoot_8 . Seven annotators were hired to judge the quality of each story with a binary score (1 for a reasonable story, and 0 otherwise). Furthermore, we asked annotators to label the error type of a story if it is labeled as unreasonable, including repeated plots, poor coherence, conflicting logic, chaotic scenes, and others. We resorted to Amazon Mechanical Turk (AMT) for annotation, and the average score of the seven annotators is treated as the final score. We provide the full details of the instruction for annotators in the supplementary file. ",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 39,
+                        "end": 40,
+                        "text": "4",
+                        "ref_id": "TABREF2"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Data Preparation",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "Correlation analysis has been widely used to evaluate automatic metrics for language generation (Tao et al., 2018; Sellam et al., 2020) . We employed UNION and other metrics to score the collected samples, and then calculated the Pearson (r), Spearman (\u03c1) and Kendall (\u03c4 ) correlation coefficients between model evaluation and human judgments. Pearson's r estimates linear correlation while Spearman's \u03c1 and Kendall's \u03c4 estimate monotonic correlation, and \u03c4 is usually more insensitive to abnormal values than \u03c1. We used the standard statistical package stats in SciPyfoot_9 for correlation calculation and significance test.",
+                "cite_spans": [
+                    {
+                        "start": 96,
+                        "end": 114,
+                        "text": "(Tao et al., 2018;",
+                        "ref_id": "BIBREF22"
+                    },
+                    {
+                        "start": 115,
+                        "end": 135,
+                        "text": "Sellam et al., 2020)",
+                        "ref_id": "BIBREF17"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Correlation Results",
+                "sec_num": "4.3"
+            },
+            {
+                "text": "As summarized in Table 5 , the referenced metrics correlate worse with human judgments, particularly for BLEU which is based on lexical similarity. Measuring the semantic similarity instead (MoverScore, RUBER r -BERT) can improve the correlation but is still limited, indicating that referenced metrics are not competitive for evaluating open-ended language generation. Perplexity is ineffective on WP because the generated stories in the dataset are much longer and hence suffer from more serious repetition errors than those in ROC, which easily results in low perplexity (i.e., high minus perplexity) (Holtzman et al., 2020) but poor human judgment scores. Furthermore, UNION outperforms other baselines including the supervised metric BLEURT by a large margin, which also demonstrates the advantage of unreferenced metrics. Besides, removing the reconstruction training objective (-Recon) leads to remarkably worse correlation, indicating that the auxiliary task further improves the performance of UNION.",
+                "cite_spans": [
+                    {
+                        "start": 604,
+                        "end": 627,
+                        "text": "(Holtzman et al., 2020)",
+                        "ref_id": "BIBREF8"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 23,
+                        "end": 24,
+                        "text": "5",
+                        "ref_id": "TABREF3"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Correlation Results",
+                "sec_num": "4.3"
+            },
+            {
+                "text": "It is extremely important for learnable metrics to deal with dataset drift and quality drift (Sellam et al., 2020) To assess the generalization to dataset drift, we first trained the learnable metrics on ROC and then directly used them to evaluate generated stories from WP, and vise versa. ter correlation with human judgments. Moreover, our method of constructing negative examples is generalizable to the two datasets.",
+                "cite_spans": [
+                    {
+                        "start": 93,
+                        "end": 114,
+                        "text": "(Sellam et al., 2020)",
+                        "ref_id": "BIBREF17"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Generalization to Dataset and Quality Drift",
+                "sec_num": "4.4"
+            },
+            {
+                "text": "To assess the generalization of UNION to quality drift, we created biased test sets from ROC by sampling stories of different quality levels with different probabilities. Specifically, the annotation score of each story ranges from 0 to 1 (i.e., 0, 1 7 , 2 7 , \u2022 \u2022 \u2022 , 1) since there are seven annotators for each sample. We then created 8 biased sets, indexed from 1 to 8 with variable I. For the I th set, we sampled the stories whose annotation score is k 7 with a probability of We then computed the Pearson correlation of different metrics with human judgments on the 8 sets. Results in Figure 2 (right) show that: I. UNION has higher correlation than other metrics on all the biased sets. II. UNION is more reliable and robust than other metrics, with much less variance. For instance, MoverScore performs much better on Set #1 (with more low-quality stories) than on Set #8 (with more high-quality stories). Interestingly, Perplexity performs much better on high-quality sets than on low-quality ones, because high-quality stories are closer to human-written stories from which a language model learns. III. The ablated 11 We assume that the annotation score k 7 approximates the quality level.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 599,
+                        "end": 600,
+                        "text": "2",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Generalization to Dataset and Quality Drift",
+                "sec_num": "4.4"
+            },
+            {
+                "text": "UNION without the reconstruction objective has lower correlation and larger variance, indicating that the auxiliary task can improve the discriminative and generalization ability.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Generalization to Dataset and Quality Drift",
+                "sec_num": "4.4"
+            },
+            {
+                "text": "To understand the effect of each negative sampling technique, we conducted ablation tests on ROC dataset. Each time we ablated one technique of constructing negative samples, re-trained UNION on the constructed data, and evaluated it on five evaluation sets: all 400 samples, and four other sets where each contains 19 reasonable samples and other unreasonable samples of some error type. The error type of a story is decided if at least three of seven annotators annotate the same error type.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Ablation Studies",
+                "sec_num": "4.5"
+            },
+            {
+                "text": "Table 7 shows the Pearson correlation results. UNION is remarkably better than its ablated version on the all-sample set, indicating the necessity of the four techniques for constructing negative samples. Reordering seems to be the most important technique, which agrees with our observation that conflicting logic is the major issue in existing story generation models. Furthermore, as expected, the correlation drops remarkably on the evaluation set of some error type if without the corresponding negative sampling technique. Interestingly, it is easier for UNION to evaluate repetitive/chaotic stories, which seem to be easier cases in story generation.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 6,
+                        "end": 7,
+                        "text": "7",
+                        "ref_id": "TABREF6"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Ablation Studies",
+                "sec_num": "4.5"
+            },
+            {
+                "text": "We present UNION, an unreferenced metric for evaluating open-ended story generation. UNION is trained to distinguish human-written stories from auto-constructed negative samples and to recover the perturbation in negative samples. Extensive experiments show that UNION outperforms stateof-the-art metrics in terms of correlation with human judgments on two story datasets, and is more robust to dataset drift and quality drift. Results also show the effectiveness of the proposed four negative sampling techniques. As future work, we will explore the similar idea of designing unreferenced metrics for dialog generation.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "5"
+            },
+            {
+                "text": "All the codes and data are available at https:// github.com/thu-coai/UNION.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "Note that these human annotations are only used in test of UNION.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "http://www.conceptnet.io/",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "http://nltk.org/",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "The details are shown in the supplementary material.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "We take the minus of perplexity for all the following experiments to ensure a higher value means better quality.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "https://github.com/google-research/ bert",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "https://github.com/openai/gpt-2",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "BLEURT is first initialized with the pretrained parameters (https://github.com/google-research/ bleurt) and then fine-tuned on our annotated stories.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "https://docs.scipy.org/doc/scipy/ reference/stats.html",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            }
+        ],
+        "back_matter": [
+            {
+                "text": "This work was jointly supported by the NSFC projects (Key project with No. 61936010 and regular project with No. 61876096), and the Guoqiang Institute of Tsinghua Universitywith Grant No. 2019GQG1. We thank THUNUS NExT Joint-Lab for the support.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Acknowledgments",
+                "sec_num": null
+            }
+        ],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "b0",
+                "title": "Neural machine translation by jointly learning to align and translate",
+                "authors": [
+                    {
+                        "first": "Dzmitry",
+                        "middle": [],
+                        "last": "Bahdanau",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kyunghyun",
+                        "middle": [],
+                        "last": "Cho",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yoshua",
+                        "middle": [],
+                        "last": "Bengio",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2015,
+                "venue": "3rd International Conference on Learning Representations",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Ben- gio. 2015. Neural machine translation by jointly learning to align and translate. In 3rd Inter- national Conference on Learning Representations, ICLR 2015.",
+                "links": null
+            },
+            "BIBREF1": {
+                "ref_id": "b1",
+                "title": "Neural text generation in stories using entity representations as context",
+                "authors": [
+                    {
+                        "first": "Elizabeth",
+                        "middle": [],
+                        "last": "Clark",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yangfeng",
+                        "middle": [],
+                        "last": "Ji",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Noah",
+                        "middle": [
+                            "A"
+                        ],
+                        "last": "Smith",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "NAACL",
+                "volume": "",
+                "issue": "",
+                "pages": "1631--1640",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Elizabeth Clark, Yangfeng Ji, and Noah A. Smith. 2018. Neural text generation in stories using entity repre- sentations as context. In NAACL, pages 1631-1640.",
+                "links": null
+            },
+            "BIBREF2": {
+                "ref_id": "b2",
+                "title": "Bert: Pre-training of deep bidirectional transformers for language understanding",
+                "authors": [
+                    {
+                        "first": "Jacob",
+                        "middle": [],
+                        "last": "Devlin",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ming-Wei",
+                        "middle": [],
+                        "last": "Chang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kenton",
+                        "middle": [],
+                        "last": "Lee",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kristina",
+                        "middle": [],
+                        "last": "Toutanova",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+                "volume": "1",
+                "issue": "",
+                "pages": "4171--4186",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019. Bert: Pre-training of deep bidirectional transformers for language under- standing. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Tech- nologies, Volume 1 (Long and Short Papers), pages 4171-4186.",
+                "links": null
+            },
+            "BIBREF3": {
+                "ref_id": "b3",
+                "title": "Hierarchical neural story generation",
+                "authors": [
+                    {
+                        "first": "Angela",
+                        "middle": [],
+                        "last": "Fan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mike",
+                        "middle": [],
+                        "last": "Lewis",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yann",
+                        "middle": [],
+                        "last": "Dauphin",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics",
+                "volume": "1",
+                "issue": "",
+                "pages": "889--898",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Angela Fan, Mike Lewis, and Yann Dauphin. 2018. Hi- erarchical neural story generation. In Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 889-898.",
+                "links": null
+            },
+            "BIBREF4": {
+                "ref_id": "b4",
+                "title": "Judge the judges: A largescale evaluation study of neural language models for online review generation",
+                "authors": [
+                    {
+                        "first": "Cristina",
+                        "middle": [],
+                        "last": "Garbacea",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Samuel",
+                        "middle": [],
+                        "last": "Carton",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Shiyan",
+                        "middle": [],
+                        "last": "Yan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Qiaozhu",
+                        "middle": [],
+                        "last": "Mei",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
+                "volume": "",
+                "issue": "",
+                "pages": "3959--3972",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Cristina Garbacea, Samuel Carton, Shiyan Yan, and Qiaozhu Mei. 2019. Judge the judges: A large- scale evaluation study of neural language models for online review generation. In Proceedings of the 2019 Conference on Empirical Methods in Nat- ural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP), pages 3959-3972.",
+                "links": null
+            },
+            "BIBREF5": {
+                "ref_id": "b5",
+                "title": "Better automatic evaluation of open-domain dialogue systems with contextualized embeddings",
+                "authors": [
+                    {
+                        "first": "Johnny",
+                        "middle": [],
+                        "last": "Sarik Ghazarian",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Aram",
+                        "middle": [],
+                        "last": "Wei",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Nanyun",
+                        "middle": [],
+                        "last": "Galstyan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Peng",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the Workshop on Methods for Optimizing and Evaluating Neural Language Generation",
+                "volume": "",
+                "issue": "",
+                "pages": "82--89",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Sarik Ghazarian, Johnny Wei, Aram Galstyan, and Nanyun Peng. 2019. Better automatic evaluation of open-domain dialogue systems with contextualized embeddings. In Proceedings of the Workshop on Methods for Optimizing and Evaluating Neural Lan- guage Generation, pages 82-89.",
+                "links": null
+            },
+            "BIBREF6": {
+                "ref_id": "b6",
+                "title": "A knowledge-enhanced pretraining model for commonsense story generation",
+                "authors": [
+                    {
+                        "first": "Jian",
+                        "middle": [],
+                        "last": "Guan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Fei",
+                        "middle": [],
+                        "last": "Huang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Zhihao",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Xiaoyan",
+                        "middle": [],
+                        "last": "Zhu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Minlie",
+                        "middle": [],
+                        "last": "Huang",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Transactions of the Association for Computational Linguistics",
+                "volume": "8",
+                "issue": "",
+                "pages": "93--108",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Jian Guan, Fei Huang, Zhihao Zhao, Xiaoyan Zhu, and Minlie Huang. 2020. A knowledge-enhanced pre- training model for commonsense story generation. Transactions of the Association for Computational Linguistics, 8:93-108.",
+                "links": null
+            },
+            "BIBREF7": {
+                "ref_id": "b7",
+                "title": "Unifying human and statistical evaluation for natural language generation",
+                "authors": [
+                    {
+                        "first": "Tatsunori",
+                        "middle": [],
+                        "last": "Hashimoto",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Hugh",
+                        "middle": [],
+                        "last": "Zhang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Percy",
+                        "middle": [],
+                        "last": "Liang",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+                "volume": "1",
+                "issue": "",
+                "pages": "1689--1701",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Tatsunori Hashimoto, Hugh Zhang, and Percy Liang. 2019. Unifying human and statistical evaluation for natural language generation. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Hu- man Language Technologies, Volume 1 (Long and Short Papers), pages 1689-1701.",
+                "links": null
+            },
+            "BIBREF8": {
+                "ref_id": "b8",
+                "title": "The curious case of neural text degeneration",
+                "authors": [
+                    {
+                        "first": "Ari",
+                        "middle": [],
+                        "last": "Holtzman",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jan",
+                        "middle": [],
+                        "last": "Buys",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Li",
+                        "middle": [],
+                        "last": "Du",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Maxwell",
+                        "middle": [],
+                        "last": "Forbes",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yejin",
+                        "middle": [],
+                        "last": "Choi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "International Conference on Learning Representations",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Ari Holtzman, Jan Buys, Li Du, Maxwell Forbes, and Yejin Choi. 2020. The curious case of neural text de- generation. In International Conference on Learn- ing Representations.",
+                "links": null
+            },
+            "BIBREF9": {
+                "ref_id": "b9",
+                "title": "Adversarial evaluation of dialogue models",
+                "authors": [
+                    {
+                        "first": "Anjuli",
+                        "middle": [],
+                        "last": "Kannan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Oriol",
+                        "middle": [],
+                        "last": "Vinyals",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2017,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:1701.08198"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Anjuli Kannan and Oriol Vinyals. 2017. Adversar- ial evaluation of dialogue models. arXiv preprint arXiv:1701.08198.",
+                "links": null
+            },
+            "BIBREF10": {
+                "ref_id": "b10",
+                "title": "ROUGE: A package for automatic evaluation of summaries",
+                "authors": [
+                    {
+                        "first": "Chin-Yew",
+                        "middle": [],
+                        "last": "Lin",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2004,
+                "venue": "Text Summarization Branches Out",
+                "volume": "",
+                "issue": "",
+                "pages": "74--81",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Chin-Yew Lin. 2004. ROUGE: A package for auto- matic evaluation of summaries. In Text Summariza- tion Branches Out, pages 74-81, Barcelona, Spain. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF11": {
+                "ref_id": "b11",
+                "title": "How not to evaluate your dialogue system: An empirical study of unsupervised evaluation metrics for dialogue response generation",
+                "authors": [
+                    {
+                        "first": "Chia-Wei",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ryan",
+                        "middle": [],
+                        "last": "Lowe",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Iulian",
+                        "middle": [],
+                        "last": "Vlad Serban",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mike",
+                        "middle": [],
+                        "last": "Noseworthy",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Laurent",
+                        "middle": [],
+                        "last": "Charlin",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Joelle",
+                        "middle": [],
+                        "last": "Pineau",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2016,
+                "venue": "Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "2122--2132",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Chia-Wei Liu, Ryan Lowe, Iulian Vlad Serban, Mike Noseworthy, Laurent Charlin, and Joelle Pineau. 2016. How not to evaluate your dialogue system: An empirical study of unsupervised evaluation met- rics for dialogue response generation. In Proceed- ings of the 2016 Conference on Empirical Methods in Natural Language Processing, pages 2122-2132.",
+                "links": null
+            },
+            "BIBREF12": {
+                "ref_id": "b12",
+                "title": "Towards an automatic turing test: Learning to evaluate dialogue responses",
+                "authors": [
+                    {
+                        "first": "Ryan",
+                        "middle": [],
+                        "last": "Lowe",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Michael",
+                        "middle": [],
+                        "last": "Noseworthy",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Iulian",
+                        "middle": [],
+                        "last": "Vlad Serban",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Nicolas",
+                        "middle": [],
+                        "last": "Angelard-Gontier",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yoshua",
+                        "middle": [],
+                        "last": "Bengio",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Joelle",
+                        "middle": [],
+                        "last": "Pineau",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2017,
+                "venue": "Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics",
+                "volume": "1",
+                "issue": "",
+                "pages": "1116--1126",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Ryan Lowe, Michael Noseworthy, Iulian Vlad Ser- ban, Nicolas Angelard-Gontier, Yoshua Bengio, and Joelle Pineau. 2017. Towards an automatic turing test: Learning to evaluate dialogue responses. In Proceedings of the 55th Annual Meeting of the As- sociation for Computational Linguistics (Volume 1: Long Papers), pages 1116-1126.",
+                "links": null
+            },
+            "BIBREF13": {
+                "ref_id": "b13",
+                "title": "A corpus and cloze evaluation for deeper understanding of commonsense stories",
+                "authors": [
+                    {
+                        "first": "Nasrin",
+                        "middle": [],
+                        "last": "Mostafazadeh",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Nathanael",
+                        "middle": [],
+                        "last": "Chambers",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Xiaodong",
+                        "middle": [],
+                        "last": "He",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Devi",
+                        "middle": [],
+                        "last": "Parikh",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dhruv",
+                        "middle": [],
+                        "last": "Batra",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Lucy",
+                        "middle": [],
+                        "last": "Vanderwende",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pushmeet",
+                        "middle": [],
+                        "last": "Kohli",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "James",
+                        "middle": [],
+                        "last": "Allen",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2016,
+                "venue": "Proceedings of NAACL-HLT",
+                "volume": "",
+                "issue": "",
+                "pages": "839--849",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Nasrin Mostafazadeh, Nathanael Chambers, Xiaodong He, Devi Parikh, Dhruv Batra, Lucy Vanderwende, Pushmeet Kohli, and James Allen. 2016. A cor- pus and cloze evaluation for deeper understanding of commonsense stories. In Proceedings of NAACL- HLT, pages 839-849.",
+                "links": null
+            },
+            "BIBREF14": {
+                "ref_id": "b14",
+                "title": "Bleu: a method for automatic evaluation of machine translation",
+                "authors": [
+                    {
+                        "first": "Kishore",
+                        "middle": [],
+                        "last": "Papineni",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Salim",
+                        "middle": [],
+                        "last": "Roukos",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Todd",
+                        "middle": [],
+                        "last": "Ward",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Wei-Jing",
+                        "middle": [],
+                        "last": "Zhu",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2002,
+                "venue": "Proceedings of the 40th annual meeting on association for computational linguistics",
+                "volume": "",
+                "issue": "",
+                "pages": "311--318",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Kishore Papineni, Salim Roukos, Todd Ward, and Wei- Jing Zhu. 2002. Bleu: a method for automatic eval- uation of machine translation. In Proceedings of the 40th annual meeting on association for compu- tational linguistics, pages 311-318. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF15": {
+                "ref_id": "b15",
+                "title": "Language models are unsupervised multitask learners",
+                "authors": [
+                    {
+                        "first": "Alec",
+                        "middle": [],
+                        "last": "Radford",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jeffrey",
+                        "middle": [],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Rewon",
+                        "middle": [],
+                        "last": "Child",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "David",
+                        "middle": [],
+                        "last": "Luan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dario",
+                        "middle": [],
+                        "last": "Amodei",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ilya",
+                        "middle": [],
+                        "last": "Sutskever",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "OpenAI Blog",
+                "volume": "",
+                "issue": "8",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and Ilya Sutskever. 2019. Language models are unsupervised multitask learners. OpenAI Blog, 1(8).",
+                "links": null
+            },
+            "BIBREF16": {
+                "ref_id": "b16",
+                "title": "Re-evaluating adem: A deeper look at scoring dialogue responses",
+                "authors": [
+                    {
+                        "first": "Mithun",
+                        "middle": [],
+                        "last": "Ananya B Sai",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mitesh",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Das Gupta",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mukundhan",
+                        "middle": [],
+                        "last": "Khapra",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Srinivasan",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+                "volume": "33",
+                "issue": "",
+                "pages": "6220--6227",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Ananya B Sai, Mithun Das Gupta, Mitesh M Khapra, and Mukundhan Srinivasan. 2019. Re-evaluating adem: A deeper look at scoring dialogue responses. In Proceedings of the AAAI Conference on Artificial Intelligence, volume 33, pages 6220-6227.",
+                "links": null
+            },
+            "BIBREF17": {
+                "ref_id": "b17",
+                "title": "BLEURT: Learning robust metrics for text generation",
+                "authors": [
+                    {
+                        "first": "Thibault",
+                        "middle": [],
+                        "last": "Sellam",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dipanjan",
+                        "middle": [],
+                        "last": "Das",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ankur",
+                        "middle": [],
+                        "last": "Parikh",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+                "volume": "",
+                "issue": "",
+                "pages": "7881--7892",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/2020.acl-main.704"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Thibault Sellam, Dipanjan Das, and Ankur Parikh. 2020. BLEURT: Learning robust metrics for text generation. In Proceedings of the 58th Annual Meet- ing of the Association for Computational Linguistics, pages 7881-7892, Online. Association for Computa- tional Linguistics.",
+                "links": null
+            },
+            "BIBREF18": {
+                "ref_id": "b18",
+                "title": "On accurate evaluation of GANs for language generation",
+                "authors": [
+                    {
+                        "first": "Stanislau",
+                        "middle": [],
+                        "last": "Semeniuta",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Aliaksei",
+                        "middle": [],
+                        "last": "Severyn",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sylvain",
+                        "middle": [],
+                        "last": "Gelly",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Stanislau Semeniuta, Aliaksei Severyn, and Sylvain Gelly. 2019. On accurate evaluation of GANs for language generation.",
+                "links": null
+            },
+            "BIBREF19": {
+                "ref_id": "b19",
+                "title": "Ruse: Regressor using sentence embeddings for automatic machine translation evaluation",
+                "authors": [
+                    {
+                        "first": "Hiroki",
+                        "middle": [],
+                        "last": "Shimanaka",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tomoyuki",
+                        "middle": [],
+                        "last": "Kajiwara",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mamoru",
+                        "middle": [],
+                        "last": "Komachi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "Proceedings of the Third Conference on Machine Translation: Shared Task Papers",
+                "volume": "",
+                "issue": "",
+                "pages": "751--758",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Hiroki Shimanaka, Tomoyuki Kajiwara, and Mamoru Komachi. 2018. Ruse: Regressor using sentence em- beddings for automatic machine translation evalua- tion. In Proceedings of the Third Conference on Ma- chine Translation: Shared Task Papers, pages 751- 758.",
+                "links": null
+            },
+            "BIBREF20": {
+                "ref_id": "b20",
+                "title": "Representing general relational knowledge in conceptnet 5",
+                "authors": [
+                    {
+                        "first": "Robert",
+                        "middle": [],
+                        "last": "Speer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Catherine",
+                        "middle": [],
+                        "last": "Havasi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2012,
+                "venue": "LREC",
+                "volume": "",
+                "issue": "",
+                "pages": "3679--3686",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Robert Speer and Catherine Havasi. 2012. Represent- ing general relational knowledge in conceptnet 5. In LREC, pages 3679-3686.",
+                "links": null
+            },
+            "BIBREF21": {
+                "ref_id": "b21",
+                "title": "Sequence to sequence learning with neural networks",
+                "authors": [
+                    {
+                        "first": "Ilya",
+                        "middle": [],
+                        "last": "Sutskever",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Oriol",
+                        "middle": [],
+                        "last": "Vinyals",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Quoc V",
+                        "middle": [],
+                        "last": "Le",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2014,
+                "venue": "Advances in neural information processing systems",
+                "volume": "",
+                "issue": "",
+                "pages": "3104--3112",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Ilya Sutskever, Oriol Vinyals, and Quoc V Le. 2014. Sequence to sequence learning with neural networks. In Advances in neural information processing sys- tems, pages 3104-3112.",
+                "links": null
+            },
+            "BIBREF22": {
+                "ref_id": "b22",
+                "title": "Ruber: An unsupervised method for automatic evaluation of open-domain dialog systems",
+                "authors": [
+                    {
+                        "first": "Chongyang",
+                        "middle": [],
+                        "last": "Tao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Lili",
+                        "middle": [],
+                        "last": "Mou",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dongyan",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Rui",
+                        "middle": [],
+                        "last": "Yan",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "Thirty-Second AAAI Conference on Artificial Intelligence",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Chongyang Tao, Lili Mou, Dongyan Zhao, and Rui Yan. 2018. Ruber: An unsupervised method for au- tomatic evaluation of open-domain dialog systems. In Thirty-Second AAAI Conference on Artificial In- telligence.",
+                "links": null
+            },
+            "BIBREF23": {
+                "ref_id": "b23",
+                "title": "Attention is all you need",
+                "authors": [
+                    {
+                        "first": "Ashish",
+                        "middle": [],
+                        "last": "Vaswani",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Noam",
+                        "middle": [],
+                        "last": "Shazeer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Niki",
+                        "middle": [],
+                        "last": "Parmar",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jakob",
+                        "middle": [],
+                        "last": "Uszkoreit",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Llion",
+                        "middle": [],
+                        "last": "Jones",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Aidan",
+                        "middle": [
+                            "N"
+                        ],
+                        "last": "Gomez",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "\u0141ukasz",
+                        "middle": [],
+                        "last": "Kaiser",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Illia",
+                        "middle": [],
+                        "last": "Polosukhin",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2017,
+                "venue": "Advances in neural information processing systems",
+                "volume": "",
+                "issue": "",
+                "pages": "5998--6008",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, \u0141ukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Advances in neural information pro- cessing systems, pages 5998-6008.",
+                "links": null
+            },
+            "BIBREF24": {
+                "ref_id": "b24",
+                "title": "Planand-write: Towards better automatic storytelling",
+                "authors": [
+                    {
+                        "first": "Lili",
+                        "middle": [],
+                        "last": "Yao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Nanyun",
+                        "middle": [],
+                        "last": "Peng",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ralph",
+                        "middle": [],
+                        "last": "Weischedel",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kevin",
+                        "middle": [],
+                        "last": "Knight",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dongyan",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Rui",
+                        "middle": [],
+                        "last": "Yan",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+                "volume": "33",
+                "issue": "",
+                "pages": "7378--7385",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Lili Yao, Nanyun Peng, Ralph Weischedel, Kevin Knight, Dongyan Zhao, and Rui Yan. 2019. Plan- and-write: Towards better automatic storytelling. In Proceedings of the AAAI Conference on Artificial In- telligence, volume 33, pages 7378-7385.",
+                "links": null
+            },
+            "BIBREF25": {
+                "ref_id": "b25",
+                "title": "Bertscore: Evaluating text generation with bert",
+                "authors": [
+                    {
+                        "first": "Tianyi",
+                        "middle": [],
+                        "last": "Zhang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "*",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Varsha",
+                        "middle": [],
+                        "last": "Kishore",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "*",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Felix",
+                        "middle": [],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "*",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kilian",
+                        "middle": [
+                            "Q"
+                        ],
+                        "last": "Weinberger",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yoav",
+                        "middle": [],
+                        "last": "Artzi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "International Conference on Learning Representations",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Tianyi Zhang*, Varsha Kishore*, Felix Wu*, Kilian Q. Weinberger, and Yoav Artzi. 2020. Bertscore: Eval- uating text generation with bert. In International Conference on Learning Representations.",
+                "links": null
+            },
+            "BIBREF26": {
+                "ref_id": "b26",
+                "title": "Learning discourse-level diversity for neural dialog models using conditional variational autoencoders",
+                "authors": [
+                    {
+                        "first": "Tiancheng",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ran",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Maxine",
+                        "middle": [],
+                        "last": "Eskenazi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2017,
+                "venue": "Proceedings of the 55th Annual Meeting of the Association for Computational Linguistics",
+                "volume": "1",
+                "issue": "",
+                "pages": "654--664",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Tiancheng Zhao, Ran Zhao, and Maxine Eskenazi. 2017. Learning discourse-level diversity for neural dialog models using conditional variational autoen- coders. In Proceedings of the 55th Annual Meet- ing of the Association for Computational Linguistics (Volume 1: Long Papers), pages 654-664.",
+                "links": null
+            },
+            "BIBREF27": {
+                "ref_id": "b27",
+                "title": "Moverscore: Text generation evaluating with contextualized embeddings and earth mover distance",
+                "authors": [
+                    {
+                        "first": "Wei",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Maxime",
+                        "middle": [],
+                        "last": "Peyrard",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Fei",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yang",
+                        "middle": [],
+                        "last": "Gao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Christian",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Meyer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Steffen",
+                        "middle": [],
+                        "last": "Eger",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
+                "volume": "",
+                "issue": "",
+                "pages": "563--578",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Wei Zhao, Maxime Peyrard, Fei Liu, Yang Gao, Chris- tian M Meyer, and Steffen Eger. 2019. Moverscore: Text generation evaluating with contextualized em- beddings and earth mover distance. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th Interna- tional Joint Conference on Natural Language Pro- cessing (EMNLP-IJCNLP), pages 563-578.",
+                "links": null
+            },
+            "BIBREF28": {
+                "ref_id": "b28",
+                "title": "Learning to compare for better training and evaluation of open domain natural language generation models",
+                "authors": [
+                    {
+                        "first": "Wangchunshu",
+                        "middle": [],
+                        "last": "Zhou",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ke",
+                        "middle": [],
+                        "last": "Xu",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "AAAI",
+                "volume": "",
+                "issue": "",
+                "pages": "9717--9724",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Wangchunshu Zhou and Ke Xu. 2020. Learning to compare for better training and evaluation of open domain natural language generation models. In AAAI, pages 9717-9724.",
+                "links": null
+            }
+        },
+        "ref_entries": {
+            "FIGREF0": {
+                "num": null,
+                "uris": null,
+                "type_str": "figure",
+                "fig_num": "1",
+                "text": "Figure1: Overview of the UNION metric. UNION is trained to distinguish the human-written stories from the negative samples constructed by four negative sampling techniques, as well as to reconstruct the original human-written stories."
+            },
+            "FIGREF1": {
+                "num": null,
+                "uris": null,
+                "type_str": "figure",
+                "fig_num": null,
+                "text": "|I-k|+1where k \u2208 {0, 1, \u2022 \u2022 \u2022 , 7}. In this way, the 8 sets have different distributions of stories with different qualities 11 , as shown in Figure2(left)."
+            },
+            "TABREF0": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table><tr><td>Type</td><td colspan=\"5\">Repe Cohe Conf Chao Others</td></tr><tr><td>Prop (%)</td><td>44.1</td><td>56.2</td><td>67.5</td><td>50.4</td><td>12.9</td></tr></table>",
+                "text": "Error type Proportions of 381 unreasonable stories, including Repeated plots/poor Coherence/Conflicting logic/Chaotic scenes/Others."
+            },
+            "TABREF2": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table/>",
+                "text": "Data statistics. RUBER u is short for RUBER u -BERT. NS (Negative Sampling) means whether a metric requires negative samples for training/validation. \u2020 means the stories are generated by NLG models and manually annotated."
+            },
+            "TABREF3": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table><tr><td colspan=\"2\">Metrics</td><td>r</td><td>ROC \u03c1</td><td>\u03c4</td><td>r</td><td>WP \u03c1</td><td>\u03c4</td></tr><tr><td>Referenced</td><td>BLEU MoverScore</td><td colspan=\"3\">0.0299 0.1538  *  0.1535  *  0.1093  *  0.0320 0.0231</td><td>0.1213 0.1613</td><td>0.0941 0.1450</td><td>0.0704 0.1031</td></tr><tr><td/><td colspan=\"2\">RUBERr-BERT 0.0448</td><td>0.0517</td><td>0.0380</td><td>0.1502</td><td>0.1357</td><td>0.0986</td></tr><tr><td/><td>Perplexity</td><td colspan=\"3\">0.2464  *  0.2295  *  0.1650  *</td><td>-0.0705</td><td>-0.0479</td><td>-0.0345</td></tr><tr><td/><td colspan=\"4\">RUBERu-BERT 0.1477  *  0.1434  *  0.1018  *</td><td>0.1613</td><td>0.1605</td><td>0.1157</td></tr><tr><td>Unreferenced</td><td>DisScore</td><td>0.0406</td><td>0.0633</td><td>0.0456</td><td>0.0627</td><td>-0.0234</td><td>-0.0180</td></tr><tr><td/><td>UNION</td><td colspan=\"3\">0.3687  *  0.4599  *  0.3386  *</td><td>0.3663  *</td><td>0.4493  *</td><td>0.3293  *</td></tr><tr><td/><td>-Recon</td><td colspan=\"3\">0.3101  *  0.4027  *  0.2927  *</td><td>0.3292  *</td><td>0.3786  *</td><td>0.2836  *</td></tr><tr><td>Hybrid</td><td>RUBER-BERT BLEURT</td><td colspan=\"3\">0.1412  *  0.1395  *  0.1015  *  0.2310  *  0.2353  *  0.1679  *</td><td>0.1676 0.2229  *</td><td>0.1664 0.1602</td><td>0.1194 0.1180</td></tr></table>",
+                "text": "Correlation with human judgments on ROC and WP datasets. r/\u03c1/\u03c4 indicates the Pearson/Spearman/Kendall correlation, respectively. The best performance is highlighted in bold. The correlation scores marked with * indicate the result significantly correlates with human judgments (p-value<0.01)."
+            },
+            "TABREF4": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table><tr><td>Metrics</td><td>r</td><td>\u03c1</td><td>\u03c4</td></tr><tr><td/><td colspan=\"2\">Training: WP Test: ROC</td><td/></tr><tr><td>Perplexity</td><td colspan=\"2\">-0.0015 0.0149</td><td>0.0101</td></tr><tr><td colspan=\"2\">RUBERu-BERT -0.0099</td><td>-0.0162</td><td>-0.0110</td></tr><tr><td>BLEURT</td><td colspan=\"3\">0.1326  *  0.1137  *  0.0828  *</td></tr><tr><td>UNION</td><td colspan=\"3\">0.1986  *  0.2501  *  0.1755  *</td></tr><tr><td>-Recon</td><td colspan=\"3\">0.1704  *  0.2158  *  0.1523  *</td></tr><tr><td/><td colspan=\"2\">Training: ROC Test: WP</td><td/></tr><tr><td>Perplexity</td><td>0.0366</td><td>0.0198</td><td>0.0150</td></tr><tr><td colspan=\"2\">RUBERu-BERT 0.1392</td><td>0.1276</td><td>0.0912</td></tr><tr><td>BLEURT</td><td>0.1560</td><td>0.1305</td><td>0.0941</td></tr><tr><td>UNION</td><td colspan=\"3\">0.2872  *  0.2935  *  0.2142  *</td></tr><tr><td>-Recon</td><td colspan=\"3\">0.2397  *  0.2712  *  0.1971  *</td></tr></table>",
+                "text": ". Specifically, a generalizable metric is expected to reliably evaluate outputs from different datasets even without re-training. Moreover, since the quality of generated samples can vary significantly across NLG models, a reliable metric should be able to evaluate samples of different quality levels. Therefore, we conducted experiments to assess the generalization ability of UNION in this section. Correlation results in the dataset drift setting where the metrics are trained on one dataset and then used for the other one."
+            },
+            "TABREF5": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table><tr><td>Number of Stories</td><td>0 20 40 60 80</td><td colspan=\"2\">1 2 3 4 5 6 7 8 Index of Evaluation Set</td><td>Score=0 Score=1/7 Score=2/7 Score=3/7 Score=4/7 Score=5/7 Score=6/7 Score=1</td><td>Pearson Correlation</td><td>0.0 0.1 0.2 0.3 0.4</td><td colspan=\"2\">Index of Evaluation Set 1 2 3 4 5 6 7 8</td><td>MoverScore Perplexity RUBER-BERT BLEURT UNION UNION-Recon</td></tr><tr><td colspan=\"3\">Figure 2: Evaluation Set</td><td>All Samples (400)</td><td colspan=\"5\">Reasonable Samples (19) + Unreasonable Samples with Repe (24) Cohe (38) Conf (61) Chao (23)</td></tr><tr><td/><td colspan=\"2\">UNION</td><td>0.3687</td><td colspan=\"2\">0.6943</td><td/><td>0.5144</td><td>0.4571</td><td>0.6744</td></tr><tr><td/><td/><td>-Repetition</td><td>0.3167 (\u219314%)</td><td colspan=\"4\">0.4743 (\u219332%) 0.5308 (\u21913%)</td><td>0.4316 (\u21936%)</td><td>0.6561 (\u21933%)</td></tr><tr><td/><td/><td>-Substitution</td><td>0.3118 (\u219315%)</td><td colspan=\"5\">0.7034 (\u21911%) 0.4185 (\u219319%) 0.4468 (\u21932%) 0.5850 (\u219313%)</td></tr><tr><td/><td/><td>-Reordering</td><td>0.2302 (\u219338%)</td><td colspan=\"3\">0.6546 (\u21936%)</td><td colspan=\"2\">0.5077 (\u21931%) 0.3507 (\u219323%) 0.5393 (\u219320%)</td></tr><tr><td/><td/><td>-Negation Alteration</td><td>0.3304 (\u219310%)</td><td colspan=\"3\">0.6665 (\u21934%)</td><td colspan=\"2\">0.4987 (\u21933%) 0.3946 (\u219314%) 0.5176 (\u219323%)</td></tr></table>",
+                "text": "Table 6 shows the Pearson correlation with human judgments in this setting. Compared with the results in Table 5, all the metrics trained on one dataset have remarkable drops in correlation when they are used for the other dataset because the two datasets are significantly different in length and topic. Nevertheless, UNION performs more robustly than other metrics, with much bet-Generalization over different biased test sets. Left: distribution of stories of different annotation scores in different test sets. Right: the Pearson correlation of different metrics with human judgments on different test sets, where UNION-Recon denotes UNION without the reconstruction task."
+            },
+            "TABREF6": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table/>",
+                "text": "Pearson correlation with different negative sampling techniques. The numbers in parentheses denote the number of stories. The error types include Repeated plots, poor Coherence, Conflicting logic, and Chaotic scenes. The proportions in parentheses indicate the relative change with respect to UNION (the first row)."
+            }
+        }
+    }
+}

@@ -1,0 +1,369 @@
+{
+    "paper_id": "1-s2",
+    "header": {
+        "generated_with": "S2ORC 1.0.0",
+        "date_generated": "2025-02-24T17:03:02.226401Z"
+    },
+    "title": "Assessment methods in the course on academic writing",
+    "authors": [
+        {
+            "first": "Blanka",
+            "middle": [
+                "Frydrychova"
+            ],
+            "last": "Klimova",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "University of Hradec",
+                "location": {
+                    "addrLine": "Rokitanskeho 62",
+                    "postCode": "500 03",
+                    "settlement": "Kralove Hradec Kralove",
+                    "country": "Czech Republic"
+                }
+            },
+            "email": "blanka.klimova@uhk.cz."
+        }
+    ],
+    "year": "",
+    "venue": null,
+    "identifiers": {},
+    "abstract": "The article focuses on the assessment of the productive skill of writing in the classes of academic writing at the Faculty of Informatics and Management of the University of Hradec Kralove, Czech Republic. Firstly, it briefly describes an optional, onesemestr course of academic writing and its specifics. Secondly, the article provides a definition of the assessment and its categories for the purpose of understanding different assessment practices. Thirdly, it lists the most common assessment methods used in the course with their benefits and drawbacks. Finally, students' evaluation of the course and reflections on their writing achievements are introduced.",
+    "pdf_parse": {
+        "paper_id": "1-s2",
+        "_pdf_hash": "",
+        "abstract": [
+            {
+                "text": "The article focuses on the assessment of the productive skill of writing in the classes of academic writing at the Faculty of Informatics and Management of the University of Hradec Kralove, Czech Republic. Firstly, it briefly describes an optional, onesemestr course of academic writing and its specifics. Secondly, the article provides a definition of the assessment and its categories for the purpose of understanding different assessment practices. Thirdly, it lists the most common assessment methods used in the course with their benefits and drawbacks. Finally, students' evaluation of the course and reflections on their writing achievements are introduced.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            }
+        ],
+        "body_text": [
+            {
+                "text": "The course focuses on the process of writing from beginning to end, and gives advice on how to write professionally. It shows the component parts of the writing process, that is: envisaging what to write, planning an outline, drafting passages, writing the whole thing, revising and rewriting it, and finishing it in an appropriate form, together with publishing all or parts of a text. In addition, it concentrates on those features which are different in English and Czech, such as citations, compiling a bibliography or using appropriate English. As for the last aspect, there are independent sections on grammar structures in written English, lexical structures, and punctuation.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "A course on academic writing",
+                "sec_num": "1."
+            },
+            {
+                "text": "Moreover, the course exposes students to blended learning. That means they meet a teacher once into two weeks to discuss and clarify the mistakes they made in their assignments (i.e. essays), which together with a deeper selfstudy of the materials implemented in their on-line e-learning course, they write every second week. Therefore, the course undoubtedly contributes to the development and support of more interactive strategies. Students also have an easy access to ample materials, which they can exploit on their own from the cosiness of their homes. They can get an immediate feedback on the on-line exercises. If they have a problem, they can contact a tutor and they do not have to wait until next lesson. Furthermore, the teacher has got more time to read their essays and discuss possible mistakes with the students in class and reinforce the correct use of the language. In addition, the course tries to develop students' thinking skills. For example, an argumentative writing task will demand of students that they consciously implement and integrate both lower-and higher-order thinking skills. Undoubtedly, all these increase students' motivation and their stimulation to work.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "A course on academic writing",
+                "sec_num": "1."
+            },
+            {
+                "text": "Assessments are usually used by teachers to help their students learn and gauge students' progress. There exist several assessment categories (Assessment, 9.12.2010) :",
+                "cite_spans": [
+                    {
+                        "start": 142,
+                        "end": 165,
+                        "text": "(Assessment, 9.12.2010)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessment categories in writing",
+                "sec_num": "2."
+            },
+            {
+                "text": "1. formative and summative; 2. objective and subjective; 3. referencing (criterion-referenced, norm-referenced, and ipsative); 4. informal and formal. 1. Summative assessment is generally carried out at the end of a course or project. In an educational setting, summative assessments are typically used to assign students a course grade. Summative assessments are evaluative. Formative assessment is generally carried out throughout a course or project. Formative assessment, also referred to as \"educative assessment\", is used to aid learning. In an educational setting, formative assessment might be a teacher (or peer) or the learner, providing feedback on a student's work, and would not necessarily be used for grading purposes. Formative assessments are diagnostic.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessment categories in writing",
+                "sec_num": "2."
+            },
+            {
+                "text": "2. Assessment (either summative or formative) is often categorized as either objective or subjective. Objective assessment is a form of questioning which has a single correct answer. Subjective assessment is a form of questioning which may have more than one correct answer (or more than one way of expressing the correct answer). There are various types of objective and subjective questions. Objective question types include true/false answers, multiple choice, and multiple-response and matching questions. Subjective questions include extended-response questions and essays. Objective assessment is well suited to the increasingly popular computerized or online assessment format.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessment categories in writing",
+                "sec_num": "2."
+            },
+            {
+                "text": "3. Criterion-referenced assessment, typically using a criterion-referenced test, as the name implies, occurs when candidates are measured against defined (and objective) criteria. Criterion-referenced assessment is often, but not always, used to establish a person's competence (whether s/he can do something). The best known example of criterion-referenced assessment is the driving test, when learner drivers are measured against a range of explicit criteria (such as \"Not endangering other road users\"). Norm-referenced assessment (colloquially known as \"grading on the curve\"), typically using a norm-referenced test, is not measured against defined criteria. This type of assessment is relative to the student body undertaking the assessment. It is effectively a way of comparing students. The IQ test is the best known example of norm-referenced assessment. Many entrance tests (to prestigious schools or universities) are norm-referenced, permitting a fixed proportion of students to pass (\"passing\" in this context means being accepted into the school or university rather than an explicit level of ability). This means that standards may vary from year to year, depending on the quality of the cohort; criterion-referenced assessment does not vary from year to year (unless the criteria change). Ipsative assessment is self comparison either in the same domain over time, or comparative to other domains within the same student.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessment categories in writing",
+                "sec_num": "2."
+            },
+            {
+                "text": "In writing classes formative and summative assessments are used. However, from the point of learning and acquiring writing skills, the formative assessment should prevail since one of the major purposes of writing assessment is to provide feedback to students. Most people know that feedback is crucial to writing development.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessment categories in writing",
+                "sec_num": "2."
+            },
+            {
+                "text": "The 2004 Harvard Study of Writing concluded, feedback emerged as the hero and the anti-hero of our study powerful enough to convince students that they could or couldn't do the work in a given field, to push them toward or away from selecting their majors, and contributed, more than any other single factor, to students' sense of academic belonging or alienation. Trupe (2001) 3. Be specific in your positive comments. A marginal \"Good!\" can be rewarding to the student, but s/he needs to know what is good-his/ her point, his/ her evidence, the connection s/he is making with his/ her essay, or his/ her wording. 4. Ask questions in the margin to elicit amplification, reorganization, sharper focus, or transitional wording. 5. Make suggestions that encourage global (whole-text) revision in addition to local (word or sentence-level or punctuation) revision.",
+                "cite_spans": [
+                    {
+                        "start": 365,
+                        "end": 377,
+                        "text": "Trupe (2001)",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessment categories in writing",
+                "sec_num": "2."
+            },
+            {
+                "text": "6. Comment in general terms rather than editing a student's writing, leaving some of the editing work for the student while giving sufficient explanation for the student to understand what is wrong. You may wish to reference handbook sections, encouraging students to develop better understanding of the principle involved. 7. Avoid ad hominem negative comments (e.g., \"You must have suffered brain damage if you believe this\"). 8. When suggesting changes in diction, suggest at least two alternative ways of wording the same phrase or sentence to help students open up their sense of options in writing. (This is of course much more difficult than simply marking \"awkward\" in the margin.)",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessment categories in writing",
+                "sec_num": "2."
+            },
+            {
+                "text": "In the course of the semester students usually have 5 assignments. They are as follows: a summary of a lecture/ seminar; an argumentative essay without bibliographies and references; two essays including bibliographies and references and writing an entry for Wikipedia (see also Tardy, 2010) . Particularly the last assignment is a challenging activity for students because when students are creating an authentic article for Wikipedia from scratch, they are not only motivated to write but begin to recognize the usefulness and necessity of the formal writing aspects of their course, e.g. the importance of attending to errors and checking facts when writing to be published. Their writing process when composing an article for Wikipedia might be as follows:",
+                "cite_spans": [
+                    {
+                        "start": 279,
+                        "end": 291,
+                        "text": "Tardy, 2010)",
+                        "ref_id": "BIBREF4"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessments in the course on academic writing",
+                "sec_num": "3."
+            },
+            {
+                "text": "to get thoroughly acquainted with the website itself, e.g. to discover what kind of information is included, what kind of information is excluded, what is included in the footnote \u2026..; to choose a genuine and interesting topic for their article, obviously, a topic which has not been covered in the wiki yet; if necessary to negotiate the topic with the person or institution that might be concerned; to gather appropriate and relevant information on the topic and select only the most reliable and important facts; to make an outline of the article; to draft and revise the article a few times, possibly get someone to proofread it or to consult the facts in the article; to format the source, make references and footnotes; to submit the article and expect further revisions from the wiki reviewers (see An example of one student's product for Wikipedia, 7.6.2010).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Assessments in the course on academic writing",
+                "sec_num": "3."
+            },
+            {
+                "text": "The assessment methods seem to be crucial in the learning process since they gather information about student's learning. As it has been mentioned above, the formative assessment prevails in the course for the following beneficial reasons (Trupe, 2001) :",
+                "cite_spans": [
+                    {
+                        "start": 239,
+                        "end": 252,
+                        "text": "(Trupe, 2001)",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Benefits and drawbacks of assessment methods in the course",
+                "sec_num": "4."
+            },
+            {
+                "text": "1. Formative assessment gives students a reason to read and understand the instructor's comments on their writing. 2. Formative assessment aids students in applying the instructor's comments to the same or a very similar writing assignment, thus aiding them to become better writers. 3. Formative assessment builds more time into the students' schedules for thinking and writing about assigned topics and results in better thinking and writing. 4. Formative assessment helps students become better critics of their own writing, hence better revisers of their own writing. In addition to that, the final assessment gives students a real sense of writing since, while contributing to Wikipedia, they become real professional writers. Moreover, Tardy (2010) indicates, in producing a text for Wikipedia, students gain a real sense of audience and enjoy the satisfaction of seeing their work published on a high-traffic global website.",
+                "cite_spans": [
+                    {
+                        "start": 742,
+                        "end": 754,
+                        "text": "Tardy (2010)",
+                        "ref_id": "BIBREF4"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Benefits and drawbacks of assessment methods in the course",
+                "sec_num": "4."
+            },
+            {
+                "text": "On the other hand, there are visible drawbacks of all assessments in writing classes. That is they are timeconsuming for the teacher. And in the case of the blended learning courses, the feedback on students' written performance is expected to be done faster (within 3 days) than in traditional classes. Moreover, the teacher's role is changing and s/he becomes coach, leader, moderator, facilitator, mediator or tutor and does not confine his/ her teaching to specific times any more. Besides his/ her traditional roles, such as pedagogical, social and managerial, s/he takes on a technical role as well.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Benefits and drawbacks of assessment methods in the course",
+                "sec_num": "4."
+            },
+            {
+                "text": "In the winter semester of 2010 seven students were enrolled in the course and at the end of the term they were asked to fill in the following evaluation form:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Students' evaluation of the course",
+                "sec_num": "5."
+            },
+            {
+                "text": "1) Please comment on the overall structure and content of the course.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Students' evaluation of the course",
+                "sec_num": "5."
+            },
+            {
+                "text": "2) The most useful activities of the course were for me 3) The feedback provided for my essays was done 4) I find the on-line course 5) I worked in the on-line course (e.g. every day, 6) In the course I missed 7) I feel that writing essays has improved my 8) What or who motivated you to attend the course (e.g. friends, credits \u2026\u2026)? 9) Did you welcome the possibility to have a course once in two weeks or would you prefer to have it every week? \u2026.. because \u2026.. 10) Would you recommend the course to other people? 11) Any further comments? Thank you. Generally, their feedback on the course was very positive, which was expressed by everybody in question one. They considered the structure of the course well-thought off and it helped them in the strengthening of their writing skills. The most useful activities involved the overall feedback on their essays including the follow-up classroom discussions on articles, word order, commas, or writing references and bibliographies. They highly appreciated the on-line feedback on their submitted essays, which was done thoroughly and in a short time. They worked in a virtual environment almost every week and they found it useful since they could access additional materials, both theoretical (lectures) and practical (self-tests or other exercises). They did not miss anything in the course except one student who would do with more examples of the discussed teaching matter. They all feel that their written English, particularly the formal one, has significantly improved as well as their formal vocabulary and grammar structures. Overall, they chose the course because they wanted to improve their writing skills. Only one student admitted that s/he had wanted to obtain the needed credits. All except one welcomed the possibility of having the course once a week as they had more time for writing their assignments the following week. Everybody would certainly recommend the course to other people at the faculty.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Students' evaluation of the course",
+                "sec_num": "5."
+            },
+            {
+                "text": "The assessment methods undoubtedly contribute to the sustainable development of students' writing skills, especially when the formative assessment is constantly employed and the tasks/ assignments seem to be varied and challenging. Moreover, the overall form of the course, i.e. the blended learning, contributes to students' personalized learning. That means that students are able to control their learning as they are able to adjust the information according to their personal needs. They can access materials at anytime and anywhere. Furthermore, they can proceed at their own pace (see also Hubackova, 2008 or Semeradova, 2009) . Finally, all the teaching and learning practices used in the course definitely promote better comprehension, active processing and positive interdependence while at the same time they give a learner a chance to become a more autonomous, motivated and responsible individual.",
+                "cite_spans": [
+                    {
+                        "start": 596,
+                        "end": 611,
+                        "text": "Hubackova, 2008",
+                        "ref_id": "BIBREF2"
+                    },
+                    {
+                        "start": 612,
+                        "end": 632,
+                        "text": "or Semeradova, 2009)",
+                        "ref_id": "BIBREF3"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "6."
+            }
+        ],
+        "back_matter": [
+            {
+                "text": "Open access under CC BY-NC-ND license.Open access under CC BY-NC-ND license.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "funding",
+                "sec_num": null
+            }
+        ],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "b0",
+                "title": "An example of one student's product for Wikipedia",
+                "authors": [],
+                "year": 2010,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "An example of one student's product for Wikipedia, retrieved June 7, 2010, from http://en.wikipedia.org/wiki/The_jizerska_50.",
+                "links": null
+            },
+            "BIBREF2": {
+                "ref_id": "b2",
+                "title": "The use of on-line courses within the interuniversity study",
+                "authors": [
+                    {
+                        "first": "S",
+                        "middle": [],
+                        "last": "Hubackova",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2008,
+                "venue": "Proceedings IADIS International Conference e-society",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Hubackova, S. (2008). The use of on-line courses within the interuniversity study. Proceedings IADIS International Conference e-society 2008. Portugal: Lisbon.",
+                "links": null
+            },
+            "BIBREF3": {
+                "ref_id": "b3",
+                "title": "On using the information-communication technologies",
+                "authors": [
+                    {
+                        "first": "I",
+                        "middle": [],
+                        "last": "Semeradova",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2009,
+                "venue": "Philosophy of Education",
+                "volume": "2",
+                "issue": "",
+                "pages": "151--158",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Semeradova, I. (2009). On using the information-communication technologies. Philosophy of Education, 2, 151-158.",
+                "links": null
+            },
+            "BIBREF4": {
+                "ref_id": "b4",
+                "title": "Writing for the world: Wikipedia as an introduction to academic writing",
+                "authors": [
+                    {
+                        "first": "C",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Tardy",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2010,
+                "venue": "The 2004 Harvard Study of Writing, retrieved December 9",
+                "volume": "48",
+                "issue": "",
+                "pages": "12--19",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Tardy, C.M. (2010). Writing for the world: Wikipedia as an introduction to academic writing, English Teaching Forum, 48, 1, 12-19. The 2004 Harvard Study of Writing, retrieved December 9, 2010, from http://www.fas.harvard.edu/~expos/index.cgi?section=study.",
+                "links": null
+            },
+            "BIBREF5": {
+                "ref_id": "b5",
+                "title": "Formative assessment of student writing, retrieved December 9",
+                "authors": [
+                    {
+                        "first": "A",
+                        "middle": [
+                            "L"
+                        ],
+                        "last": "Trupe",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2001,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Trupe, A.L. (2001). Formative assessment of student writing, retrieved December 9, 2010, from http://www.bridgewater.edu/WritingCenter/Resources/sumform.htm.",
+                "links": null
+            }
+        },
+        "ref_entries": {
+            "TABREF0": {
+                "num": null,
+                "type_str": "table",
+                "html": null,
+                "content": "<table/>",
+                "text": "offers the following steps how to make a formative assessment work: 1. Respond as a \"real\" reader of a text rather than as a teacherly authority controlling a student's text.Comment on what interests you, what you question, what you want to see more information about. 2. Make as many positive comments as you can about what you see in the student's text."
+            }
+        }
+    }
+}

@@ -1,0 +1,263 @@
+task_name: summeval
+
+train_data_path: ./train_continuous_${aspect}.json
+val_data_path: ./train_continuous_${aspect}.json
+test_data_path: ./train_continuous_${aspect}.json
+prompt_templates:
+  observations:
+    multi_content: |
+      The source text to be summarized is the following:
+      ${source_text}
+      The summary of the source text is the following:
+      ${candidate_summary}
+      This summary of the given source text receives a score of ${label} on ${aspect} when judged by human experts.
+
+  relevant_papers:
+    multi_content: |
+      Title: ${title}
+      Key Findings: ${summary}
+  
+  batched_generation:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      Given a set of summaries and their source texts, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+
+      Using the given examples, please propose ${num_hypotheses} possible hypothesis pairs.
+      These hypotheses should identify specific patterns that occur across the provided summaries and source texts.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of summary would be given a score of one, what kind of summary a score of two, what kind of summary a score of three, what kind of summary a score of four, and what kind of summary a score of five.
+      Your generated hypotheses should whether: 
+      1. not include details in the story or source text, so people don't get confused when applying them to summaries of different source texts.
+      2. if you decide to include the details in the story or the source text, you must state that the details are "examples" of what to look for.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the summaries human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+
+    user: |-
+      We have seen some summaries and their source texts, together with their scores on ${aspect} given by human experts:
+      ${observations}
+      Please generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      Propose ${num_hypotheses} possible hypotheses. Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Proposed hypotheses:
+
+  inference:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      From past experiences, you learned a pattern. 
+      Using this pattern, you need to predict what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      Give an answer. The answer should be between 1 to 5.
+      Give your final answer in the format of {Final answer: answer}
+
+    user: |-
+      Our learned patterns: ${hypothesis}                          
+      A source text to be summarized is the following:
+      ${source_text}
+      A summary of the given source text is the following:
+      ${candidate_summary}
+
+      Given the pattern you learned above, give an answer of what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      Think step by step.
+      First step: Think about what is the trait that this pattern talks about.
+      Second step: Based on the pattern, what score on ${aspect} on ${aspect} will this summary receive when judged by human experts? The answer should be between 1 to 5.
+      (You should not overly critique the summary, your predicted score should be based on the pattern)
+      You should be generous and not too strict when evaluating.
+      Final step: give your final answer in the format of {Final answer: answer}
+      Final answer:
+
+  multiple_hypotheses_inference:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      From past experiences, you learned some patterns. 
+      You need to determine whether each of the patterns holds for the current summary of the given text, and also predict what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      Give an answer. The answer should be between 1 to 5. 
+      Give your final answer in the format of {Final answer: answer}
+    user: |-
+      Our learned patterns: ${hypotheses}
+      A source text to be summarized is the following:
+      ${source_text}
+      A summary of the given source text is the following:
+      ${candidate_summary}
+
+      Given the pattern you learned above, give an answer of what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      Think step by step.
+      First step: Think about which patterns can be applied to the summary.
+      Second step: Based on the pattern, what score on ${aspect} on ${aspect} will this summary receive when judged by human experts? The answer should be between 1 to 5.
+      (You should not overly critique the summary, your predicted score should be based on the pattern)
+      Final step: give your final answer in the format of {Final answer: answer}
+      Final answer:
+
+  summarize_paper:
+    system: |-
+      You are a helpful assistant for summarizing key findings in research papers on a given topic.
+    user: |-
+      Summarize the following research paper, focusing ONLY on this question: What is useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      Focus on hypotheses of: on ${aspect}, what kind of summary would be given a score of one, what kind of summary a score of two, what kind of summary a score of three, what kind of summary a score of four, and what kind of summary a score of five.
+      Remember! Do not include technical details in the paper! Do not include information that is not useful for one to predict the score on ${aspect} judged by human experts!
+      Title: ${title}
+      Text: 
+      ${paper_text}
+
+  initialize_hypotheses_only_paper:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      Given some key findings from a series of research papers, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+
+      Using the given relevant literature, please propose ${num_hypotheses} possible hypothesis pairs.
+      These hypotheses should identify specific patterns that occur across the provided summaries and source texts.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of summary would be given a score of one, what kind of summary a score of two, what kind of summary a score of three, what kind of summary a score of four, and what kind of summary a score of five.
+      Your generated hypotheses should whether: 
+      1. not include details in the story or source text, so people don't get confused when applying them to summaries of different source texts.
+      2. if you decide to include the details in the story or the source text, you must state that the details are "examples" of what to look for.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the summaries human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+    user: |-
+      We have some key findings from a series of research papers that might be useful for generating the required ${num_hypotheses} hypotheses:
+      ${relevant_papers}
+      Please generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      When generating hypotheses, remember not to overuse your own knowledge. Always refer to the key findings from research papers provided. Directly cite passages in the key findings when generating a hypothesis.
+      Propose ${num_hypotheses} possible hypotheses.
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the summaries human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Proposed hypotheses:
+
+
+  refine_with_data:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      Given a set of summaries and their source texts, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      
+      Using the given examples, refine the hypotheses provided.
+      The desired hypotheses should identify specific patterns that occur across the provided summaries.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of summary would be given a score of one, what kind of summary a score of two, what kind of summary a score of three, what kind of summary a score of four, and what kind of summary a score of five.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the summaries human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+    user: |-
+      We have seen some summaries and their source texts, together with their scores on ${aspect} given by human experts:
+      ${observations}
+      We have some hypotheses need to be refined:
+      ${hypotheses}
+      Please refine these hypotheses to make them more specific and useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      When refining the hypotheses, feel free to change the key information or topic of a hypothesis based on the provided prevailing patterns in data if you think it is necessary.
+      Generate the refined hypotheses in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The refined hypotheses should analyze what are the traits of the summaries human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating the refined hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Refined hypotheses:
+
+  refine_with_literature:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      Given a set of summaries and their source texts, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+
+      Using the given relevant literatures, refine the hypotheses provided.
+      The desired hypotheses should identify specific patterns that occur across the provided summaries.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of summary would be given a score of one, what kind of summary a score of two, what kind of summary a score of three, what kind of summary a score of four, and what kind of summary a score of five.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the summaries human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+    user: |-
+      We have some key findings from a series of research papers that might be useful for generating hypotheses:
+      ${relevant_papers}
+      We have some hypotheses need to be refined:
+      ${hypotheses}
+      Please refine these hypotheses to make them more specific and useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      When refining the hypotheses, feel free to change the key information or topic of a hypothesis based on the provided prevailing patterns in data if you think it is necessary.
+      Generate the refined hypotheses in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The refined hypotheses should analyze what are the traits of the summaries human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating the refined hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Refined hypotheses:
+
+  batched_generation_with_paper:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      Given a set of summaries and their source texts, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+
+      Using the given examples and relevant literatures, please propose ${num_hypotheses} possible hypotheses.
+      These hypotheses should identify specific patterns that occur across the provided summaries.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of summary would be given a score of one, what kind of summary a score of two, what kind of summary a score of three, what kind of summary a score of four, and what kind of summary a score of five.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the summaries human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+    user: |-
+      We have some key findings from a series of research papers that might be useful for generating hypotheses:
+      ${relevant_papers}
+      We have seen some summaries and their source texts, together with their scores on ${aspect} given by human experts:
+      ${observations}
+      Please generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      Propose ${num_hypotheses} possible hypotheses. Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Proposed hypotheses:
+
+  check_hypothesis_pair_repetition:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      From past experiences, you learned two hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts.
+      You need to determine if the two hypotheses are so similar to the level of "repeating hypotheses".
+      Finally, answer "yes" if the two hypotheses are repetitive and "no" if they are not.
+      Keep your answer short.
+      Give your final answer in the format of "Final answer: [answer]".
+    user: |-
+      We have two hypotheses that need you to determine if they are repetitive:
+      ${hypotheses}
+      Are these two hypotheses so similar to the level that they are repetitive? If the both of them can provide significantly more information than only one of them could, and the information is important and useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a summary of a passage receive when judged by human experts, they should not be considered repetitive.
+      Note that adding specific examples does not count as "provide significantly more information".
+      Give a short explanation of your decision.
+      Then give your final answer in the format of "Final answer: [answer]".
+      Your answer: 
+
+  hypoeval:
+    system: |-
+      You are a helpful assistant in answering questions about a summary of a story.
+      You will be given the story, the summary, and a pattern that talks about a specific trait to evaluate the ${aspect} of the summary.
+      You should be generous and not too strict when evaluating.
+      The definition of ${aspect} is given by: ${definition}.
+      Story: [story]
+      Summary: [summary]
+      Pattern: [hypothesis]
+      The pattern talks about a specific trait that is related to the summary's score on ${aspect}.
+      You need to evaluate the summary based on the trait and the rubric that the pattern talks about. 
+      You should give a score (ranging from 1 to 5) on that trait according to the rubric.
+      Give your final evaluation score in the format of {Final score: [your score]}.
+
+    user: |-
+      Given story, summary, and pattern:
+      Story: ${story}
+      Summary: ${summary}
+      Pattern: ${hypothesis}
+      The pattern talks about a specific trait that is related to the summary's score on ${aspect}.
+      The definition of ${aspect} is given by: ${definition}
+      You need to evaluate the summary based on the trait and the rubric that the pattern talks about. 
+      You should give a score (ranging from 1 to 5) on that trait according to the rubric.
+      Follow the steps and provide reasoning when giving your score.
+      Step 1: What is the trait that the pattern talks about?
+      Step 2: Based on the trait and the rubric provided in the pattern, how is the summary on the trait?
+      Step 3 (final answer): Based on the rubric and your evaluations in step 2, what should be the score of the summary on the trait?
+      You should be generous and not too strict when evaluating.
+      Give your final evaluation score in the format of {Final score: [your score]}.
+      Answer:

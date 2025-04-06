@@ -1,0 +1,268 @@
+task_name: writingprompt
+
+train_data_path: ./train_continuous_${aspect}.json
+val_data_path: ./train_continuous_${aspect}.json
+test_data_path: ./train_continuous_${aspect}.json
+prompt_templates:
+  observations:
+    multi_content: |
+      The prompt is the following:
+      ${prompt}
+      The written story of the given prompt is the following:
+      ${story}
+      Note: the story may have been abruptly cut in the middle of a sentence. Please rate it as if they ended just before the unfinished sentence.
+      This story of the given prompt receives a score of ${label} on ${aspect} when judged by human experts.
+
+  relevant_papers:
+    multi_content: |
+      Title: ${title}
+      Key Findings: ${summary}
+  
+  batched_generation:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      Given a set of written stories and their prompts, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+
+      Using the given examples, please propose ${num_hypotheses} possible hypothesis pairs.
+      These hypotheses should identify specific patterns that occur across the provided stories and their prompts.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of story would be given a score of one, what kind of story a score of two, what kind of story a score of three, what kind of story a score of four, and what kind of story a score of five.
+      Your generated hypotheses should whether: 
+      1. not include details in the story or prompt, so people don't get confused when applying them to stories of different prompts.
+      2. if you decide to include the details in the story or the prompt, you must state that the details are "examples" of what to look for.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the stories human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+
+    user: |-
+      We have seen some written stories and their prompts, together with their scores on ${aspect} given by human experts:
+      ${observations}
+      Note: the story may have been abruptly cut in the middle of a sentence. Please rate it as if they ended just before the unfinished sentence.
+      Please generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      Propose ${num_hypotheses} possible hypotheses. Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Proposed hypotheses:
+
+  inference:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      From past experiences, you learned a pattern. 
+      Using this pattern, you need to predict what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      Give an answer. The answer should be between 1 to 5.
+      Give your final answer in the format of {Final answer: answer}
+
+    user: |-
+      Our learned patterns: ${hypothesis}
+      The prompt is the following:
+      ${prompt}
+      The written story of the given prompt is the following:
+      ${story}
+      Note: the story may have been abruptly cut in the middle of a sentence. Please rate it as if they ended just before the unfinished sentence.
+
+      Given the pattern you learned above, give an answer of what score on ${aspect}, between 1 to 5 (the higher the better), will the written story of the given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      Think step by step.
+      First step: Think about what is the trait that this pattern talks about.
+      Second step: Based on the pattern, what score on ${aspect} on ${aspect} will this story receive when judged by human experts? The answer should be between 1 to 5.
+      (You should not overly critique the story, your predicted score should be based on the pattern)
+      You should be generous and not too strict when evaluating.
+      Final step: give your final answer in the format of {Final answer: answer}
+      Final answer:
+
+  multiple_hypotheses_inference:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      From past experiences, you learned some patterns. 
+      Using the patterns, you need to predict what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      Give an answer. The answer should be between 1 to 5.
+      Give your final answer in the format of {Final answer: answer}
+    user: |-
+      Our learned patterns: ${hypotheses}
+      The prompt is the following:
+      ${prompt}
+      The written story of the given prompt is the following:
+      ${story}
+      Note: the story may have been abruptly cut in the middle of a sentence. Please rate it as if they ended just before the unfinished sentence.
+
+      Given the patterns you learned above, give an answer of what score on ${aspect}, between 1 to 5 (the higher the better), will the written story of the given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      Think step by step.
+      First step: Think about what is the trait that the patterns talks about.
+      Second step: Based on the patterns, what score on ${aspect} on ${aspect} will this story receive when judged by human experts? The answer should be between 1 to 5.
+      (You should not overly critique the story, your predicted score should be based on the pattern)
+      You should be generous and not too strict when evaluating.
+      Final step: give your final answer in the format of {Final answer: answer}
+      Final answer:
+
+  summarize_paper:
+    system: |-
+      You are a helpful assistant for summarizing key findings in research papers on a given topic.
+    user: |-
+      Summarize the following research paper, focusing ONLY on this question: What is useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      Focus on hypotheses of: on ${aspect}, what kind of story would be given a score of one, what kind of story a score of two, what kind of story a score of three, what kind of story a score of four, and what kind of story a score of five.
+      Remember! Do not include technical details in the paper! Do not include information that is not useful for one to predict the score on ${aspect} judged by human experts!
+      Title: ${title}
+      Text: 
+      ${paper_text}
+
+  initialize_hypotheses_only_paper:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      Given some key findings from a series of research papers, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+
+      Using the given relevant literature, please propose ${num_hypotheses} possible hypothesis pairs.
+      These hypotheses should identify specific patterns that occur across the provided stories and their prompts.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of story would be given a score of one, what kind of story a score of two, what kind of story a score of three, what kind of story a score of four, and what kind of story a score of five.
+      Your generated hypotheses should whether: 
+      1. not include details in the story or the prompt, so people don't get confused when applying them to stories of different prompts.
+      2. if you decide to include the details in the story or the prompt, you must state that the details are "examples" of what to look for.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the stories human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+    user: |-
+      We have some key findings from a series of research papers that might be useful for generating the required ${num_hypotheses} hypotheses:
+      ${relevant_papers}
+      Please generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      When generating hypotheses, remember not to overuse your own knowledge. Always refer to the key findings from research papers provided. Directly cite passages in the key findings when generating a hypothesis.
+      Propose ${num_hypotheses} possible hypotheses.
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the stories human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Proposed hypotheses:
+
+  refine_with_data:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      Given a set of stories and their prompts, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      
+      Using the given examples, refine the hypotheses provided.
+      The desired hypotheses should identify specific patterns that occur across the provided stories.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of story would be given a score of one, what kind of story a score of two, what kind of story a score of three, what kind of story a score of four, and what kind of story a score of five.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the stories human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+    user: |-
+      We have seen some stories and their prompts, together with their scores on ${aspect} given by human experts:
+      ${observations}
+      We have some hypotheses need to be refined:
+      ${hypotheses}
+      Please refine these hypotheses to make them more specific and useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      When refining the hypotheses, feel free to change the key information or topic of a hypothesis based on the provided prevailing patterns in data if you think it is necessary.
+      Generate the refined hypotheses in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The refined hypotheses should analyze what are the traits of the stories human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating the refined hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Refined hypotheses:
+
+  refine_with_literature:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      Given a set of stories and their prompts, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+
+      Using the given relevant literatures, refine the hypotheses provided.
+      The desired hypotheses should identify specific patterns that occur across the provided stories.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of story would be given a score of one, what kind of story a score of two, what kind of story a score of three, what kind of story a score of four, and what kind of story a score of five.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the stories human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+    user: |-
+      We have some key findings from a series of research papers that might be useful for generating hypotheses:
+      ${relevant_papers}
+      We have some hypotheses need to be refined:
+      ${hypotheses}
+      Please refine these hypotheses to make them more specific and useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      When refining the hypotheses, feel free to change the key information or topic of a hypothesis based on the provided prevailing patterns in data if you think it is necessary.
+      Generate the refined hypotheses in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The refined hypotheses should analyze what are the traits of the stories human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating the refined hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Refined hypotheses:
+
+  batched_generation_with_paper:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      Given a set of stories and their prompts, we want to generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+
+      Using the given examples and relevant literatures, please propose ${num_hypotheses} possible hypotheses.
+      These hypotheses should identify specific patterns that occur across the provided stories.
+
+      Each hypothesis should be about a specific trait or dimension that human experts considers when giving score on ${aspect}.
+      Each hypothesis should clearly state that based on the trait or dimension, what kind of story would be given a score of one, what kind of story a score of two, what kind of story a score of three, what kind of story a score of four, and what kind of story a score of five.
+
+      Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      The hypotheses should analyze what are the traits of the stories human experts considers when giving a score of one, two, three, four, or five.
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+    user: |-
+      We have some key findings from a series of research papers that might be useful for generating hypotheses:
+      ${relevant_papers}
+      We have seen some stories and their prompts, together with their scores on ${aspect} given by human experts:
+      ${observations}
+      Please generate hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      The definition of ${aspect} is given by: ${definition}
+      Propose ${num_hypotheses} possible hypotheses. Generate them in the format of hypothesis1. [hypothesis], hypothesis2. [hypothesis], ... hypothesis${num_hypotheses}. [hypothesis].
+      Remember! when generating hypotheses, always put "hypothesis1.", "hypothesis2.", etc. as your index, do not just generate "1.", "2.", etc.
+      Proposed hypotheses:
+
+  check_hypothesis_pair_repetition:
+    system: |-
+      You are a helpful assistant for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      From past experiences, you learned two hypotheses that are useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts.
+      You need to determine if the two hypotheses are so similar to the level of "repeating hypotheses".
+      Finally, answer "yes" if the two hypotheses are repetitive and "no" if they are not.
+      Keep your answer short.
+      Give your final answer in the format of "Final answer: [answer]".
+    user: |-
+      We have two hypotheses that need you to determine if they are repetitive:
+      ${hypotheses}
+      Are these two hypotheses so similar to the level that they are repetitive? If the both of them can provide significantly more information than only one of them could, and the information is important and useful for predicting what score on ${aspect}, between 1 to 5 (the higher the better), will a written story of a given prompt receive when judged by human experts, they should not be considered repetitive.
+      Note that adding specific examples does not count as "provide significantly more information".
+      Give a short explanation of your decision.
+      Then give your final answer in the format of "Final answer: [answer]".
+      Your answer: 
+
+  hypoeval:
+    system: |-
+      You are a helpful assistant in answering questions about a written story of a given prompt.
+      You will be given the prompt, the written story, and a pattern that talks about a specific trait to evaluate the ${aspect} of the story.
+      You should be generous and not too strict when evaluating.
+      The definition of ${aspect} is given by: ${definition}.
+      Prompt: [prompt]
+      Story: [story]
+      Pattern: [hypothesis]
+      The pattern talks about a specific trait that is related to the story's score on ${aspect}.
+      You need to evaluate the story based on the trait and the rubric that the pattern talks about. 
+      You should give a score (ranging from 1 to 5) on that trait according to the rubric.
+      Give your final evaluation score in the format of {Final score: [your score]}.
+
+    user: |-
+      Given prompt, story, and pattern:
+      Prompt: ${prompt}
+      Story: ${story}
+      Pattern: ${hypothesis}
+      Note: the story may have been abruptly cut in the middle of a sentence. Please rate it as if they ended just before the unfinished sentence.
+      The pattern talks about a specific trait that is related to the story's score on ${aspect}.
+      The definition of ${aspect} is given by: ${definition}
+      You need to evaluate the story based on the trait and the rubric that the pattern talks about. 
+      You should give a score (ranging from 1 to 5) on that trait according to the rubric.
+      Follow the steps and provide reasoning when giving your score.
+      Step 1: What is the trait that the pattern talks about?
+      Step 2: Based on the trait and the rubric provided in the pattern, how is the story on the trait?
+      Step 3 (final answer): Based on the rubric and your evaluations in step 2, what should be the score of the story on the trait?
+      You should be generous and not too strict when evaluating.
+      Give your final evaluation score in the format of {Final score: [your score]}.
+      Answer:

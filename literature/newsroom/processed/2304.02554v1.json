@@ -1,0 +1,2228 @@
+{
+    "paper_id": "2304",
+    "header": {
+        "generated_with": "S2ORC 1.0.0",
+        "date_generated": "2025-02-14T13:47:17.734541Z"
+    },
+    "title": "Human-like Summarization Evaluation with ChatGPT",
+    "authors": [
+        {
+            "first": "Mingqi",
+            "middle": [],
+            "last": "Gao",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Peking University",
+                "location": {}
+            },
+            "email": "gaomingqi@pku.edu.cn"
+        },
+        {
+            "first": "Jie",
+            "middle": [],
+            "last": "Ruan",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Peking University",
+                "location": {}
+            },
+            "email": "ruanjie@stu.pku.edu.cn"
+        },
+        {
+            "first": "Renliang",
+            "middle": [],
+            "last": "Sun",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Peking University",
+                "location": {}
+            },
+            "email": "sunrenliang@stu.pku.edu.cn"
+        },
+        {
+            "first": "Xunjian",
+            "middle": [],
+            "last": "Yin",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Peking University",
+                "location": {}
+            },
+            "email": "xjyin@pku.edu.cn"
+        },
+        {
+            "first": "Shiping",
+            "middle": [],
+            "last": "Yang",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Peking University",
+                "location": {}
+            },
+            "email": "yangshiping@bupt.edu.cn"
+        },
+        {
+            "first": "Xiaojun",
+            "middle": [],
+            "last": "Wan",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Peking University",
+                "location": {}
+            },
+            "email": "wanxiaojun@pku.edu.cn"
+        }
+    ],
+    "year": "",
+    "venue": null,
+    "identifiers": {},
+    "abstract": "Evaluating text summarization is a challenging problem, and existing evaluation metrics are far from satisfactory. In this study, we explored ChatGPT's ability to perform humanlike summarization evaluation using four human evaluation methods on five datasets. We found that ChatGPT was able to complete annotations relatively smoothly using Likert scale scoring, pairwise comparison, Pyramid, and binary factuality evaluation. Additionally, it outperformed commonly used automatic evaluation metrics on some datasets. Furthermore, we discussed the impact of different prompts, compared its performance with that of human evaluation, and analyzed the generated explanations and invalid responses.",
+    "pdf_parse": {
+        "paper_id": "2304",
+        "_pdf_hash": "",
+        "abstract": [
+            {
+                "text": "Evaluating text summarization is a challenging problem, and existing evaluation metrics are far from satisfactory. In this study, we explored ChatGPT's ability to perform humanlike summarization evaluation using four human evaluation methods on five datasets. We found that ChatGPT was able to complete annotations relatively smoothly using Likert scale scoring, pairwise comparison, Pyramid, and binary factuality evaluation. Additionally, it outperformed commonly used automatic evaluation metrics on some datasets. Furthermore, we discussed the impact of different prompts, compared its performance with that of human evaluation, and analyzed the generated explanations and invalid responses.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            }
+        ],
+        "body_text": [
+            {
+                "text": "Text summarization is a task that involves generating a condensed version of one or multiple documents. Thanks to the advancements in deep learning-based techniques, automatic summarization has made significant strides. Specifically, the emergence of large language models such as In-structGPT has resulted in comparable performance to reference summaries written by humans, even in zero-shot settings (Zhang et al., 2023) .",
+                "cite_spans": [
+                    {
+                        "start": 402,
+                        "end": 422,
+                        "text": "(Zhang et al., 2023)",
+                        "ref_id": "BIBREF19"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "Evaluating text summarization, like other text generation tasks, is a challenging problem. While human evaluation is considered the gold standard, it is expensive and time-consuming. As a result, automatic evaluation metrics play a crucial role. ROUGE (Lin, 2004) and its variants, which are based on reference summaries and n-gram matching, are widely accepted and used in various types of summarization. However, surface-level word matching cannot accurately reflect the quality of the summary. Additionally, it is challenging to evaluate the factual accuracy of the summary without utilizing the source document. Recently, evaluation metrics based on pre-trained models such as BERTScore (Zhang et al., 2020) and BARTScore (Yuan et al., 2021) have achieved better correlation with human judgments. Factuality evaluation methods based on entailment classification, such as FactCC (Kryscinski et al., 2020) , and question answering, such as FEQA (Durmus et al., 2020) , have also been used to evaluate the factual consistency of summaries. Despite the existence of advanced automatic evaluation metrics, their performance, usability, and interpretability are still far from satisfactory.",
+                "cite_spans": [
+                    {
+                        "start": 252,
+                        "end": 263,
+                        "text": "(Lin, 2004)",
+                        "ref_id": "BIBREF9"
+                    },
+                    {
+                        "start": 691,
+                        "end": 711,
+                        "text": "(Zhang et al., 2020)",
+                        "ref_id": "BIBREF18"
+                    },
+                    {
+                        "start": 726,
+                        "end": 745,
+                        "text": "(Yuan et al., 2021)",
+                        "ref_id": "BIBREF17"
+                    },
+                    {
+                        "start": 882,
+                        "end": 907,
+                        "text": "(Kryscinski et al., 2020)",
+                        "ref_id": "BIBREF8"
+                    },
+                    {
+                        "start": 947,
+                        "end": 968,
+                        "text": "(Durmus et al., 2020)",
+                        "ref_id": "BIBREF3"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "Large language models (LLMs) offer completely different possibilities for the automatic evaluation of summarization. GPT-3 (Brown et al., 2020) has the ability of in-context learning, and instruction tuning allows LLMs to align with human evaluation (Ouyang et al., 2022) . These two abilities make it possible for LLMs to mimic the behavior of human evaluators, who generally evaluate summaries by understanding examples and instructions. We refer to this automatic evaluation method that views large models as human evaluators as human-like automatic evaluation. The most prominent feature of this evaluation method is its flexibility, which unifies all types of automatic evaluation in form and can simulate many of the practices of human evaluators. Unlike previous automatic evaluation metrics that give one or more numerical values as evaluation results, the evaluation results of this human-like automatic evaluation are fully reflected in the generated responses, which may include scoring, comparison, labels, and explanations.",
+                "cite_spans": [
+                    {
+                        "start": 117,
+                        "end": 143,
+                        "text": "GPT-3 (Brown et al., 2020)",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 250,
+                        "end": 271,
+                        "text": "(Ouyang et al., 2022)",
+                        "ref_id": "BIBREF13"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "We conducted an evaluation of the evaluation ability of ChatGPT, a recently popular LLM, using four commonly used human evaluation methods for summarization. The methods include Likert scale scoring, pairwise comparison, Pyramid (Nenkova and Passonneau, 2004) , and binary factuality evaluation. Our findings indicate that Chat-GPT is capable of completing annotations relatively smoothly using these methods. In addition, our results demonstrate that ChatGPT outperforms commonly used automatic evaluation metrics on some datasets. Furthermore, we analyzed the impact of different prompts, compared the performance of ChatGPT with human evaluation, and examined the quality of the generated explanations and invalid responses.",
+                "cite_spans": [
+                    {
+                        "start": 229,
+                        "end": 259,
+                        "text": "(Nenkova and Passonneau, 2004)",
+                        "ref_id": "BIBREF12"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "We select several evaluation metrics that are commonly used in summarization:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Automatic Evaluation Metrics",
+                "sec_num": "2.1"
+            },
+            {
+                "text": "ROUGE (Lin, 2004) , which is the dominant automatic evaluation metric in summarization, is widely used by researchers. The most commonly used ROUGE measures are ROUGE-1, ROUGE-2, and ROUGE-L, which evaluate the similarity between two texts based on the overlap of unigrams, bigrams, and the longest common sequence.",
+                "cite_spans": [
+                    {
+                        "start": 6,
+                        "end": 17,
+                        "text": "(Lin, 2004)",
+                        "ref_id": "BIBREF9"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Automatic Evaluation Metrics",
+                "sec_num": "2.1"
+            },
+            {
+                "text": "BERTScore (Zhang et al., 2020) assesses the similarity between two texts at the token level by measuring the soft overlap using contextual embeddings from BERT. Similarly, MoverScore (Zhao et al., 2019) uses n-gram embeddings that are pooled from BERT to compute the semantic distance between two texts at the n-gram level.",
+                "cite_spans": [
+                    {
+                        "start": 10,
+                        "end": 30,
+                        "text": "(Zhang et al., 2020)",
+                        "ref_id": "BIBREF18"
+                    },
+                    {
+                        "start": 183,
+                        "end": 202,
+                        "text": "(Zhao et al., 2019)",
+                        "ref_id": "BIBREF20"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Automatic Evaluation Metrics",
+                "sec_num": "2.1"
+            },
+            {
+                "text": "BARTScore (Yuan et al., 2021) foot_0 views evaluation as a natural language generation task and considers that when the quality of the generated text is higher, BART is more likely to generate it from the source text or the reference, or to generate the reference from it. BARTScore can be flexibly applied to evaluate text from various perspectives.",
+                "cite_spans": [
+                    {
+                        "start": 10,
+                        "end": 29,
+                        "text": "(Yuan et al., 2021)",
+                        "ref_id": "BIBREF17"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Automatic Evaluation Metrics",
+                "sec_num": "2.1"
+            },
+            {
+                "text": "FactCCfoot_1 and DAEfoot_2 are two factuality metrics based on classification. When evaluating a summary, we use NLTKfoot_3 to split it into individual sentences and classify each one as factually correct or not. The factual score of the summary is then calculated as the ratio of sentences that are factually correct.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Automatic Evaluation Metrics",
+                "sec_num": "2.1"
+            },
+            {
+                "text": "There are several commonly used methods for human evaluation, including the Likert scale scoring and pairwise comparison for general text generation, as well as Pyramid and binary factuality evaluation specifically designed for summarization. After introducing each method, we will list the datasets we used that were annotated in this way.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Human Evaluation Methods",
+                "sec_num": "2.2"
+            },
+            {
+                "text": "Likert scale scoring is the most common method for human evaluation. Specifically, given a source document and a generated summary, annotators rate the summary on several dimensions. Typically, this is an absolute evaluation, meaning each summary is evaluated individually without explicit comparison to other summaries. Dimensions usually include factual consistency, informativeness, fluency, etc. The rating scale is usually 1 (worst) to 5 (best). We used SummEval (Fabbri et al., 2021) and Newsroom datasets (Grusky et al., 2018) .",
+                "cite_spans": [
+                    {
+                        "start": 468,
+                        "end": 489,
+                        "text": "(Fabbri et al., 2021)",
+                        "ref_id": "BIBREF4"
+                    },
+                    {
+                        "start": 512,
+                        "end": 533,
+                        "text": "(Grusky et al., 2018)",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Human Evaluation Methods",
+                "sec_num": "2.2"
+            },
+            {
+                "text": "Pairwise comparison is a relative human evaluation method. Given a source document and two generated summaries, annotators choose the one that is of higher quality. This method is used in reinforcement learning based human feedback for summarization. We used the TLDR dataset (Stiennon et al., 2022) .",
+                "cite_spans": [
+                    {
+                        "start": 276,
+                        "end": 299,
+                        "text": "(Stiennon et al., 2022)",
+                        "ref_id": "BIBREF14"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Human Evaluation Methods",
+                "sec_num": "2.2"
+            },
+            {
+                "text": "Pyramid (Nenkova and Passonneau, 2004 ) is a human evaluation method designed for summarization that is based on reference summaries. Prior to human annotation, several semantic content units (SCUs) are extracted from the reference summary. For each SCU, annotators judge whether it presents in the generated summary. For single-document summarization, the final score of the summary is the proportion of SCUs it contains. We used the REALSumm dataset (Bhandari et al., 2020) .",
+                "cite_spans": [
+                    {
+                        "start": 8,
+                        "end": 37,
+                        "text": "(Nenkova and Passonneau, 2004",
+                        "ref_id": "BIBREF12"
+                    },
+                    {
+                        "start": 452,
+                        "end": 475,
+                        "text": "(Bhandari et al., 2020)",
+                        "ref_id": "BIBREF1"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Human Evaluation Methods",
+                "sec_num": "2.2"
+            },
+            {
+                "text": "Binary factuality evaluation is a method for evaluating the factual correctness of summaries. Given a source document and a sentence in the generated summary, annotators judge whether the sentence is faithful to the source document. We used the QAGS dataset (Wang et al., 2020) .",
+                "cite_spans": [
+                    {
+                        "start": 258,
+                        "end": 277,
+                        "text": "(Wang et al., 2020)",
+                        "ref_id": "BIBREF15"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Human Evaluation Methods",
+                "sec_num": "2.2"
+            },
+            {
+                "text": "We used the ChatGPT API (gpt-3.5-turbo-0301) provided by OpenAI for our experiments. To reduce randomness, we set temperature to 0. In addition, we set max_tokens to 256. We kept the default values for other parameters.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Model and Parameters",
+                "sec_num": "3.1"
+            },
+            {
+                "text": "When designing prompts, we made it as identical as possible to the original instructions of human evaluations.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Prompt Design",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Evaluate the quality of summaries written for a news article. Rate each summary on four dimensions: {Dimension_1}, {Dimension_2}, {Dimension_3}, and {Dimension_4}. You should rate on a scale from 1 (worst) to 5 (best).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Prompt Design",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Article: {Article} Summary: {Summary} Figure 1 shows the template for Likert scale scoring. ChatGPT is asked to rate four dimensions at a time. For SummEval, the four dimensions are relevance, faithfulness 5 , fluency, and coherence. For Newsroom, the four dimensions are relevance, informativeness, fluency, and coherence. Figure 2 shows the template for pairwise comparison.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 45,
+                        "end": 46,
+                        "text": "1",
+                        "ref_id": "FIGREF0"
+                    },
+                    {
+                        "start": 331,
+                        "end": 332,
+                        "text": "2",
+                        "ref_id": "FIGREF1"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Prompt Design",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Given a new article, which summary is better? Answer \"Summary 0\" or \"Summary 1\". You do not need to explain the reason.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Prompt Design",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Article: {Article} Summary 0: {Summary_0} Summary 1: {Summary_1} You are given a summary and some semantic content units. For each semantic unit, mark \"Yes\" if it can be inferred from the summary, otherwise mark \"No\". Summary: {Summary} Semantic content units: 1. {SCU_1} 2. {SCU_2} ...... n. {SCU_n} Figure 4 shows the template for binary factuality 5 The original term used in SummEval was \"consistency\". Since we did not add definitions of the dimensions in the prompt, we used \"faithfulness\", which is more representative of its actual meaning evaluation. The sentences are from the generated summaries.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 308,
+                        "end": 309,
+                        "text": "4",
+                        "ref_id": "FIGREF4"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Prompt Design",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Is the sentence supported by the article? Answer \"Yes\" or \"No\".",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Prompt Design",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Article: {Article} Sentence: {Sentence} ",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Prompt Design",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "The vast majority of ChatGPT responses contained annotation results, which can be extracted by some simple rules. For invalid responses, we considered them as failing to complete the tagging successfully and marked them as NAN (not a number).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Post-processing of Results",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "For Likert scale scoring, we computed samplelevel, system-level, and dataset-level correlation with human judgments. For the other human evaluation methods, we calculated the accuracy of the responses generated by ChatGPT using human annotation as the answer.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Evaluation",
+                "sec_num": "3.4"
+            },
+            {
+                "text": "Tables 1 and 2 show that ChatGPT has a good ability to evaluate summaries with Likert scale scoring. On SummEval, it performs substantially better than the existing evaluation metrics. On Newsroom, it performs second only to BARTScore_s_h and BARTScore_cnn_s_h.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 7,
+                        "end": 8,
+                        "text": "1",
+                        "ref_id": "TABREF0"
+                    },
+                    {
+                        "start": 13,
+                        "end": 14,
+                        "text": "2",
+                        "ref_id": "TABREF1"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Results",
+                "sec_num": "3.5"
+            },
+            {
+                "text": "Tables 3, 4 and 5 illustrate that ChatGPT can also perform relatively smoothly on pairwise comparisons, Pyramid, and binary factuality evaluation. Nevertheless, from the current experimental results, ChatGPT has not yet shown a very large advantage except on QAGS_XSUM.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 7,
+                        "end": 9,
+                        "text": "3,",
+                        "ref_id": "TABREF2"
+                    },
+                    {
+                        "start": 10,
+                        "end": 11,
+                        "text": "4",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Results",
+                "sec_num": "3.5"
+            },
+            {
+                "text": "We tried several different prompts on SummEval. As shown in Figure 5 , more detailed step instructions and dimension definitions are added. These instructions and definitions are from the original human evaluation. In addition, we consider setting the system prompt as \"You are a human annotator that rates the quality of summaries.\" when using ChatGPT API. Table 6 shows that changing prompts result in a significant change in the performance of the humanlike automatic evaluation using ChatGPT, especially in terms of system-level correlations. From the current results, these changes do not make it to achieve higher correlations with human judgments, except for a modest improvement in a few cases by adding dimension definitions alone.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 67,
+                        "end": 68,
+                        "text": "5",
+                        "ref_id": "FIGREF5"
+                    },
+                    {
+                        "start": 364,
+                        "end": 365,
+                        "text": "6",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Impact of different prompts",
+                "sec_num": "4.1"
+            },
+            {
+                "text": "In terms of accuracy, there is still an overall gap between the current automatic human-like evaluations using ChatGPT compared to human experts. Table 6 illustrates that in most cases, the correlation between scores given by a human expert and the average of scores given by human experts is substantially better than ChatGPT at all levels. However, the correlation between ChatGPT and human evaluations (0.889) is already higher than that of a particular human expert (0.843) in terms of system-level correlation of fluency.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 152,
+                        "end": 153,
+                        "text": "6",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Comparison with human evaluation",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "For variance and reproducibility, automatic human-like evaluations using ChatGPT are more controllable. It is easy to know from Table 6 that the scores of the same samples will not be identical between different human annotators. Belz et al. (2021) pointed out that reproducing the manual evaluation was difficult. In contrast, we can make the human-like manual evaluation based on Table 6: Spearman's \u03c1 of sample level, system level, and dataset level on SummEval. Annotator_0, Annotator_1, Annotator_2 refer to the three expert annotators. We compute the correlation coefficient between the score given by a particular annotator and the average score of the three. \"+def\" means adding dimension definitions in the prompt. \"+ins\" means adding step instructions in the prompt. Please see the example in Figure 5 for dimension definitions and step instructions. \"+sys_prompt\" denotes setting system prompt.",
+                "cite_spans": [
+                    {
+                        "start": 230,
+                        "end": 248,
+                        "text": "Belz et al. (2021)",
+                        "ref_id": "BIBREF0"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 134,
+                        "end": 135,
+                        "text": "6",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 810,
+                        "end": 811,
+                        "text": "5",
+                        "ref_id": "FIGREF5"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Comparison with human evaluation",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "Paul Merson was brought on with only seven minutes remaining in his team's 0-0 draw with Burnley. Andros Townsend scored the Tottenham midfielder in the 89th minute. Paul Merson had another dig at Andros Townsend after his appearance. The midfielder had been brought on to the England squad last week. Click here for all the latest arsenal news.\"",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Summary",
+                "sec_num": null
+            },
+            {
+                "text": "Relevance: 1.67 (2, 1, 2) Consistency (Faithfulness): 1.00 (1, 1, 1) Fluency: 3.00 (4, 2, 3) Coherence: 1.33 (2, 1, 1)",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Expert annotator",
+                "sec_num": null
+            },
+            {
+                "text": "Relevance: 2 Faithfulness: 2 Fluency: 2 Coherence: 2",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT",
+                "sec_num": null
+            },
+            {
+                "text": "Overall score: 2 This summary is not very relevant to the article as it only mentions a few details and leaves out important information. It is not very faithful as it misrepresents the article by suggesting that Andros Townsend scored in the Tottenham game, when in fact he was only brought on as a substitute. The fluency and coherence are also poor, with awkward phrasing and lack of logical flow.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT",
+                "sec_num": null
+            },
+            {
+                "text": "Relevance: 2 Consistency: 1 Fluency: 2 Coherence: 1",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "Explanation:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "The summary is not relevant as it does not capture the key points of the article. It is inconsistent with the facts in the original article, as it incorrectly states that Andros Townsend scored in the 89th minute, when in fact he was brought on in the 83rd minute. The fluency of the summary is poor, with grammatical errors and incomplete sentences. The coherence of the summary is also poor, as it does not flow well and does not make sense as a whole.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "Table 7 : Examples of ratings and explanations generated by ChatGPT. The red parts show the factual errors of the summary. The blue parts show the explanations for fluency and coherence. The long source document is not shown. \"Expert Annotator\" shows the average of scores given by three expert annotators, with each person's score in parentheses.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 6,
+                        "end": 7,
+                        "text": "7",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "Imagine you are a human annotator now. You will evaluate the quality of summaries written for a news article. Please follow these steps:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "1. Carefully read the news article, and be aware of the information it contains. 2. Read the proposed summary.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "3. Rate the summary on four dimensions: relevance, consistency, fluency, and coherence. You should rate on a scale from 1 (worst) to 5 (best).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "Definitions are as follows:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "Relevance: The rating measures how well the summary captures the key points of the article. Consider whether all and only the important aspects are contained in the summary. Consistency: The rating measures whether the facts in the summary are consistent with the facts in the original article. Consider whether the summary does reproduce all facts accurately and does not make up untrue information. Fluency: This rating measures the quality of individual sentences, whether they are well-written and grammatically correct. Consider the quality of individual sentences.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "Coherence: The rating measures the quality of all sentences collectively, to fit together and sound natural.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "Consider the quality of the summary as a whole.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "The article and the summary are given below: Article: {Article} Summary: {Summary} ChatGPT reproducible by setting randomness parameters (e.g., temperature) at decoding time.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "In terms of cost, it is cheaper to perform the human-like automatic evaluation. Taking Sum-mEval as an example, in our experiments, the assessment of one summary consumed about 1000 tokens, and it took about 0.002 \u00d7 1600 = 3.2 USD 6 to finish the evaluation on the whole dataset. Assuming that a single annotator spends 5 hours annotating the whole dataset. It costs 12 \u00d7 5 = 60 USD. It is estimated that the cost of human evaluation is about 10 to 20 times higher than human-like automatic evaluation using ChatGPT.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "ChatGPT+def",
+                "sec_num": null
+            },
+            {
+                "text": "We sampled and examined the responses generated by ChatGPT on SummEval, and found the following characteristics of the explanations given by ChatGPT:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "The quality of generated explanations",
+                "sec_num": "4.3"
+            },
+            {
+                "text": "ChatGPT sometimes provides scores or labels followed by an explanation, even if it is not explicitly asked to provide the explanation in the prompt. Of course, it is possible to add a request such as \"You do not need to explain.\" to the prompt so that 6 https://openai.com/pricing it does not generate an explanation, but the impact of this on the evaluation scores is unknown.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "The quality of generated explanations",
+                "sec_num": "4.3"
+            },
+            {
+                "text": "The explanations generated by ChatGPT are generally self-consistent but not necessarily correct. The generated explanations generally coincide with its scoring. For example, Table 7 shows that Chat-GPT and ChatGPT+def both scored low for the faithfulness of the summary, and they both pointed out factual errors in the summary. However, the correctness of these explanations still needs further testing.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 180,
+                        "end": 181,
+                        "text": "7",
+                        "ref_id": null
+                    }
+                ],
+                "eq_spans": [],
+                "section": "The quality of generated explanations",
+                "sec_num": "4.3"
+            },
+            {
+                "text": "The combination of ChatGPT's explanations and scoring can better confirm whether it understands the requirements of the evaluation, for example, the dimension definitions. Without providing dimension definitions (see Figure 5 ), ChatGPT's understanding of fluency and coherence converged. After examining multiple samples we found that its explanations of the scoring of these two dimensions are placed together and the dataset-level correlation between the scoring of these two dimensions is 0.960. ChatGPT is better able to distinguish between these two dimensions when dimension definitions are provided. Its explanations of the scoring of the two dimensions are separated and the dataset-",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 224,
+                        "end": 225,
+                        "text": "5",
+                        "ref_id": "FIGREF5"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "The quality of generated explanations",
+                "sec_num": "4.3"
+            },
+            {
+                "text": "Refuse to evaluate I'm sorry, but the proposed summary is not acceptable. It contains inaccurate and irrelevant information, and it is not coherent or fluent. Please provide a new summary for evaluation.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Description Example",
+                "sec_num": null
+            },
+            {
+                "text": "As an AI language model, I cannot evaluate the quality of summaries as it requires subjective judgment. However, I can provide feedback on the summary's coherence, fluency, and relevance. The proposed summary is poorly written and [......]",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Not evaluate as required",
+                "sec_num": null
+            },
+            {
+                "text": "As an AI language model, I cannot evaluate the quality of summaries as it requires subjective human judgment. However, I can provide a summary of the article that is more accurate and relevant:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Write a new summary",
+                "sec_num": null
+            },
+            {
+                "text": "Referee Mark Clattenburg has been [......] Continue to write the summary land movement overnight. The mass, which has risen some 50ft above sea level, measures roughly 1,000-1,640ft long, and 100ft wide. [......] level correlation between the two dimensions drops to 0.843.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Write a new summary",
+                "sec_num": null
+            },
+            {
+                "text": "ChatGPT sometimes generates invalid responses, but this fraction is only about 1% at most (see Table 9 ). As shown in Table 8 , common invalid responses were refusing to evaluate, not evaluating as required, writing a new summary, and continuing to write the summary. The reason why invalid responses are generated needs to be further explored. ",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 101,
+                        "end": 102,
+                        "text": "9",
+                        "ref_id": "TABREF6"
+                    },
+                    {
+                        "start": 124,
+                        "end": 125,
+                        "text": "8",
+                        "ref_id": "TABREF5"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Invalid responses",
+                "sec_num": "4.4"
+            },
+            {
+                "text": "There are some concurrent studies using LLMs for human-like NLG evaluation. According to Kocmi and Federmann (2023) , LLMs are currently the most advanced evaluators of translation quality. Wang et al. (2023) tested ChatGPT's ability to be an evaluator on three NLG meta-evaluation datasets. ",
+                "cite_spans": [
+                    {
+                        "start": 89,
+                        "end": 115,
+                        "text": "Kocmi and Federmann (2023)",
+                        "ref_id": "BIBREF7"
+                    },
+                    {
+                        "start": 190,
+                        "end": 208,
+                        "text": "Wang et al. (2023)",
+                        "ref_id": "BIBREF16"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Related Work",
+                "sec_num": "5"
+            },
+            {
+                "text": "From the above experiments using ChatGPT for human-like summarization evaluation, the key findings are as follows:",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "6"
+            },
+            {
+                "text": "\u2022 ChatGPT has the ability to perform summarization evaluation using various human evaluation methods. In some instances, it attains a higher correlation with human judgments than existing evaluation metrics.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "6"
+            },
+            {
+                "text": "\u2022 The performance of ChatGPT on summarization evaluation is highly dependent on prompt design.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "6"
+            },
+            {
+                "text": "\u2022 Human-like evaluation with ChatGPT is more cost-effective and reproducible than human evaluation.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "6"
+            },
+            {
+                "text": "\u2022 The explanation generated by ChatGPT is consistent with its scoring.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion",
+                "sec_num": "6"
+            },
+            {
+                "text": "https://github.com/neulab/BARTScore, also for ROUGE, BERTScore, and MoverScore.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "https://github.com/salesforce/factCC",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "https://github.com/tagoyal/ factuality-datasets",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            },
+            {
+                "text": "version 3.7, https://www.nltk.org/",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            }
+        ],
+        "back_matter": [],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "b0",
+                "title": "The ReproGen shared task on reproducibility of human evaluations in NLG: Overview and results",
+                "authors": [
+                    {
+                        "first": "Anya",
+                        "middle": [],
+                        "last": "Belz",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Anastasia",
+                        "middle": [],
+                        "last": "Shimorina",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Shubham",
+                        "middle": [],
+                        "last": "Agarwal",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ehud",
+                        "middle": [],
+                        "last": "Reiter",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2021,
+                "venue": "Proceedings of the 14th International Conference on Natural Language Generation",
+                "volume": "",
+                "issue": "",
+                "pages": "249--258",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Anya Belz, Anastasia Shimorina, Shubham Agarwal, and Ehud Reiter. 2021. The ReproGen shared task on reproducibility of human evaluations in NLG: Overview and results. In Proceedings of the 14th In- ternational Conference on Natural Language Gener- ation, pages 249-258, Aberdeen, Scotland, UK. As- sociation for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF1": {
+                "ref_id": "b1",
+                "title": "Reevaluating evaluation in text summarization",
+                "authors": [
+                    {
+                        "first": "Manik",
+                        "middle": [],
+                        "last": "Bhandari",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pranav",
+                        "middle": [],
+                        "last": "Narayan Gour",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Atabak",
+                        "middle": [],
+                        "last": "Ashfaq",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pengfei",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Graham",
+                        "middle": [],
+                        "last": "Neubig",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+                "volume": "",
+                "issue": "",
+                "pages": "9347--9359",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/2020.emnlp-main.751"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Manik Bhandari, Pranav Narayan Gour, Atabak Ash- faq, Pengfei Liu, and Graham Neubig. 2020. Re- evaluating evaluation in text summarization. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), pages 9347-9359, Online. Association for Computa- tional Linguistics.",
+                "links": null
+            },
+            "BIBREF2": {
+                "ref_id": "b2",
+                "title": "Language models are fewshot learners",
+                "authors": [
+                    {
+                        "first": "B",
+                        "middle": [],
+                        "last": "Tom",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Benjamin",
+                        "middle": [],
+                        "last": "Brown",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Nick",
+                        "middle": [],
+                        "last": "Mann",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Melanie",
+                        "middle": [],
+                        "last": "Ryder",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jared",
+                        "middle": [],
+                        "last": "Subbiah",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Prafulla",
+                        "middle": [],
+                        "last": "Kaplan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Arvind",
+                        "middle": [],
+                        "last": "Dhariwal",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pranav",
+                        "middle": [],
+                        "last": "Neelakantan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Girish",
+                        "middle": [],
+                        "last": "Shyam",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Amanda",
+                        "middle": [],
+                        "last": "Sastry",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sandhini",
+                        "middle": [],
+                        "last": "Askell",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ariel",
+                        "middle": [],
+                        "last": "Agarwal",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Gretchen",
+                        "middle": [],
+                        "last": "Herbert-Voss",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tom",
+                        "middle": [],
+                        "last": "Krueger",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Rewon",
+                        "middle": [],
+                        "last": "Henighan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Aditya",
+                        "middle": [],
+                        "last": "Child",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Daniel",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Ramesh",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jeffrey",
+                        "middle": [],
+                        "last": "Ziegler",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Clemens",
+                        "middle": [],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Christopher",
+                        "middle": [],
+                        "last": "Winter",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mark",
+                        "middle": [],
+                        "last": "Hesse",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Eric",
+                        "middle": [],
+                        "last": "Chen",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mateusz",
+                        "middle": [],
+                        "last": "Sigler",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Scott",
+                        "middle": [],
+                        "last": "Litwin",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Benjamin",
+                        "middle": [],
+                        "last": "Gray",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jack",
+                        "middle": [],
+                        "last": "Chess",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Christopher",
+                        "middle": [],
+                        "last": "Clark",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sam",
+                        "middle": [],
+                        "last": "Berner",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Alec",
+                        "middle": [],
+                        "last": "Mccandlish",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ilya",
+                        "middle": [],
+                        "last": "Radford",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dario",
+                        "middle": [],
+                        "last": "Sutskever",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Amodei",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2005.14165.Version4"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Ben- jamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, and Dario Amodei. 2020. Language models are few- shot learners. Computing Research Repository, arXiv:2005.14165. Version 4.",
+                "links": null
+            },
+            "BIBREF3": {
+                "ref_id": "b3",
+                "title": "FEQA: A question answering evaluation framework for faithfulness assessment in abstractive summarization",
+                "authors": [
+                    {
+                        "first": "Esin",
+                        "middle": [],
+                        "last": "Durmus",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "He",
+                        "middle": [],
+                        "last": "He",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mona",
+                        "middle": [],
+                        "last": "Diab",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+                "volume": "",
+                "issue": "",
+                "pages": "5055--5070",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/2020.acl-main.454"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Esin Durmus, He He, and Mona Diab. 2020. FEQA: A question answering evaluation framework for faith- fulness assessment in abstractive summarization. In Proceedings of the 58th Annual Meeting of the Asso- ciation for Computational Linguistics, pages 5055- 5070, Online. Association for Computational Lin- guistics.",
+                "links": null
+            },
+            "BIBREF4": {
+                "ref_id": "b4",
+                "title": "SummEval: Re-evaluating summarization evaluation",
+                "authors": [
+                    {
+                        "first": "Alexander",
+                        "middle": [
+                            "R"
+                        ],
+                        "last": "Fabbri",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Wojciech",
+                        "middle": [],
+                        "last": "Kry\u015bci\u0144ski",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Bryan",
+                        "middle": [],
+                        "last": "Mccann",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Caiming",
+                        "middle": [],
+                        "last": "Xiong",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Richard",
+                        "middle": [],
+                        "last": "Socher",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dragomir",
+                        "middle": [],
+                        "last": "Radev",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2021,
+                "venue": "Transactions of the Association for Computational Linguistics",
+                "volume": "9",
+                "issue": "",
+                "pages": "391--409",
+                "other_ids": {
+                    "DOI": [
+                        "10.1162/tacl_a_00373"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Alexander R. Fabbri, Wojciech Kry\u015bci\u0144ski, Bryan McCann, Caiming Xiong, Richard Socher, and Dragomir Radev. 2021. SummEval: Re-evaluating summarization evaluation. Transactions of the Asso- ciation for Computational Linguistics, 9:391-409.",
+                "links": null
+            },
+            "BIBREF5": {
+                "ref_id": "b5",
+                "title": "Newsroom: A dataset of 1.3 million summaries with diverse extractive strategies",
+                "authors": [
+                    {
+                        "first": "Max",
+                        "middle": [],
+                        "last": "Grusky",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mor",
+                        "middle": [],
+                        "last": "Naaman",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yoav",
+                        "middle": [],
+                        "last": "Artzi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies",
+                "volume": "1",
+                "issue": "",
+                "pages": "708--719",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/N18-1065"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Max Grusky, Mor Naaman, and Yoav Artzi. 2018. Newsroom: A dataset of 1.3 million summaries with diverse extractive strategies. In Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Hu- man Language Technologies, Volume 1 (Long Pa- pers), pages 708-719, New Orleans, Louisiana. As- sociation for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF6": {
+                "ref_id": "b6",
+                "title": "Exploring chatgpt's ability to rank content: A preliminary study on consistency with human preferences",
+                "authors": [
+                    {
+                        "first": "Yunjie",
+                        "middle": [],
+                        "last": "Ji",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yan",
+                        "middle": [],
+                        "last": "Gong",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yiping",
+                        "middle": [],
+                        "last": "Peng",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Chao",
+                        "middle": [],
+                        "last": "Ni",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Peiyan",
+                        "middle": [],
+                        "last": "Sun",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dongyu",
+                        "middle": [],
+                        "last": "Pan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Baochang",
+                        "middle": [],
+                        "last": "Ma",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Xiangang",
+                        "middle": [],
+                        "last": "Li",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2303.07610"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Yunjie Ji, Yan Gong, Yiping Peng, Chao Ni, Peiyan Sun, Dongyu Pan, Baochang Ma, and Xiangang Li. 2023. Exploring chatgpt's ability to rank con- tent: A preliminary study on consistency with hu- man preferences. Computing Research Repository, arXiv:2303.07610.",
+                "links": null
+            },
+            "BIBREF7": {
+                "ref_id": "b7",
+                "title": "Large language models are state-of-the-art evaluators of translation quality",
+                "authors": [
+                    {
+                        "first": "Tom",
+                        "middle": [],
+                        "last": "Kocmi",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Christian",
+                        "middle": [],
+                        "last": "Federmann",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2302.14520"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Tom Kocmi and Christian Federmann. 2023. Large language models are state-of-the-art evaluators of translation quality. Computing Research Repository, arXiv:2302.14520.",
+                "links": null
+            },
+            "BIBREF8": {
+                "ref_id": "b8",
+                "title": "Evaluating the factual consistency of abstractive text summarization",
+                "authors": [
+                    {
+                        "first": "Wojciech",
+                        "middle": [],
+                        "last": "Kryscinski",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Bryan",
+                        "middle": [],
+                        "last": "Mccann",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Caiming",
+                        "middle": [],
+                        "last": "Xiong",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Richard",
+                        "middle": [],
+                        "last": "Socher",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+                "volume": "",
+                "issue": "",
+                "pages": "9332--9346",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/2020.emnlp-main.750"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Wojciech Kryscinski, Bryan McCann, Caiming Xiong, and Richard Socher. 2020. Evaluating the factual consistency of abstractive text summarization. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), pages 9332-9346, Online. Association for Computa- tional Linguistics.",
+                "links": null
+            },
+            "BIBREF9": {
+                "ref_id": "b9",
+                "title": "ROUGE: A package for automatic evaluation of summaries",
+                "authors": [
+                    {
+                        "first": "Chin-Yew",
+                        "middle": [],
+                        "last": "Lin",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2004,
+                "venue": "Text Summarization Branches Out",
+                "volume": "",
+                "issue": "",
+                "pages": "74--81",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Chin-Yew Lin. 2004. ROUGE: A package for auto- matic evaluation of summaries. In Text Summariza- tion Branches Out, pages 74-81, Barcelona, Spain. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF10": {
+                "ref_id": "b10",
+                "title": "Gpteval: Nlg evaluation using gpt-4 with better human alignment",
+                "authors": [
+                    {
+                        "first": "Yang",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dan",
+                        "middle": [],
+                        "last": "Iter",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yichong",
+                        "middle": [],
+                        "last": "Xu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Shuohang",
+                        "middle": [],
+                        "last": "Wang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ruochen",
+                        "middle": [],
+                        "last": "Xu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Chenguang",
+                        "middle": [],
+                        "last": "Zhu",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Yang Liu, Dan Iter, Yichong Xu, Shuohang Wang, Ruochen Xu, and Chenguang Zhu. 2023. Gpteval: Nlg evaluation using gpt-4 with better human align- ment.",
+                "links": null
+            },
+            "BIBREF11": {
+                "ref_id": "b11",
+                "title": "Chatgpt as a factual inconsistency evaluator for abstractive text summarization",
+                "authors": [
+                    {
+                        "first": "Zheheng",
+                        "middle": [],
+                        "last": "Luo",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Qianqian",
+                        "middle": [],
+                        "last": "Xie",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sophia",
+                        "middle": [],
+                        "last": "Ananiadou",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2303.15621"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Zheheng Luo, Qianqian Xie, and Sophia Ananiadou. 2023. Chatgpt as a factual inconsistency evaluator for abstractive text summarization. Computing Re- search Repository, arXiv:2303.15621.",
+                "links": null
+            },
+            "BIBREF12": {
+                "ref_id": "b12",
+                "title": "Evaluating content selection in summarization: The pyramid method",
+                "authors": [
+                    {
+                        "first": "Ani",
+                        "middle": [],
+                        "last": "Nenkova",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Rebecca",
+                        "middle": [],
+                        "last": "Passonneau",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2004,
+                "venue": "Proceedings of the Human Language Technology Conference of the North American Chapter of the Association for Computational Linguistics: HLT-NAACL 2004",
+                "volume": "",
+                "issue": "",
+                "pages": "145--152",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Ani Nenkova and Rebecca Passonneau. 2004. Evaluat- ing content selection in summarization: The pyra- mid method. In Proceedings of the Human Lan- guage Technology Conference of the North Ameri- can Chapter of the Association for Computational Linguistics: HLT-NAACL 2004, pages 145-152, Boston, Massachusetts, USA. Association for Com- putational Linguistics.",
+                "links": null
+            },
+            "BIBREF13": {
+                "ref_id": "b13",
+                "title": "Training language models to follow instructions with human feedback. Computing Research Repository",
+                "authors": [
+                    {
+                        "first": "Long",
+                        "middle": [],
+                        "last": "Ouyang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jeff",
+                        "middle": [],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Xu",
+                        "middle": [],
+                        "last": "Jiang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Diogo",
+                        "middle": [],
+                        "last": "Almeida",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Carroll",
+                        "middle": [
+                            "L"
+                        ],
+                        "last": "Wainwright",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pamela",
+                        "middle": [],
+                        "last": "Mishkin",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Chong",
+                        "middle": [],
+                        "last": "Zhang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sandhini",
+                        "middle": [],
+                        "last": "Agarwal",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Katarina",
+                        "middle": [],
+                        "last": "Slama",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Alex",
+                        "middle": [],
+                        "last": "Ray",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "John",
+                        "middle": [],
+                        "last": "Schulman",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jacob",
+                        "middle": [],
+                        "last": "Hilton",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Fraser",
+                        "middle": [],
+                        "last": "Kelton",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Luke",
+                        "middle": [],
+                        "last": "Miller",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Maddie",
+                        "middle": [],
+                        "last": "Simens",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Amanda",
+                        "middle": [],
+                        "last": "Askell",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Peter",
+                        "middle": [],
+                        "last": "Welinder",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Paul",
+                        "middle": [],
+                        "last": "Christiano",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jan",
+                        "middle": [],
+                        "last": "Leike",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ryan",
+                        "middle": [],
+                        "last": "Lowe",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2022,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2203.02155"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida, Carroll L. Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, John Schulman, Jacob Hilton, Fraser Kelton, Luke Miller, Maddie Simens, Amanda Askell, Pe- ter Welinder, Paul Christiano, Jan Leike, and Ryan Lowe. 2022. Training language models to follow instructions with human feedback. Computing Re- search Repository, arXiv:2203.02155.",
+                "links": null
+            },
+            "BIBREF14": {
+                "ref_id": "b14",
+                "title": "Learning to summarize from human feedback",
+                "authors": [
+                    {
+                        "first": "Nisan",
+                        "middle": [],
+                        "last": "Stiennon",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Long",
+                        "middle": [],
+                        "last": "Ouyang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jeff",
+                        "middle": [],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Daniel",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Ziegler",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ryan",
+                        "middle": [],
+                        "last": "Lowe",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Chelsea",
+                        "middle": [],
+                        "last": "Voss",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Alec",
+                        "middle": [],
+                        "last": "Radford",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dario",
+                        "middle": [],
+                        "last": "Amodei",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Paul",
+                        "middle": [],
+                        "last": "Christiano",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2022,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2009.01325.Version3"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Nisan Stiennon, Long Ouyang, Jeff Wu, Daniel M. Ziegler, Ryan Lowe, Chelsea Voss, Alec Radford, Dario Amodei, and Paul Christiano. 2022. Learning to summarize from human feedback. Computing Re- search Repository, arXiv:2009.01325. Version 3.",
+                "links": null
+            },
+            "BIBREF15": {
+                "ref_id": "b15",
+                "title": "Asking and answering questions to evaluate the factual consistency of summaries",
+                "authors": [
+                    {
+                        "first": "Alex",
+                        "middle": [],
+                        "last": "Wang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kyunghyun",
+                        "middle": [],
+                        "last": "Cho",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mike",
+                        "middle": [],
+                        "last": "Lewis",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics",
+                "volume": "",
+                "issue": "",
+                "pages": "5008--5020",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/2020.acl-main.450"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Alex Wang, Kyunghyun Cho, and Mike Lewis. 2020. Asking and answering questions to evaluate the fac- tual consistency of summaries. In Proceedings of the 58th Annual Meeting of the Association for Com- putational Linguistics, pages 5008-5020, Online. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF16": {
+                "ref_id": "b16",
+                "title": "Is chatgpt a good nlg evaluator? a preliminary study",
+                "authors": [
+                    {
+                        "first": "Jiaan",
+                        "middle": [],
+                        "last": "Wang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yunlong",
+                        "middle": [],
+                        "last": "Liang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Fandong",
+                        "middle": [],
+                        "last": "Meng",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Haoxiang",
+                        "middle": [],
+                        "last": "Shi",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Zhixu",
+                        "middle": [],
+                        "last": "Li",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jinan",
+                        "middle": [],
+                        "last": "Xu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jianfeng",
+                        "middle": [],
+                        "last": "Qu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jie",
+                        "middle": [],
+                        "last": "Zhou",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2303.04048"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Jiaan Wang, Yunlong Liang, Fandong Meng, Haoxi- ang Shi, Zhixu Li, Jinan Xu, Jianfeng Qu, and Jie Zhou. 2023. Is chatgpt a good nlg evaluator? a preliminary study. Computing Research Repository, arXiv:2303.04048.",
+                "links": null
+            },
+            "BIBREF17": {
+                "ref_id": "b17",
+                "title": "Bartscore: Evaluating generated text as text generation",
+                "authors": [
+                    {
+                        "first": "Weizhe",
+                        "middle": [],
+                        "last": "Yuan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Graham",
+                        "middle": [],
+                        "last": "Neubig",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pengfei",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2021,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2106.11520.Version2"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Weizhe Yuan, Graham Neubig, and Pengfei Liu. 2021. Bartscore: Evaluating generated text as text generation. Computing Research Repository, arXiv:2106.11520. Version 2.",
+                "links": null
+            },
+            "BIBREF18": {
+                "ref_id": "b18",
+                "title": "Bertscore: Evaluating text generation with bert",
+                "authors": [
+                    {
+                        "first": "Tianyi",
+                        "middle": [],
+                        "last": "Zhang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Varsha",
+                        "middle": [],
+                        "last": "Kishore",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Felix",
+                        "middle": [],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kilian",
+                        "middle": [
+                            "Q"
+                        ],
+                        "last": "Weinberger",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yoav",
+                        "middle": [],
+                        "last": "Artzi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:1904.09675.Version3"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Tianyi Zhang, Varsha Kishore, Felix Wu, Kilian Q. Weinberger, and Yoav Artzi. 2020. Bertscore: Eval- uating text generation with bert. Computing Re- search Repository, arXiv:1904.09675. Version 3.",
+                "links": null
+            },
+            "BIBREF19": {
+                "ref_id": "b19",
+                "title": "Benchmarking large language models for news summarization",
+                "authors": [
+                    {
+                        "first": "Tianyi",
+                        "middle": [],
+                        "last": "Zhang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Faisal",
+                        "middle": [],
+                        "last": "Ladhak",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Esin",
+                        "middle": [],
+                        "last": "Durmus",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Percy",
+                        "middle": [],
+                        "last": "Liang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kathleen",
+                        "middle": [],
+                        "last": "Mckeown",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tatsunori",
+                        "middle": [
+                            "B"
+                        ],
+                        "last": "Hashimoto",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "Computing Research Repository",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2301.13848"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Tianyi Zhang, Faisal Ladhak, Esin Durmus, Percy Liang, Kathleen McKeown, and Tatsunori B. Hashimoto. 2023. Benchmarking large language models for news summarization. Computing Re- search Repository, arXiv:2301.13848.",
+                "links": null
+            },
+            "BIBREF20": {
+                "ref_id": "b20",
+                "title": "MoverScore: Text generation evaluating with contextualized embeddings and earth mover distance",
+                "authors": [
+                    {
+                        "first": "Wei",
+                        "middle": [],
+                        "last": "Zhao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Maxime",
+                        "middle": [],
+                        "last": "Peyrard",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Fei",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yang",
+                        "middle": [],
+                        "last": "Gao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Christian",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Meyer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Steffen",
+                        "middle": [],
+                        "last": "Eger",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)",
+                "volume": "",
+                "issue": "",
+                "pages": "563--578",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/D19-1053"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Wei Zhao, Maxime Peyrard, Fei Liu, Yang Gao, Chris- tian M. Meyer, and Steffen Eger. 2019. MoverScore: Text generation evaluating with contextualized em- beddings and earth mover distance. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th Interna- tional Joint Conference on Natural Language Pro- cessing (EMNLP-IJCNLP), pages 563-578, Hong Kong, China. Association for Computational Lin- guistics.",
+                "links": null
+            }
+        },
+        "ref_entries": {
+            "FIGREF0": {
+                "uris": null,
+                "fig_num": "1",
+                "text": "Figure 1: The template for Likert scale scoring.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF1": {
+                "uris": null,
+                "fig_num": "2",
+                "text": "Figure 2: The template for pairwise comparison.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF2": {
+                "uris": null,
+                "fig_num": "3",
+                "text": "Figure3shows the template for Pyramid. The number of SCUs depends on the content of the reference summary, up to 16.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF3": {
+                "uris": null,
+                "fig_num": "3",
+                "text": "Figure 3: The template for Pyramid.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF4": {
+                "uris": null,
+                "fig_num": "4",
+                "text": "Figure 4: The template for binary factuality evaluation.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF5": {
+                "uris": null,
+                "fig_num": "5",
+                "text": "Figure 5: The template for Likert scale scoring with step instructions (in red) and dimension definitions (in orange) on SummEval.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF6": {
+                "uris": null,
+                "fig_num": null,
+                "text": "Ji et al. (2023) explored the effectiveness of Chat-GPT in ranking model-generated content. Luo et al. (2023) investigated ChatGPT's ability to evaluate factual consistency in summarization.. Liu et al. (2023) utilized ChatGPT and GPT-4 to assess the quality of NLG outputs with chain-of-thoughts.",
+                "type_str": "figure",
+                "num": null
+            },
+            "TABREF0": {
+                "text": "Spearman's \u03c1 of sample level, system level, and dataset level on SummEval.",
+                "content": "<table><tr><td/><td/><td>consistency</td><td/><td/><td>relevance</td><td/><td/><td>fluency</td><td/><td/><td>coherence</td><td/></tr><tr><td>Metric Name</td><td>sample</td><td>system</td><td>dataset</td><td>sample</td><td>system</td><td>dataset</td><td>sample</td><td>system</td><td>dataset</td><td>sample</td><td>system</td><td>dataset</td></tr><tr><td>ROUGE-1</td><td>0.153</td><td>0.744</td><td>0.137</td><td>0.326</td><td>0.744</td><td>0.302</td><td>0.113</td><td>0.730</td><td>0.080</td><td>0.167</td><td>0.506</td><td>0.184</td></tr><tr><td>ROUGE-2</td><td>0.179</td><td>0.779</td><td>0.129</td><td>0.290</td><td>0.621</td><td>0.245</td><td>0.156</td><td>0.690</td><td>0.062</td><td>0.184</td><td>0.335</td><td>0.145</td></tr><tr><td>ROUGE-L</td><td>0.111</td><td>0.112</td><td>0.109</td><td>0.311</td><td>0.362</td><td>0.284</td><td>0.103</td><td>0.306</td><td>0.079</td><td>0.128</td><td>0.138</td><td>0.141</td></tr><tr><td>BERTScore</td><td>0.105</td><td>-0.077</td><td>0.118</td><td>0.312</td><td>0.324</td><td>0.362</td><td>0.189</td><td>0.246</td><td>0.150</td><td>0.284</td><td>0.477</td><td>0.317</td></tr><tr><td>MoverScore</td><td>0.151</td><td>0.679</td><td>0.150</td><td>0.318</td><td>0.724</td><td>0.294</td><td>0.126</td><td>0.687</td><td>0.119</td><td>0.159</td><td>0.474</td><td>0.178</td></tr><tr><td>BARTScore_s_h</td><td>0.299</td><td>0.800</td><td>0.269</td><td>0.264</td><td>0.524</td><td>0.363</td><td>0.243</td><td>0.614</td><td>0.187</td><td>0.322</td><td>0.477</td><td>0.335</td></tr><tr><td>BARTScore_h_r</td><td>0.097</td><td>0.606</td><td>0.101</td><td>0.178</td><td>0.147</td><td>0.246</td><td>0.002</td><td>0.261</td><td>0.000</td><td>0.017</td><td>-0.115</td><td>0.064</td></tr><tr><td>BARTScore_r_h</td><td>-0.075</td><td>-0.556</td><td>-0.090</td><td>-0.081</td><td>-0.112</td><td>-0.136</td><td>0.013</td><td>-0.212</td><td>0.019</td><td>0.044</td><td>0.165</td><td>-0.010</td></tr><tr><td>BARTScore_cnn_s_h</td><td>0.367</td><td>0.435</td><td>0.334</td><td>0.356</td><td>0.765</td><td>0.394</td><td>0.349</td><td>0.746</td><td>0.285</td><td>0.448</td><td>0.700</td><td>0.408</td></tr><tr><td>BARTScore_cnn_h_r</td><td>0.171</td><td>0.771</td><td>0.106</td><td>0.320</td><td>0.456</td><td>0.244</td><td>0.111</td><td>0.561</td><td>0.066</td><td>0.153</td><td>0.174</td><td>0.130</td></tr><tr><td>BARTScore_cnn_r_h</td><td>0.001</td><td>-0.079</td><td>-0.004</td><td>0.146</td><td>0.312</td><td>0.221</td><td>0.107</td><td>0.297</td><td>0.145</td><td>0.228</td><td>0.506</td><td>0.236</td></tr><tr><td>ChatGPT</td><td>0.435</td><td>0.833</td><td>0.425</td><td>0.433</td><td>0.901</td><td>0.445</td><td>0.419</td><td>0.889</td><td>0.410</td><td>0.561</td><td>0.832</td><td>0.557</td></tr><tr><td/><td/><td>coherence</td><td/><td/><td>fluency</td><td/><td colspan=\"3\">informativeness</td><td/><td>relevance</td><td/></tr><tr><td>Metric Name</td><td>sample</td><td>system</td><td>dataset</td><td>sample</td><td>system</td><td>dataset</td><td>sample</td><td>system</td><td>dataset</td><td>sample</td><td>system</td><td>dataset</td></tr><tr><td>ROUGE-1</td><td>0.095</td><td>0.429</td><td>0.100</td><td>0.104</td><td>0.429</td><td>0.064</td><td>0.130</td><td>0.286</td><td>0.149</td><td>0.147</td><td>0.357</td><td>0.122</td></tr><tr><td>ROUGE-2</td><td>0.025</td><td>0.321</td><td>0.080</td><td>0.047</td><td>0.321</td><td>0.045</td><td>0.078</td><td>0.250</td><td>0.158</td><td>0.090</td><td>0.357</td><td>0.124</td></tr><tr><td>ROUGE-L</td><td>0.064</td><td>0.357</td><td>0.079</td><td>0.072</td><td>0.357</td><td>0.045</td><td>0.089</td><td>0.214</td><td>0.137</td><td>0.106</td><td>0.321</td><td>0.101</td></tr><tr><td>BERTScore</td><td>0.148</td><td>0.429</td><td>0.169</td><td>0.170</td><td>0.429</td><td>0.154</td><td>0.131</td><td>0.286</td><td>0.196</td><td>0.163</td><td>0.357</td><td>0.176</td></tr><tr><td>MoverScore</td><td>0.162</td><td>0.429</td><td>0.173</td><td>0.120</td><td>0.429</td><td>0.112</td><td>0.188</td><td>0.286</td><td>0.232</td><td>0.195</td><td>0.357</td><td>0.192</td></tr><tr><td>BARTScore_s_h</td><td>0.679</td><td>0.964</td><td>0.656</td><td>0.670</td><td>0.964</td><td>0.615</td><td>0.646</td><td>0.821</td><td>0.645</td><td>0.604</td><td>0.893</td><td>0.588</td></tr><tr><td>BARTScore_h_r</td><td>0.329</td><td>0.286</td><td>0.302</td><td>0.292</td><td>0.286</td><td>0.261</td><td>0.419</td><td>0.429</td><td>0.386</td><td>0.363</td><td>0.357</td><td>0.386</td></tr><tr><td>BARTScore_r_h</td><td>-0.311</td><td>-0.571</td><td>-0.249</td><td>-0.215</td><td>-0.571</td><td>-0.232</td><td>-0.423</td><td>-0.750</td><td>-0.346</td><td>-0.334</td><td>-0.607</td><td>-0.305</td></tr><tr><td>BARTScore_cnn_s_h</td><td>0.653</td><td>0.893</td><td>0.623</td><td>0.640</td><td>0.893</td><td>0.596</td><td>0.616</td><td>0.750</td><td>0.592</td><td>0.567</td><td>0.786</td><td>0.557</td></tr><tr><td>BARTScore_cnn_h_r</td><td>0.239</td><td>0.429</td><td>0.215</td><td>0.235</td><td>0.429</td><td>0.165</td><td>0.284</td><td>0.429</td><td>0.239</td><td>0.267</td><td>0.464</td><td>0.221</td></tr><tr><td>BARTScore_cnn_r_h</td><td>0.316</td><td>0.429</td><td>0.333</td><td>0.353</td><td>0.429</td><td>0.330</td><td>0.242</td><td>0.286</td><td>0.289</td><td>0.245</td><td>0.357</td><td>0.292</td></tr><tr><td>ChatGPT</td><td>0.484</td><td>0.821</td><td>0.476</td><td>0.480</td><td>0.607</td><td>0.471</td><td>0.521</td><td>0.607</td><td>0.508</td><td>0.524</td><td>0.714</td><td>0.521</td></tr></table>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            },
+            "TABREF1": {
+                "text": "Spearman's \u03c1 of sample level, system level, and dataset level on Newsroom.",
+                "content": "<table><tr><td>Metric Name</td><td>Accuracy</td></tr><tr><td>ROUGE-1</td><td>0.5869</td></tr><tr><td>ROUGE-2_f</td><td>0.4997</td></tr><tr><td>ROUGE-L_f</td><td>0.5647</td></tr><tr><td>BARTScore</td><td>0.5674</td></tr><tr><td>MoverScore</td><td>0.5864</td></tr><tr><td>BARTScore_s_h</td><td>0.5858</td></tr><tr><td>BARTScore_h_r</td><td>0.6151</td></tr><tr><td>BARTScore_r_h</td><td>0.5317</td></tr><tr><td>BARTScore_cnn_s_h</td><td>0.5880</td></tr><tr><td>BARTScore_cnn_h_r</td><td>0.5934</td></tr><tr><td>BARTScore_cnn_r_h</td><td>0.5089</td></tr><tr><td>ChatGPT</td><td>0.6178</td></tr></table>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            },
+            "TABREF2": {
+                "text": "Accuracy of pairwise comparison on TLDR.",
+                "content": "<table><tr><td colspan=\"2\">Metric Name Accuracy</td><td/></tr><tr><td>DAE</td><td>0.6304</td><td/></tr><tr><td>FactCC</td><td>0.5362</td><td/></tr><tr><td>ChatGPT</td><td>0.6436</td><td/></tr><tr><td colspan=\"3\">Table 4: Accuracy of the binary determination of SCUs</td></tr><tr><td>on REALSumm.</td><td/><td/></tr><tr><td colspan=\"3\">QAGS_CNN QAGS_XSUM</td></tr><tr><td>DAE</td><td>0.8459</td><td>0.6360</td></tr><tr><td>FactCC</td><td>0.7731</td><td>0.4937</td></tr><tr><td>ChatGPT</td><td>0.8488</td><td>0.7573</td></tr></table>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            },
+            "TABREF3": {
+                "text": "Accuracy of binary factuality evaluation on QAGS.",
+                "content": "<table/>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            },
+            "TABREF5": {
+                "text": "Examples of invalid responses generated by ChatGPT on SummEval.",
+                "content": "<table/>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            },
+            "TABREF6": {
+                "text": "Porportions of invalid responses generated byChatGPT on SummEval.",
+                "content": "<table><tr><td/><td>Invalid responses</td></tr><tr><td>ChatGPT</td><td>0.0000</td></tr><tr><td>ChatGPT+def</td><td>0.0003</td></tr><tr><td>ChatGPT+def+ins</td><td>0.0106</td></tr><tr><td>ChatGPT+sys_prompt</td><td>0.0013</td></tr></table>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            }
+        }
+    }
+}

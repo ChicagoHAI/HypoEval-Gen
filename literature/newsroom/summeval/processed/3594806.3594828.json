@@ -1,0 +1,1157 @@
+{
+    "paper_id": "3594806",
+    "header": {
+        "generated_with": "S2ORC 1.0.0",
+        "date_generated": "2025-02-14T13:47:39.069609Z"
+    },
+    "title": "Human Experts' Perceptions of Auto-Generated Summarization Quality",
+    "authors": [
+        {
+            "first": "Maryam",
+            "middle": [],
+            "last": "Lotfigolian",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Oslo Metropolitan University",
+                "location": {
+                    "postCode": "0130",
+                    "settlement": "Oslo",
+                    "country": "Norway"
+                }
+            },
+            "email": "lotfigolian.m@gmail.com"
+        },
+        {
+            "first": "Christos",
+            "middle": [],
+            "last": "Papanikolaou",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Oslo Metropolitan University",
+                "location": {
+                    "postCode": "0130",
+                    "settlement": "Oslo",
+                    "country": "Norway"
+                }
+            },
+            "email": "c.papanikolaou@windowslive.com"
+        },
+        {
+            "first": "Samaneh",
+            "middle": [],
+            "last": "Taghizadeh",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Oslo Metropolitan University",
+                "location": {
+                    "postCode": "0130",
+                    "settlement": "Oslo",
+                    "country": "Norway"
+                }
+            },
+            "email": "samaneh71917@gmail.com"
+        },
+        {
+            "first": "Frode",
+            "middle": [
+                "Eika"
+            ],
+            "last": "Sandnes",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "",
+                "institution": "Oslo Metropolitan University",
+                "location": {
+                    "postCode": "0130",
+                    "settlement": "Oslo",
+                    "country": "Norway"
+                }
+            },
+            "email": "frodes@oslomet.no"
+        }
+    ],
+    "year": "",
+    "venue": null,
+    "identifiers": {},
+    "abstract": "In this study we addressed automatic summarizations generated using modern artificial intelligence techniques. Several mathematical methods for evaluating the performance of automatic summarization exist. Such methods are commonly used as they allow many test cases to be assessed with little human effort as manual assessments are challenging and time consuming. One question is whether the output of such measures matches human perception of summarization quality. In this study we document a study involving the human evaluation of the automatic summarization of 22 academic texts. The unique aspect of this study is that our participants had strong familiarity with the texts as they had studied these texts in depth. The results are quite varied but do not give the impression of unanimous agreement that automatic summarizations are of high quality and are trusted.",
+    "pdf_parse": {
+        "paper_id": "3594806",
+        "_pdf_hash": "",
+        "abstract": [
+            {
+                "text": "In this study we addressed automatic summarizations generated using modern artificial intelligence techniques. Several mathematical methods for evaluating the performance of automatic summarization exist. Such methods are commonly used as they allow many test cases to be assessed with little human effort as manual assessments are challenging and time consuming. One question is whether the output of such measures matches human perception of summarization quality. In this study we document a study involving the human evaluation of the automatic summarization of 22 academic texts. The unique aspect of this study is that our participants had strong familiarity with the texts as they had studied these texts in depth. The results are quite varied but do not give the impression of unanimous agreement that automatic summarizations are of high quality and are trusted.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            }
+        ],
+        "body_text": [
+            {
+                "text": "A summary is a short representation of a larger text that summarizes readers about main ideas in the source text. Reading a summary typically involves active reading of a text noting down key points, and then later synthesizing the text purely based on the notes. The ability to write summaries is a skill that requires practice. Moreover, it is time-consuming. Readers may sometimes only be interested in making rapid decisions without having to read an entire text, but rather by getting the gist of the text through a summary. Consequently, there has been much interest in algorithms for automatically summarizing texts. Recent developments in artificial intelligence have resulted in impressive demonstrations of the technology.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "INTRODUCTION",
+                "sec_num": "1"
+            },
+            {
+                "text": "Researchers have made many attempts at various ways of automatically summarizing texts for several decades. Typically, such methods are evaluated using deterministic metrics. Although such metrics are convenient and pragmatic, they also do not give insight into how they will be perceived by readers.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "INTRODUCTION",
+                "sec_num": "1"
+            },
+            {
+                "text": "In this study we wanted to go beyond the typical deterministic metrics and positive impressions one may get from ad-hoc testing of such technology through toy demos. We wanted to explore how domain experts would perceive automatically generated summaries of text with which they were familiar, and to what degree they would be willing to rely on such automatically generated summaries.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "INTRODUCTION",
+                "sec_num": "1"
+            },
+            {
+                "text": "Many studies are published on automatic summarization of text [11] . Some works focus on improving the summarization algorithms [9] and others are exploring domain specific application areas, for example, summarization of micro blogs [16] , summarization of lectures and meetings [3] , multi-document summarization [18] .",
+                "cite_spans": [
+                    {
+                        "start": 62,
+                        "end": 66,
+                        "text": "[11]",
+                        "ref_id": "BIBREF10"
+                    },
+                    {
+                        "start": 128,
+                        "end": 131,
+                        "text": "[9]",
+                        "ref_id": "BIBREF8"
+                    },
+                    {
+                        "start": 234,
+                        "end": 238,
+                        "text": "[16]",
+                        "ref_id": "BIBREF15"
+                    },
+                    {
+                        "start": 280,
+                        "end": 283,
+                        "text": "[3]",
+                        "ref_id": "BIBREF2"
+                    },
+                    {
+                        "start": 315,
+                        "end": 319,
+                        "text": "[18]",
+                        "ref_id": "BIBREF17"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "RELATED WORK",
+                "sec_num": "2"
+            },
+            {
+                "text": "Advances in deep learning and very large language models have led to impressive improvements in automatic text summarization and related text processing tasks, such as grammar checking [14] . In particular, ChatGPT [1] has received much attention recently. It has been applied to a large range of tasks, including writing [2, 4] , translation [13] , mathematics [10] , and education [22] .",
+                "cite_spans": [
+                    {
+                        "start": 185,
+                        "end": 189,
+                        "text": "[14]",
+                        "ref_id": "BIBREF13"
+                    },
+                    {
+                        "start": 215,
+                        "end": 218,
+                        "text": "[1]",
+                        "ref_id": "BIBREF0"
+                    },
+                    {
+                        "start": 322,
+                        "end": 325,
+                        "text": "[2,",
+                        "ref_id": "BIBREF1"
+                    },
+                    {
+                        "start": 326,
+                        "end": 328,
+                        "text": "4]",
+                        "ref_id": "BIBREF3"
+                    },
+                    {
+                        "start": 343,
+                        "end": 347,
+                        "text": "[13]",
+                        "ref_id": "BIBREF12"
+                    },
+                    {
+                        "start": 362,
+                        "end": 366,
+                        "text": "[10]",
+                        "ref_id": "BIBREF9"
+                    },
+                    {
+                        "start": 383,
+                        "end": 387,
+                        "text": "[22]",
+                        "ref_id": "BIBREF21"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "RELATED WORK",
+                "sec_num": "2"
+            },
+            {
+                "text": "Automatic summarization techniques are usually evaluated using metrics such as ROUGE (Recall-Oriented Understudy for Gisting Evaluation) [17] where the machine generated summary is automatically compared to a summary written manually by a human [11, 15] . The human generated summaries serve as the ground truth. Metrics allows large amounts of text to be objectively and consistently compared without the cost, time, and effort involved with manual assessment. Assessments can easily be run at each step of tweaking a summarization algorithm. Clearly, it is hard to develop summarization algorithms if human assessors are used at each stage. The trade-off between the convenience and cost of human assessors versus automatic evaluation with such text-based technologies is discussed in several studies [19] . It is argued that automatic evaluations have been viewed with some mistrust [20] . It has also been pointed out that human assessment is not without problems [12] as there are few established practices for such assessments. Key weaknesses identified include lacking information about demographics, task design, experimental protocol, and reliability assessments [12] . Clearly, human perceptions are inconsistent and variable, yet it is the human perception of the technology that will determine to what degree users will trust, accept, and use a technology [5, 7] . This study attempts to avoid some of the pitfalls raised in [12] as the participants are recruited from a relatively homogenous cohort of participants with in-depth insight about the summarized texts.",
+                "cite_spans": [
+                    {
+                        "start": 137,
+                        "end": 141,
+                        "text": "[17]",
+                        "ref_id": "BIBREF16"
+                    },
+                    {
+                        "start": 245,
+                        "end": 249,
+                        "text": "[11,",
+                        "ref_id": "BIBREF10"
+                    },
+                    {
+                        "start": 250,
+                        "end": 253,
+                        "text": "15]",
+                        "ref_id": "BIBREF14"
+                    },
+                    {
+                        "start": 803,
+                        "end": 807,
+                        "text": "[19]",
+                        "ref_id": "BIBREF18"
+                    },
+                    {
+                        "start": 886,
+                        "end": 890,
+                        "text": "[20]",
+                        "ref_id": "BIBREF19"
+                    },
+                    {
+                        "start": 968,
+                        "end": 972,
+                        "text": "[12]",
+                        "ref_id": "BIBREF11"
+                    },
+                    {
+                        "start": 1172,
+                        "end": 1176,
+                        "text": "[12]",
+                        "ref_id": "BIBREF11"
+                    },
+                    {
+                        "start": 1368,
+                        "end": 1371,
+                        "text": "[5,",
+                        "ref_id": "BIBREF4"
+                    },
+                    {
+                        "start": 1372,
+                        "end": 1374,
+                        "text": "7]",
+                        "ref_id": "BIBREF6"
+                    },
+                    {
+                        "start": 1437,
+                        "end": 1441,
+                        "text": "[12]",
+                        "ref_id": "BIBREF11"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "RELATED WORK",
+                "sec_num": "2"
+            },
+            {
+                "text": "This study involved two stages. First, we had to select the most suitable summarization engine from a set of available options. This was done using a commonly used measure from the literature. Next, the results produced by the selected summarization engine were assessed using a panel of human readers with in-depth familiarity with the source texts.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "METHOD 3.1 Experimental design",
+                "sec_num": "3"
+            },
+            {
+                "text": "First, we decided to select one of the many summarization engines available to reduce the burden on the participants. Decided to independently evaluate four publicly available summarization engines intended for academic texts, namely Paper Digest (https://www.paper-digest.com/), Scholarcy (https://www.scholarcy.com/), Bundle IQ (https://app.bundleiq.com/), and Quillbot AI (https://quillbot.com/) using their respective web interfaces.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Selecting a summarization engine",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "These are all modern automatic summarization applications for which it is claimed they provide human-like extractive summaries of scientific papers. It is claimed that these locate crucial information and sum up articles and papers into the most valuable points while maintaining the original context. They have slightly varying interfaces.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Selecting a summarization engine",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "Scholarcy provides a summary, context, and highlights key sections. Bundle IQ identifies the key points in a document and generates a summary for either the entire document or for specific pages. QuillBot provides summaries at sentence level or per paragraph. A slider allows the user to interactively adjust the length of the summary. Paper Digest presents the user with key bullet points.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Selecting a summarization engine",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "We tested the four engines using 30 academic papers randomly drawn from the reading lists of the specialization topics of the master programme in applied computer science, thereby covering a wide range of computer science topics covering mathematical modeling, data science, artificial intelligence, human computer interaction, etc. First, the paper abstracts were removed. Each academic paper (without abstract) was run through the four engines. The results were compared with the actual abstracts (representing the ground truth authored manually by the authors). The comparisons were made using a python implementation of ROUGE-L [18] .",
+                "cite_spans": [
+                    {
+                        "start": 632,
+                        "end": 636,
+                        "text": "[18]",
+                        "ref_id": "BIBREF17"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Selecting a summarization engine",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "The result of the evaluation is shown in Figure 1 . The results reveal that overall, Paper Digest yielded the highest F-scores of the four methods (highest mean, max, min, and second quartile). Bundle IQ had the highest fourth quartile point. Based on these results we decided to use Paper Digest in the subsequent user study. A repeated measures ANOVA omnibus test flags a significant difference, but with a relatively moderate effect size (F(3, 87) = 3.702, p = .015, \ud835\udf02 2 = 0.113). A Holm post-hoc test reveals that the significant difference occurred between Paper Digest and Quilbot AI (p = .012).",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 48,
+                        "end": 49,
+                        "text": "1",
+                        "ref_id": "FIGREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Selecting a summarization engine",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "A total of 11 students enrolled in a course in Intelligent User Interface were recruited for this study, from a class of 18 students (61% participation rate). This is a research-oriented course where students actively present the material. We classify these participants as experts due to their familiarity and exposure to the material used in this study and specific training in interpreting scientific literature [8] . The participants' unique insight thus provided a rare opportunity to manually assess summaries. We decided to omit any detailed demographic information related to gender and age to preserve the privacy of this relatively small cohort.",
+                "cite_spans": [
+                    {
+                        "start": 415,
+                        "end": 418,
+                        "text": "[8]",
+                        "ref_id": "BIBREF7"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Participants",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "The reading list from the course was used as the source material. The reading list comprises one paper pre-assigned to each student by the teacher, and one self-selected paper. All the papers were peer reviewed academic texts from the past proceedings of the Intelligent User Interface conferences and CHI conferences. All the papers were on the topic of intelligent user interfaces.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Material",
+                "sec_num": "3.4"
+            },
+            {
+                "text": "It was assumed that each participant would be especially familiar with the two assigned texts as the student had studied the texts, presented these in plenary to the other students in the class and led the subsequent in-class discussion. This activity was compulsory for all the students. A total of 22 papers from the 36-paper reading list were used to generate 22 summaries for the 11 participants (two summaries for each student).",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Material",
+                "sec_num": "3.4"
+            },
+            {
+                "text": "This study adheres to the authors' institutional privacy and ethics regulations. The participants were informed about the purpose and content of the study and provided their oral consent to participate. They were also informed of their rights to withdraw at any time. The study was conducted in a single session and no linking data or personal information were collected [21] . The results are thus anonymous. The sessions were conducted remotely.",
+                "cite_spans": [
+                    {
+                        "start": 371,
+                        "end": 375,
+                        "text": "[21]",
+                        "ref_id": "BIBREF20"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Procedure",
+                "sec_num": "3.5"
+            },
+            {
+                "text": "Each participant was presented with the two summaries matching their two individual papers. After reading and assessing the two summaries they were asked four closed (5-item Likert-style) questions related to the quality of each summary, namely comprehensiveness, conciseness, coherence, and the likelihood the student would use Paper Digest in the future. We therefore solicited N = 22 (2 x 11) responses. ",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Procedure",
+                "sec_num": "3.5"
+            },
+            {
+                "text": "Our sample size was too small to attempt any inferential statistics. We therefore assessed the trends using visual inspection of the data plotted using a diverging stacked bar graph.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Analysis",
+                "sec_num": "3.6"
+            },
+            {
+                "text": "Figure 2 summarizes the responses from the participants. The results show that participants were most positive regarding conciseness of the automatically generated summaries with most participants indicating agree or strongly agree (close to 77.3%). A onesample Wilcoxon signed rank test shows that the median is significantly different from the neutral response of 3 (V = 146.0, p < .001, ES = 0.908). Note that the rank-biserial correlation effect size is relatively high. Next, the results for comprehensiveness and coherence are quite similar with a slight positive skew (both with 45.5% positive responses). The median comprehensiveness responses were significantly different from neutral with a medium effect size (V = 73.0, p = .042, ES = 0.604), while the median coherence responses were not significantly different from neutral (V = 71.0, p = .071). The responses to likelihood of future use were more divided and less skewed with 36.3% positive and 31.8% negative responses. The median responses were not significantly different to neutral (V = 69.5, p = .599). The portion of neutral responses were high for all four questions with comprehensiveness of coherence both constituting 40.9% of the responses.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 7,
+                        "end": 8,
+                        "text": "2",
+                        "ref_id": "FIGREF1"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "RESULTS",
+                "sec_num": "4"
+            },
+            {
+                "text": "The results do not seem to suggest that automatic summarization technology is yet sufficiently mature to replace human generated summaries. This is especially evident in the participants' responses to how likely they are to use the technology in the future. Also, the observation that text conciseness was rated most favorably is what one could expect as the summarization engines indeed makes texts short. However, the attributes relating to the substantial contents of the summaries, namely comprehensiveness and coherence is not as positively rated.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "DISCUSSION",
+                "sec_num": "5"
+            },
+            {
+                "text": "We are unaware of the implementation details or exact technology used in the summarization engine. However, we assume it is based on a contemporary trained language model due to its power. Such modern language models have limitations. For example, biases of the results could be related to the data on which the model was trained. Moreover, extractive summaries are typically formed by locating key sentences within the original text while information within discarded sentences are not included in the summary.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "DISCUSSION",
+                "sec_num": "5"
+            },
+            {
+                "text": "Another issue is that the choice of summarization engine was based on the ROUGE metric. Clearly, the ROUGE metric lacks semantic and factual attributes. Yet, we assume that the four engines were all based on very similar underlying artificial intelligence techniques, and the differences are thus likely to be minimal.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "DISCUSSION",
+                "sec_num": "5"
+            },
+            {
+                "text": "Another weakness of this experiment was the relatively small sample, although this is within the norm of typical human computer interaction [6] . However, we would argue that the quality of the assessments are of relatively high quality due to the participants' invested efforts with the texts, and one may argue that a small sample of high quality measurements are preferable over a larger number of measurements with lower quality.",
+                "cite_spans": [
+                    {
+                        "start": 140,
+                        "end": 143,
+                        "text": "[6]",
+                        "ref_id": "BIBREF5"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "DISCUSSION",
+                "sec_num": "5"
+            },
+            {
+                "text": "In hindsight, we should also have recorded the time of the student's presentation as the participants probably can recall details from recently presented work more accurately than work that was presented less recently. The first presentations were given in late August, while the study was conducted in late November (range of 0 to 3 months). It could be relevant to correlate the recency of working with these papers to the responses. However, each student had to present two papers in two phases of the semester and one presentation was thus further in the past and the other presentation more recent. This has probably helped counterbalance any effects of recall decay with time.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "DISCUSSION",
+                "sec_num": "5"
+            },
+            {
+                "text": "Modern language models such as GPT-3 and similar technologies have undoubtedly contributed to changing people's perceptions of artificial intelligence. However, despite such technologies really impressing abilities to automatically summarize texts, our results suggest that this technology does not yet seem capable of fully replacing the process of manually reading papers. For that reason, they may serve a valuable role as a human-in-the-loop assistive tool to complement manual reading.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "CONCLUSIONS",
+                "sec_num": "6"
+            },
+            {
+                "text": "PETRA '23, July 05-07, 2023, Corfu, Greece Maryam Lotfigolian et al.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            }
+        ],
+        "back_matter": [],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "b0",
+                "title": "ChatGpt: Open Possibilities",
+                "authors": [
+                    {
+                        "first": "Mohammad",
+                        "middle": [],
+                        "last": "Aljanabi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "Iraqi Journal For Computer Science and Mathematics",
+                "volume": "4",
+                "issue": "1",
+                "pages": "62--64",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Mohammad Aljanabi, et al. 2023. ChatGpt: Open Possibilities. Iraqi Journal For Computer Science and Mathematics, 2023, 4.1: 62-64.",
+                "links": null
+            },
+            "BIBREF1": {
+                "ref_id": "b1",
+                "title": "OpenAI ChatGPT generated literature review: Digital twin in healthcare",
+                "authors": [
+                    {
+                        "first": "\u00d6mer",
+                        "middle": [],
+                        "last": "Aydin",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Enis",
+                        "middle": [],
+                        "last": "Karaarslan",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2022,
+                "venue": "",
+                "volume": "4308687",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "\u00d6mer Aydin and Enis Karaarslan. 2022. OpenAI ChatGPT generated literature review: Digital twin in healthcare. Available at SSRN 4308687, 2022.",
+                "links": null
+            },
+            "BIBREF2": {
+                "ref_id": "b2",
+                "title": "Audiovisual Summarization of Lectures and Meetings Using a Segment Similarity Graph",
+                "authors": [
+                    {
+                        "first": "Chidansh",
+                        "middle": [],
+                        "last": "Bhatt",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Andrei",
+                        "middle": [],
+                        "last": "Popescu-Belis",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Matthew",
+                        "middle": [],
+                        "last": "Cooper",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2016,
+                "venue": "Proceedings of the 2016 ACM on International Conference on Multimedia Retrieval (ICMR '16)",
+                "volume": "",
+                "issue": "",
+                "pages": "261--264",
+                "other_ids": {
+                    "DOI": [
+                        "10.1145/2911996.2912047"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Chidansh Bhatt, Andrei Popescu-Belis, and Matthew Cooper. 2016. Audiovisual Summarization of Lectures and Meetings Using a Segment Similarity Graph. In Proceedings of the 2016 ACM on International Conference on Multimedia Retrieval (ICMR '16). Association for Computing Machinery, New York, NY, USA, 261-264. https://doi.org/10.1145/2911996.2912047",
+                "links": null
+            },
+            "BIBREF3": {
+                "ref_id": "b3",
+                "title": "ChatGPT and the Future of Medical Writing",
+                "authors": [
+                    {
+                        "first": "Som",
+                        "middle": [],
+                        "last": "Biswas",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "Radiology",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Som Biswas. 2023. ChatGPT and the Future of Medical Writing. Radiology, 2023, 223312.",
+                "links": null
+            },
+            "BIBREF4": {
+                "ref_id": "b4",
+                "title": "On the non-disabled perceptions of four common mobility devices in Norway: a comparative study based on semantic differentials",
+                "authors": [
+                    {
+                        "first": "Josieli",
+                        "middle": [],
+                        "last": "Aparecida",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Marques",
+                        "middle": [],
+                        "last": "Boiani",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Technology and Disability",
+                "volume": "31",
+                "issue": "1-2",
+                "pages": "15--25",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Josieli Aparecida Marques Boiani, et al. 2019. On the non-disabled perceptions of four common mobility devices in Norway: a comparative study based on semantic differentials. Technology and Disability, 2019, 31.1-2: 15-25.",
+                "links": null
+            },
+            "BIBREF5": {
+                "ref_id": "b5",
+                "title": "Local Standards for Sample Size at CHI",
+                "authors": [
+                    {
+                        "first": "Kelly",
+                        "middle": [],
+                        "last": "Caine",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2016,
+                "venue": "Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems (CHI '16)",
+                "volume": "",
+                "issue": "",
+                "pages": "981--992",
+                "other_ids": {
+                    "DOI": [
+                        "10.1145/2858036.2858498"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Kelly Caine. 2016. Local Standards for Sample Size at CHI. In Proceedings of the 2016 CHI Conference on Human Factors in Computing Systems (CHI '16). Association for Computing Machinery, New York, NY, USA, 981-992. https: //doi.org/10.1145/2858036.2858498",
+                "links": null
+            },
+            "BIBREF6": {
+                "ref_id": "b6",
+                "title": "Aline Darc Piculo dos Sandos, et al. 2022. Aesthetics and the perceived stigma of assistive technology for visual impairment",
+                "authors": [],
+                "year": 2022,
+                "venue": "Disability and Rehabilitation: Assistive Technology",
+                "volume": "17",
+                "issue": "",
+                "pages": "152--158",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Aline Darc Piculo dos Sandos, et al. 2022. Aesthetics and the perceived stigma of assistive technology for visual impairment. Disability and Rehabilitation: Assistive Technology, 2022, 17.2: 152-158.",
+                "links": null
+            },
+            "BIBREF7": {
+                "ref_id": "b7",
+                "title": "Starstruck by journal prestige and citation counts? On students' bias and perceptions of trustworthiness according to clues in publication references",
+                "authors": [
+                    {
+                        "first": "Evelyn",
+                        "middle": [],
+                        "last": "Eika",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Frode",
+                        "middle": [
+                            "Eika"
+                        ],
+                        "last": "Sandnes",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2022,
+                "venue": "Scientometrics",
+                "volume": "127",
+                "issue": "",
+                "pages": "6363--6390",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Evelyn Eika, and Frode Eika Sandnes, 2022. Starstruck by journal prestige and citation counts? On students' bias and perceptions of trustworthiness according to clues in publication references. Scientometrics, 2022, 127.11: 6363-6390.",
+                "links": null
+            },
+            "BIBREF8": {
+                "ref_id": "b8",
+                "title": "Automatic text summarization in TIPSTER",
+                "authors": [
+                    {
+                        "first": "Th\u00e9r\u00e8se",
+                        "middle": [],
+                        "last": "Firmin",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Inderjeet",
+                        "middle": [],
+                        "last": "Mani",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1998,
+                "venue": "Proceedings of a workshop on",
+                "volume": "",
+                "issue": "",
+                "pages": "179--180",
+                "other_ids": {
+                    "DOI": [
+                        "10.3115/1119089.1119119"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Th\u00e9r\u00e8se Firmin and Inderjeet Mani. 1998. Automatic text summarization in TIPSTER. In Proceedings of a workshop on held at Baltimore, Maryland: October 13-15, 1998 (TIPSTER '98). Association for Computational Linguistics, USA, 179- 180. https://doi.org/10.3115/1119089.1119119",
+                "links": null
+            },
+            "BIBREF9": {
+                "ref_id": "b9",
+                "title": "Mathematical Capabilities of ChatGPT",
+                "authors": [
+                    {
+                        "first": "Simon",
+                        "middle": [],
+                        "last": "Frieder",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2301.13867"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Simon Frieder, et al. 2023. Mathematical Capabilities of ChatGPT. arXiv preprint arXiv:2301.13867, 2023.",
+                "links": null
+            },
+            "BIBREF10": {
+                "ref_id": "b10",
+                "title": "Recent automatic text summarization techniques: a survey",
+                "authors": [
+                    {
+                        "first": "Mahak",
+                        "middle": [],
+                        "last": "Gambhir",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Vishal",
+                        "middle": [],
+                        "last": "Gupta",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2017,
+                "venue": "Artificial Intelligence Review",
+                "volume": "47",
+                "issue": "",
+                "pages": "1--66",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Mahak Gambhir and Vishal Gupta. 2017. Recent automatic text summarization techniques: a survey. Artificial Intelligence Review, 2017, 47: 1-66.",
+                "links": null
+            },
+            "BIBREF11": {
+                "ref_id": "b11",
+                "title": "Reliability of human evaluation for text summarization: Lessons learned and challenges ahead",
+                "authors": [
+                    {
+                        "first": "Neslihan",
+                        "middle": [],
+                        "last": "Iskender",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tim",
+                        "middle": [],
+                        "last": "Polzehl",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sebastian",
+                        "middle": [],
+                        "last": "Moller",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2021,
+                "venue": "Proceedings of the Workshop on Human Evaluation of NLP Systems (HumEval)",
+                "volume": "",
+                "issue": "",
+                "pages": "86--96",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Neslihan Iskender, Tim Polzehl, and Sebastian Moller. 2021. Reliability of human evaluation for text summarization: Lessons learned and challenges ahead. In: Proceedings of the Workshop on Human Evaluation of NLP Systems (HumEval). 2021. p. 86-96.",
+                "links": null
+            },
+            "BIBREF12": {
+                "ref_id": "b12",
+                "title": "Is ChatGPT a good translator? A preliminary study",
+                "authors": [
+                    {
+                        "first": "Wenxiang",
+                        "middle": [],
+                        "last": "Jiao",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2023,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2301.08745"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Wenxiang Jiao, et al. 2023. Is ChatGPT a good translator? A preliminary study. arXiv preprint arXiv:2301.08745, 2023.",
+                "links": null
+            },
+            "BIBREF13": {
+                "ref_id": "b13",
+                "title": "Towards universal accessibility on the web: do grammar checking tools improve text readability?",
+                "authors": [
+                    {
+                        "first": "Mohan",
+                        "middle": [],
+                        "last": "Hitesh",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Evelyn",
+                        "middle": [],
+                        "last": "Kaushik",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Frode",
+                        "middle": [
+                            "Eika"
+                        ],
+                        "last": "Eika",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Sandnes",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Universal Access in Human-Computer Interaction. Design Approaches and Supporting Technologies: 14th International Conference, UAHCI 2020, Held as Part of the 22nd HCI International Conference",
+                "volume": "2020",
+                "issue": "",
+                "pages": "272--288",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Hitesh Mohan Kaushik, Evelyn Eika, and Frode Eika Sandnes. 2020. Towards universal accessibility on the web: do grammar checking tools improve text readability?. In: Universal Access in Human-Computer Interaction. Design Ap- proaches and Supporting Technologies: 14th International Conference, UAHCI 2020, Held as Part of the 22nd HCI International Conference, HCII 2020, Copen- hagen, Denmark, July 19-24, 2020, Proceedings, Part I 22. Springer International Publishing, 2020. p. 272-288.",
+                "links": null
+            },
+            "BIBREF14": {
+                "ref_id": "b14",
+                "title": "Evaluation of automatic text summarizations based on human summaries",
+                "authors": [
+                    {
+                        "first": "Farshad",
+                        "middle": [],
+                        "last": "Kiyoumarsi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2015,
+                "venue": "Procedia-Social and Behavioral Sciences",
+                "volume": "192",
+                "issue": "",
+                "pages": "83--91",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Farshad Kiyoumarsi. 2015. Evaluation of automatic text summarizations based on human summaries. Procedia-Social and Behavioral Sciences, 2015, 192: 83-91.",
+                "links": null
+            },
+            "BIBREF15": {
+                "ref_id": "b15",
+                "title": "Real Time Micro-blog Summarization Based on Hadoop/HBase",
+                "authors": [
+                    {
+                        "first": "Sanghoon",
+                        "middle": [],
+                        "last": "Lee",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sunny",
+                        "middle": [],
+                        "last": "Shakya",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Raj",
+                        "middle": [],
+                        "last": "Sunderraman",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Saeid",
+                        "middle": [],
+                        "last": "Belkasim",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2013,
+                "venue": "Proceedings of the 2013 IEEE/WIC/ACM International Joint Conferences on Web Intelligence (WI) and Intelligent Agent Technologies (IAT) -Volume 03 (WI-IAT '13)",
+                "volume": "",
+                "issue": "",
+                "pages": "46--49",
+                "other_ids": {
+                    "DOI": [
+                        "10.1109/WI-IAT.2013.148"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Sanghoon Lee, Sunny Shakya, Raj Sunderraman, and Saeid Belkasim. 2013. Real Time Micro-blog Summarization Based on Hadoop/HBase. In Proceedings of the 2013 IEEE/WIC/ACM International Joint Conferences on Web Intelligence (WI) and Intelligent Agent Technologies (IAT) -Volume 03 (WI-IAT '13). IEEE Computer Society, USA, 46-49. https://doi.org/10.1109/WI-IAT.2013.148",
+                "links": null
+            },
+            "BIBREF16": {
+                "ref_id": "b16",
+                "title": "Rouge: A package for automatic evaluation of summaries",
+                "authors": [
+                    {
+                        "first": "Chin-Yew",
+                        "middle": [],
+                        "last": "Lin",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2004,
+                "venue": "Text summarization branches out",
+                "volume": "",
+                "issue": "",
+                "pages": "74--81",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Chin-Yew Lin. 2004. Rouge: A package for automatic evaluation of summaries. In: Text summarization branches out. 2004. p. 74-81.",
+                "links": null
+            },
+            "BIBREF17": {
+                "ref_id": "b17",
+                "title": "Generating aspect-oriented multi-document summarization with event-aspect model",
+                "authors": [
+                    {
+                        "first": "Peng",
+                        "middle": [],
+                        "last": "Li",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yinglin",
+                        "middle": [],
+                        "last": "Wang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Wei",
+                        "middle": [],
+                        "last": "Gao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jing",
+                        "middle": [],
+                        "last": "Jiang",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2011,
+                "venue": "Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP '11)",
+                "volume": "",
+                "issue": "",
+                "pages": "1137--1146",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Peng Li, Yinglin Wang, Wei Gao, and Jing Jiang. 2011. Generating aspect-oriented multi-document summarization with event-aspect model. In Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP '11). Association for Computational Linguistics, USA, 1137-1146.",
+                "links": null
+            },
+            "BIBREF18": {
+                "ref_id": "b18",
+                "title": "Do We Still Need Human Assessors? Prompt-Based GPT-3 User Simulation in Conversational AI",
+                "authors": [
+                    {
+                        "first": "Selina",
+                        "middle": [],
+                        "last": "Meyer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "David",
+                        "middle": [],
+                        "last": "Elsweiler",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Bernd",
+                        "middle": [],
+                        "last": "Ludwig",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Marcos",
+                        "middle": [],
+                        "last": "Fernandez-Pichel",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "David",
+                        "middle": [
+                            "E"
+                        ],
+                        "last": "Losada",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2022,
+                "venue": "Proceedings of the 4th Conference on Conversational User Interfaces (CUI '22)",
+                "volume": "8",
+                "issue": "",
+                "pages": "1--6",
+                "other_ids": {
+                    "DOI": [
+                        "10.1145/3543829.3544529"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Selina Meyer, David Elsweiler, Bernd Ludwig, Marcos Fernandez-Pichel, and David E. Losada. 2022. Do We Still Need Human Assessors? Prompt-Based GPT-3 User Simulation in Conversational AI. In Proceedings of the 4th Conference on Conversational User Interfaces (CUI '22). Association for Computing Machinery, New York, NY, USA, Article 8, 1-6. https://doi.org/10.1145/3543829.3544529",
+                "links": null
+            },
+            "BIBREF19": {
+                "ref_id": "b19",
+                "title": "An assessment of the accuracy of automatic evaluation in summarization",
+                "authors": [
+                    {
+                        "first": "Karolina",
+                        "middle": [],
+                        "last": "Owczarzak",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2012,
+                "venue": "Proceedings of workshop on evaluation metrics and system comparison for automatic summarization",
+                "volume": "",
+                "issue": "",
+                "pages": "1--9",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Karolina Owczarzak, et al. 2012. An assessment of the accuracy of automatic evaluation in summarization. In: Proceedings of workshop on evaluation metrics and system comparison for automatic summarization. 2012. p. 1-9.",
+                "links": null
+            },
+            "BIBREF20": {
+                "ref_id": "b20",
+                "title": "HIDE: Short IDs for Robust and Anonymous Linking of Users Across Multiple Sessions in Small HCI Experiments",
+                "authors": [
+                    {
+                        "first": "Frode",
+                        "middle": [],
+                        "last": "Eika",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sandnes",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2021,
+                "venue": "Extended Abstracts of the 2021 CHI Conference on Human Factors in Computing Systems (CHI EA '21)",
+                "volume": "326",
+                "issue": "",
+                "pages": "1--6",
+                "other_ids": {
+                    "DOI": [
+                        "10.1145/3411763.3451794"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Frode Eika Sandnes. 2021. HIDE: Short IDs for Robust and Anonymous Linking of Users Across Multiple Sessions in Small HCI Experiments. In Extended Abstracts of the 2021 CHI Conference on Human Factors in Computing Systems (CHI EA '21). Association for Computing Machinery, New York, NY, USA, Article 326, 1-6. https://doi.org/10.1145/3411763.3451794",
+                "links": null
+            },
+            "BIBREF21": {
+                "ref_id": "b21",
+                "title": "ChatGPT: The End of Online Exam Integrity?",
+                "authors": [
+                    {
+                        "first": "Teo",
+                        "middle": [],
+                        "last": "Susnjak",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2022,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "arXiv": [
+                        "arXiv:2212.09292"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Teo Susnjak. 2022. ChatGPT: The End of Online Exam Integrity?. arXiv preprint arXiv:2212.09292, 2022.",
+                "links": null
+            }
+        },
+        "ref_entries": {
+            "FIGREF0": {
+                "uris": null,
+                "fig_num": "1",
+                "text": "Figure 1: Box and Whisker plot of the summarization engine evaluation results (ROUGE-L F-scores). N = 30.",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF1": {
+                "uris": null,
+                "fig_num": "2",
+                "text": "Figure 2: Diverging stacked bar graph summarizing the results of the human assessment of automatic summaries (N = 22).",
+                "type_str": "figure",
+                "num": null
+            }
+        }
+    }
+}

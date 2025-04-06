@@ -1,0 +1,2250 @@
+{
+    "paper_id": "2021",
+    "header": {
+        "generated_with": "S2ORC 1.0.0",
+        "date_generated": "2025-02-14T13:47:33.050168Z"
+    },
+    "title": "Reliability of human evaluation for text summarization: Lessons learned and challenges ahead",
+    "authors": [
+        {
+            "first": "Neslihan",
+            "middle": [],
+            "last": "Iskender",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "Quality and Usability Lab",
+                "institution": "Technische Universit\u00e4t Berlin",
+                "location": {}
+            },
+            "email": "neslihan.iskender@tu-berlin.de"
+        },
+        {
+            "first": "Tim",
+            "middle": [],
+            "last": "Polzehl",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "Quality and Usability Lab",
+                "institution": "Technische Universit\u00e4t Berlin",
+                "location": {}
+            },
+            "email": "tim.polzehl1@tu-berlin.de"
+        },
+        {
+            "first": "Sebastian",
+            "middle": [],
+            "last": "M\u00f6ller",
+            "suffix": "",
+            "affiliation": {
+                "laboratory": "Quality and Usability Lab",
+                "institution": "Technische Universit\u00e4t Berlin",
+                "location": {}
+            },
+            "email": "sebastian.moeller@tu-berlin.de"
+        }
+    ],
+    "year": "",
+    "venue": null,
+    "identifiers": {},
+    "abstract": "Only a small portion of research papers with human evaluation for text summarization provide information about the participant demographics, task design, and experiment protocol. Additionally, many researchers use human evaluation as gold standard without questioning the reliability or investigating the factors that might affect the reliability of the human evaluation. As a result, there is a lack of best practices for reliable human summarization evaluation grounded by empirical evidence. To investigate human evaluation reliability, we conduct a series of human evaluation experiments, provide an overview of participant demographics, task design, experimental set-up and compare the results from different experiments. Based on our empirical analysis, we provide guidelines to ensure the reliability of expert and non-expert evaluations, and we determine the factors that might affect the reliability of the human evaluation.",
+    "pdf_parse": {
+        "paper_id": "2021",
+        "_pdf_hash": "",
+        "abstract": [
+            {
+                "text": "Only a small portion of research papers with human evaluation for text summarization provide information about the participant demographics, task design, and experiment protocol. Additionally, many researchers use human evaluation as gold standard without questioning the reliability or investigating the factors that might affect the reliability of the human evaluation. As a result, there is a lack of best practices for reliable human summarization evaluation grounded by empirical evidence. To investigate human evaluation reliability, we conduct a series of human evaluation experiments, provide an overview of participant demographics, task design, experimental set-up and compare the results from different experiments. Based on our empirical analysis, we provide guidelines to ensure the reliability of expert and non-expert evaluations, and we determine the factors that might affect the reliability of the human evaluation.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Abstract",
+                "sec_num": null
+            }
+        ],
+        "body_text": [
+            {
+                "text": "Evaluation of summarization quality plays a crucial role in the development of summarization tools since a well-executed evaluation can help to determine whether the system has adequately outperformed the existing tools in terms of quality and speed or whether the designed properties work as intended (van der Lee et al., 2018; Lloret et al., 2018) . The human evaluation has been the most trusted evaluation method and used as gold standard for summarization evaluation (Gatt and Krahmer, 2018; Celikyilmaz et al., 2020) . However, in recent years, some researchers have provided an extensive overview of papers with human evaluation and pointed out that there is a lack of standardized procedures leading to mostly non-comparable and non-reproducible results (van der Lee et al., 2019; Belz et al., 2020; Howcroft et al., 2020; van der Lee et al., 2021) . Howcroft et al. (2020) have reported based on the analysis 165 papers with human evaluation published in INLG and ENLG that more than 200 different terms have been used for human evaluation, which results in lack of clarity in reports and extreme diversity in approaches. van der Lee et al. (2021) have analyzed 304 research papers published in INLG and ACL conferences and reported that only 3% of 304 analyzed papers described the demographics, 6% provided the details about task design, 19% reported any inter-rater agreement score, 23% conducted a statistical analysis for human evaluation, and 32% reported the number of different evaluators per item, where 92% of the reported cases only one rating is used.",
+                "cite_spans": [
+                    {
+                        "start": 311,
+                        "end": 328,
+                        "text": "Lee et al., 2018;",
+                        "ref_id": "BIBREF19"
+                    },
+                    {
+                        "start": 329,
+                        "end": 349,
+                        "text": "Lloret et al., 2018)",
+                        "ref_id": "BIBREF23"
+                    },
+                    {
+                        "start": 472,
+                        "end": 496,
+                        "text": "(Gatt and Krahmer, 2018;",
+                        "ref_id": "BIBREF11"
+                    },
+                    {
+                        "start": 497,
+                        "end": 522,
+                        "text": "Celikyilmaz et al., 2020)",
+                        "ref_id": "BIBREF4"
+                    },
+                    {
+                        "start": 771,
+                        "end": 788,
+                        "text": "Lee et al., 2019;",
+                        "ref_id": "BIBREF18"
+                    },
+                    {
+                        "start": 789,
+                        "end": 807,
+                        "text": "Belz et al., 2020;",
+                        "ref_id": "BIBREF2"
+                    },
+                    {
+                        "start": 808,
+                        "end": 830,
+                        "text": "Howcroft et al., 2020;",
+                        "ref_id": "BIBREF13"
+                    },
+                    {
+                        "start": 831,
+                        "end": 856,
+                        "text": "van der Lee et al., 2021)",
+                        "ref_id": "BIBREF32"
+                    },
+                    {
+                        "start": 859,
+                        "end": 881,
+                        "text": "Howcroft et al. (2020)",
+                        "ref_id": "BIBREF13"
+                    },
+                    {
+                        "start": 1131,
+                        "end": 1156,
+                        "text": "van der Lee et al. (2021)",
+                        "ref_id": "BIBREF32"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "In this paper, we aim to contribute the human evaluation research as follows: 1) we conduct series of human evaluation with experts, crowd, and laboratory participants on two different data sets, 2) we report on the participant demographics, task design, and evaluation criteria 3) we demonstrate a comprehensive statistical analysis of human experiments, and 4) we provide guidelines to ensure the reliability of experts and non-experts and determine the factors affecting the human reliability grounded by the empirical evidence from our experiments. Data associated with this work is available at https://github.com/nesliskender/ reliability_humeval_summarization.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction",
+                "sec_num": "1"
+            },
+            {
+                "text": "Human evaluation of text summarization can be conducted either by linguistic experts or nonexperts such as laboratory participants or crowd workers. However, expert evaluation has been established as the gold standard in the summarization evaluation and the reliability of non-experts has been repeatedly questioned (Lloret et al., 2018) . Gillick and Liu (2010) have conducted a crowdsourcing experiment for summarization evaluation for the first time and concluded that crowd workers can not evaluate summary quality because of the non-correlation with experts. However, they did not report the number of crowd workers per summary. Fabbri et al. (2020) have compared the crowd ratings with expert ratings using five crowd workers per item. They have also reported that crowd ratings do not correlate with experts and emphasized the need for protocols for improving the human evaluation of summarization. Further, Gao et al. (2018) ; Falke et al. (2017) ; Fan et al. (2018) have used crowd workers to evaluate the quality of their automatic summarization systems without questioning the reliability of crowd workers.",
+                "cite_spans": [
+                    {
+                        "start": 316,
+                        "end": 337,
+                        "text": "(Lloret et al., 2018)",
+                        "ref_id": "BIBREF23"
+                    },
+                    {
+                        "start": 340,
+                        "end": 362,
+                        "text": "Gillick and Liu (2010)",
+                        "ref_id": "BIBREF12"
+                    },
+                    {
+                        "start": 634,
+                        "end": 654,
+                        "text": "Fabbri et al. (2020)",
+                        "ref_id": "BIBREF7"
+                    },
+                    {
+                        "start": 915,
+                        "end": 932,
+                        "text": "Gao et al. (2018)",
+                        "ref_id": "BIBREF10"
+                    },
+                    {
+                        "start": 935,
+                        "end": 954,
+                        "text": "Falke et al. (2017)",
+                        "ref_id": "BIBREF8"
+                    },
+                    {
+                        "start": 957,
+                        "end": 974,
+                        "text": "Fan et al. (2018)",
+                        "ref_id": "BIBREF9"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Related Work",
+                "sec_num": "2"
+            },
+            {
+                "text": "When we look at the approaches used for human summarization evaluation, they can be broadly classified into two categories: intrinsic and extrinsic evaluation (Jones and Galliers, 1996; Belz and Reiter, 2006; Steinberger and Je\u017eek, 2012) . In intrinsic evaluation, the summarization output's quality is measured based on the summary itself without considering the source text. Generally, it has been carried out as a pair comparison (compared to expert summaries) or using absolute scales without showing a reference summary (Jones and Galliers, 1996) . However, the extrinsic evaluation, called also task-based evaluation, aims to measure the summary's impact on the completion of some task based on the source document (Mani, 2001) . Reiter and Belz (2009) have argued that the extrinsic evaluation is more useful than intrinsic because the summarization systems are developed to satisfy the information need from the source text in a condensed way, but van der Lee et al. (2021) have reported that only 3% of the papers presented an extrinsic evaluation.",
+                "cite_spans": [
+                    {
+                        "start": 170,
+                        "end": 185,
+                        "text": "Galliers, 1996;",
+                        "ref_id": "BIBREF16"
+                    },
+                    {
+                        "start": 186,
+                        "end": 208,
+                        "text": "Belz and Reiter, 2006;",
+                        "ref_id": "BIBREF1"
+                    },
+                    {
+                        "start": 209,
+                        "end": 237,
+                        "text": "Steinberger and Je\u017eek, 2012)",
+                        "ref_id": "BIBREF30"
+                    },
+                    {
+                        "start": 536,
+                        "end": 551,
+                        "text": "Galliers, 1996)",
+                        "ref_id": "BIBREF16"
+                    },
+                    {
+                        "start": 721,
+                        "end": 733,
+                        "text": "(Mani, 2001)",
+                        "ref_id": "BIBREF25"
+                    },
+                    {
+                        "start": 736,
+                        "end": 758,
+                        "text": "Reiter and Belz (2009)",
+                        "ref_id": "BIBREF29"
+                    },
+                    {
+                        "start": 964,
+                        "end": 981,
+                        "text": "Lee et al. (2021)",
+                        "ref_id": "BIBREF32"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Related Work",
+                "sec_num": "2"
+            },
+            {
+                "text": "Further, the quality criteria used in the human evaluation and the terminology used for describing these criteria had a high degree of variation, 200+ variations in terminology (Howcroft et al., 2020) . Researchers have used either the same terminology but evaluated something different or used different terminology but measured the same thing (Belz et al., 2020) . In most cases, they did not define the quality criteria they investigated or cite a reference for it, making it difficult to compare the results and draw conclusions across the papers. The scales for evaluation have also varied often, such as Likert (3, 4, 5, 6, 7, 10, 11-point) , categorical choice (Yes or No), or rank-based scale (van der Lee et al., 2021) .",
+                "cite_spans": [
+                    {
+                        "start": 177,
+                        "end": 200,
+                        "text": "(Howcroft et al., 2020)",
+                        "ref_id": "BIBREF13"
+                    },
+                    {
+                        "start": 345,
+                        "end": 364,
+                        "text": "(Belz et al., 2020)",
+                        "ref_id": "BIBREF2"
+                    },
+                    {
+                        "start": 617,
+                        "end": 646,
+                        "text": "(3, 4, 5, 6, 7, 10, 11-point)",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 710,
+                        "end": 727,
+                        "text": "Lee et al., 2021)",
+                        "ref_id": "BIBREF32"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Related Work",
+                "sec_num": "2"
+            },
+            {
+                "text": "So, human evaluation lacks structured, reliable evaluation practices, and the current way of reporting human evaluation in research papers generates non-comparable and non-reproducible results. We aim to contribute to human evaluation research for text summarization by determining the intrinsic and extrinsic quality in a reliable and reproducible way with our experiments in section 3.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Related Work",
+                "sec_num": "2"
+            },
+            {
+                "text": "As our source documents, we used the 67 unique post-query pairs from a telecommunication company's customer service forum in German, where customers ask questions about the company's products and services such as \"Where can I find my customer number\" or \"My internet is not working\". Each query had 6-10 corresponding forum posts, including the answers from other customers to provide a solution or at least some help to the customer problem. The average word count of the posts was 571.2, the shortest one with 150 words, and the longest one with 1006 words, where the average word count of the corresponding queries was 9.1, the shortest query with three, and the longest with 23 words.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Experiments",
+                "sec_num": "3"
+            },
+            {
+                "text": "We conducted series of human experiments on this data set shown in Table 1 in chronological order. In experiment 1, crowd workers created extractive summaries for 67 post-query pairs. In experiment 2, different crowd workers evaluated the quality of crowd-generated summaries, the output from experiment 1. Because of the high cost of human evaluation, we limited our evaluation data set for further experiments based on the overall quality ratings from experiment 2. From those, we selected 50 summaries within ten distinct quality groups ranging from lowest to highest scores (lowest group [1.667, 2] ; highest group (4.667, 5]), each represented by five summaries. We generated a stratified sample of the data set consisting of summaries with low, medium, and high quality. These summaries originated from 27 post-query pairs. This new data set, 27 post-query pairs with 50 summaries in varying qualities, has been evaluated by experts in experiment 3, by crowd workers in experiment 4, and by laboratory participants in experiment 5. In these experiments, the task design and the summaries were exactly the same to compare the effect of expertise (expert vs. nonexpert) and environment (lab vs. crowd) on the quality assessment. Further, we created machine summaries for the same 27 post-query pairs using the sumy 1 library to investigate the effect of summary generation method (human vs. machine) on the quality assessment. We applied TextRank algorithm (Mihalcea and Tarau, 2004) for machine summarization since it is one of the limited opensource German summarization algorithm and the most used unsupervised baseline in text summarization (Allahyari et al., 2017) . Experts have evaluated these machine summaries in experiment 7, crowd workers evaluated the summaries in experiment 8. Here, we did not ask laboratory participants to evaluate the machine summaries' quality since the comparisons of experiments 3, 4, and 5 revealed the insights regarding the environment's effect on the quality assessment. The experts also created the gold standard summaries for these 27 post-query pairs in experiment 6.",
+                "cite_spans": [
+                    {
+                        "start": 578,
+                        "end": 602,
+                        "text": "(lowest group [1.667, 2]",
+                        "ref_id": null
+                    },
+                    {
+                        "start": 1461,
+                        "end": 1487,
+                        "text": "(Mihalcea and Tarau, 2004)",
+                        "ref_id": "BIBREF27"
+                    },
+                    {
+                        "start": 1649,
+                        "end": 1673,
+                        "text": "(Allahyari et al., 2017)",
+                        "ref_id": "BIBREF0"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 73,
+                        "end": 74,
+                        "text": "1",
+                        "ref_id": "TABREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Experiments",
+                "sec_num": "3"
+            },
+            {
+                "text": "In human evaluation experiments, we applied both intrinsic and extrinsic approaches. As the literature reveals a high degree of variation in quality criteria used in human experiments (Belz et al., 2020; Howcroft et al., 2020; van der Lee et al., 2021) , we limited the intrinsic factors to six and the extrinsic factors to three. As the limitation criteria, we narrowed the scope of human evaluation from NLG to text summarization and adopted the commonly used quality metrics. Especially, we applied the criteria from the Document Understanding Conferences (DUC 2 ), which have been the forum for researchers in text summarization to compare methods and results. Additionally, we used a measure for overall quality to assess the summaries' total quality. While limiting the extrinsic quality factors, we focused on quality metrics for usefulness for the task and information need because these are the most commonly used criteria in NLG as reported 1 https://github.com/miso-belica/sumy 2 https://duc.nist.gov/ in (Howcroft et al., 2020) .",
+                "cite_spans": [
+                    {
+                        "start": 184,
+                        "end": 203,
+                        "text": "(Belz et al., 2020;",
+                        "ref_id": "BIBREF2"
+                    },
+                    {
+                        "start": 204,
+                        "end": 226,
+                        "text": "Howcroft et al., 2020;",
+                        "ref_id": "BIBREF13"
+                    },
+                    {
+                        "start": 227,
+                        "end": 252,
+                        "text": "van der Lee et al., 2021)",
+                        "ref_id": "BIBREF32"
+                    },
+                    {
+                        "start": 1016,
+                        "end": 1039,
+                        "text": "(Howcroft et al., 2020)",
+                        "ref_id": "BIBREF13"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Experiments",
+                "sec_num": "3"
+            },
+            {
+                "text": "So, we determined intrinsic quality using six different quality criteria: overall quality, defined as \"responsiveness evaluation\" in Louis and Nenkova (2013) , and the five readability (linguistic) measures (grammaticality, non-redundancy, referential clarity, focus, and structure & coherence) defined as in Dang (2005) . We evaluated the extrinsic quality using following three measures: summary usefulness defined as \"content responsiveness\" in Conroy and Dang ( 2008), source usefulness (in our case post usefulness, because our source documents are forum posts) defined as \"relevance assessment\" in Mani et al. (2002) , and summary informativeness defined as \"informativeness\" in Mani et al. (2002) . We conducted all our evaluations using a continuous scale, 5-point Mean Opinion Score (MOS) with the labels very good, good, moderate, bad, very bad, which is one of the most applied scales in subjective quality assessment (Streijl et al., 2016) .",
+                "cite_spans": [
+                    {
+                        "start": 133,
+                        "end": 157,
+                        "text": "Louis and Nenkova (2013)",
+                        "ref_id": "BIBREF24"
+                    },
+                    {
+                        "start": 309,
+                        "end": 320,
+                        "text": "Dang (2005)",
+                        "ref_id": "BIBREF6"
+                    },
+                    {
+                        "start": 604,
+                        "end": 622,
+                        "text": "Mani et al. (2002)",
+                        "ref_id": "BIBREF26"
+                    },
+                    {
+                        "start": 685,
+                        "end": 703,
+                        "text": "Mani et al. (2002)",
+                        "ref_id": "BIBREF26"
+                    },
+                    {
+                        "start": 929,
+                        "end": 951,
+                        "text": "(Streijl et al., 2016)",
+                        "ref_id": "BIBREF31"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Experiments",
+                "sec_num": "3"
+            },
+            {
+                "text": "We conducted all of the crowdsourcing experiments using Crowdeefoot_0 platform. Before each of our crowdsourcing experiment, we had test runs with the student workers who have acted like crowd workers and gave us feedback regarding the task design and understandability. For each new crowdsourcing experiment, we did at least ten or more alterations based on the students' feedback. Further, we payed the minimum hourly wage in Germany and determined payment based on our crowdsourcing experiments' estimated work duration.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowdsourcing Experiments",
+                "sec_num": "3.1"
+            },
+            {
+                "text": "For crowd worker selection, we developed a twostep qualification process for both crowd creation and evaluation. In the first step, crowd workers needed to pass the German language proficiency test provided by the Crowdee platform with a score of 0.9 and above (scale [0, 1]). In the second step, crowd workers needed to pass a semantic task-specific pre-qualification test.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Worker Selection",
+                "sec_num": "3.1.1"
+            },
+            {
+                "text": "In the pre-qualification test for summary creation, at first, we presented the summary creation guidelines: 1) Summary should be non-redundant, fluent, informative, and grammatically correct, 2) Summary should be readable and understandable, 3) Summary should be created by copy-pasting 3-5 sentences from forum posts, 4) Any alternation of the sentences and also writing new sentences were not allowed. We also presented an example of a good and bad summary generated for the same post-question pair. 103 out of 144 crowd workers were approved for the summary creation task. The criterion for approval was the ROUGE score of crowd workers' summaries, calculated with summaries created by linguists of the authors' team. Further, we manually evaluated the crowd worker's summaries with a low ROUGE score (ROUGE-1 < 0.4), and if the summary quality was still acceptable, their authors were approved.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Worker Selection",
+                "sec_num": "3.1.1"
+            },
+            {
+                "text": "In the pre-qualification test for summary evaluation, we gave a brief explanation of the summarization process, highlighting that the summaries were created by simple cutting-out sentences from forum multiple posts, and therefore may appear slightly unnatural. Crowd workers were then asked to evaluate the overall quality of four summaries (two very good, two very bad). The quality of these summaries have already been determined by the linguists of the authors' team on a 5-point MOS scale. For each exact rating match, crowd workers got 4 points, and for each point deviation, they got a point less, so deviations were linearly punished. 98 out of 150 crowd workers passed this qualification test with a point ratio >= 0.625.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Worker Selection",
+                "sec_num": "3.1.1"
+            },
+            {
+                "text": "In experiment 1, we instructed the crowd workers to create one extractive, 3-5 sentences long summary for each post-query pair using the same summary creation guidelines as in the pre-qualification test. To illustrate the guidelines, we presented crowd workers an example of a post-query pair and corresponding one good and one bad summary. Additionally, forum posts were shown as an itemized list of sentences in the creation process, so that each crowd worker only had to select and copy the specified sentences into a summary. Overall 76 unique crowd workers (41m, 35f, M age = 39.43) participated in the experiment 1. Four different crowd workers per post-query pair created 256 summaries for 67 post-query pairs after eliminating cheaters. The average work duration was 458.8 seconds, and total tasks (67 x 4) were completed in 46 hours.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Creation",
+                "sec_num": "3.1.2"
+            },
+            {
+                "text": "In experiment 2, the crowd workers evaluated the quality of 256 crowd summaries generated in experiment 1. First, a brief explanation of the summary creation process was shown with an example of a query, forum posts, and a summary to provide background information. Next, the crowd workers were asked to evaluate two summaries regarding the overall quality and the five intrinsic quality measures in the following order: 1) overall quality, 2) grammaticality, 3) referential clarity, 4) nonredundancy, 5) focus and 6) structure & coherence. Three different crowd workers evaluated each summary, and a single crowdsourcing task included the evaluation of two summaries.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "3.1.3"
+            },
+            {
+                "text": "The overall quality was rated first to avoid influencing it by more detailed aspects. The evaluation of each aspect was done on a separated page, which contained a definition of the particular aspect (illustrated with an example), a summary, and a 5point MOS scale (very good, good, moderate, bad, very bad) as radio buttons. To have an intrinsic (summary-focused) evaluation, crowd workers did not see the corresponding original post-query pair. Overall 86 crowd worker (49m, 37f, M age = 38.8) completed the summary evaluation task with an average work duration of 356.36 seconds within 12 days. We noticed that conducting a crowdsourcing experiment at Christmas time has slowed the total task completion duration. Further, crowd workers had the chance to give some feedback at the end of the task, and multiple crowd workers commented about the summary content, such as \"I don't find the summary very informative overall, so the overall rating was worse than the individual ratings.\".",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "3.1.3"
+            },
+            {
+                "text": "Therefore, we added questions regarding the summary's content quality to experiment 4. We used the same instructions and task description as in experiment 2 and added three extrinsic quality measures showing the original corresponding post-query pair to evaluate the summary's content quality. Also, we increased the number of unique crowd workers to 24 for each summary following the recommendations of Naderi et al. (2018) for a robust crowdsourcing study. Since reading the summary and all the source text increases the reading effort, we asked crowd workers to rate the quality of one summary in one task.",
+                "cite_spans": [
+                    {
+                        "start": 404,
+                        "end": 424,
+                        "text": "Naderi et al. (2018)",
+                        "ref_id": "BIBREF28"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "3.1.3"
+            },
+            {
+                "text": "After answering the same six questions explained in the above paragraphs, we asked crowd workers to evaluate the following extrinsic quality measures: 7) summary usefulness, 8) post usefulness, 9) summary informativeness. Again, the evaluation of each aspect was done on a separate page, which contained the definition of the particular aspect with an example, the post-query pair, the summary, and the answer options as the 5-point MOS scale. Overall, 46 crowd workers (19f, 27m, M age = 43) completed the evaluation of selected 50 summary with an average work duration of 249.88 seconds. The total of 1200 tasks (50 summary x 24 crowd worker) was published in batches, and each batch was completed within one day.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "3.1.3"
+            },
+            {
+                "text": "In our last crowdsourcing experiment, experiment 8, we asked crowd workers to evaluate the quality of 27 TextRank summaries using the same task design as in experiment 4. Overall, 21 crowd workers (15m, 6f, M age = 26.3) participated in experiment 8 with an average task completion duration of 287.92 seconds, completing total tasks within three days. Our analysis from experiments 3 and 4 has shown that 8-10 crowd workers per summary delivers results corresponding to laboratory experiments. Therefore, we collected evaluations from 10 different crowd workers per summary.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "3.1.3"
+            },
+            {
+                "text": "In experiment 5, we recruited participants via a local participant pool for the summary quality evaluation experiment in a controlled laboratory environment. We accepted only the native German speakers and did not perform any other pre-qualification. The experiment design and the summaries were exactly the same as in experiment 4, where 24 different laboratory participants evaluated the nine different quality aspects of 50 summaries. They also completed the task using Crowdee platform to avoid any user interface biases.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Laboratory Experiment",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "In addition to instructions of experiment 4, all the participants were also instructed in written form before the experiment start and all of the participant's questions regarding the task's understandability were answered immediately by the lab instructor. As expected, the participants were also physically present in a controlled laboratory environment during the task. The experiment duration was set to one hour, and the participants were asked to evaluate as many summaries as they can in an hour. Overall, 71 participants (38m, 33f, M age = 29.3) completed the experiment 5, evaluating 12 summaries per hour on average within 51 days.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Laboratory Experiment",
+                "sec_num": "3.2"
+            },
+            {
+                "text": "In experiment 3, two experts who are Masters students in linguistics evaluated the same selected 50 summaries with the same task design as in experiment 4. At first, they evaluated the summaries separately using Crowdee platform. After the first separate evaluation round, the inter-rater agreement scores, Cohen's \u03ba, showed that the experts often diverted in their assessment. To reach consensus among experts, we followed an iterative approach similar to the Delphi method (Linstone et al., 1975) and arranged physical follow-up meetings with experts which we refer as mediation meetings.",
+                "cite_spans": [
+                    {
+                        "start": 475,
+                        "end": 498,
+                        "text": "(Linstone et al., 1975)",
+                        "ref_id": "BIBREF21"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Expert Experiments",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "In these meetings, experts discussed the reasons and backgrounds of their ratings for each summary in case of disagreement and eventually aligned in case of consensus. Eventually, acceptable interrater agreement scores were reached for nine quality measures. One should keep in mind that elaborated follow-up meetings principally lead to the increasing convergence of expert ratings. We did not test for a saturation effect with this observation, but the effort allocated in this step clearly influences the expert rating values.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Expert Experiments",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "In experiment 6, the same experts created gold standard summaries for the corresponding source post-query pairs of 27 TextRank summaries using the same task design as in experiment 1. Lastly, in experiment 7, the same experts evaluated the quality of 27 TextRank summaries following the same iterative approach and same task design as in experiment 3.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Expert Experiments",
+                "sec_num": "3.3"
+            },
+            {
+                "text": "Results are presented for the mean opinion scores (MOS) of overall quality (OQ), grammaticality (GR), non-redundancy (NR), referential clarity (RC), focus (FO), structure & coherence (SC), summary usefulness (SU), post usefulness (PU) and summary informativeness (SI) collected in experiments 2, 3, 4, 5, 7, and 8 (see table 1 ). We will refer to these measurements by their abbreviations in this section. Further, we use non-parametric statistics in our analysis because of the non-normal distribution of some measurements in these experiments. In this section, we compare the results from experiment 3 with experiment 7 to analyze expert reliability. Following the recommendations of van der Lee et al. ( 2019), we calculated the raw agreement in percentage and Cohen's \u03ba as inter-rater agreement scores.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 325,
+                        "end": 326,
+                        "text": "1",
+                        "ref_id": "TABREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Results",
+                "sec_num": "4"
+            },
+            {
+                "text": "Looking at Table 2 , we observe that the mediation meetings increased the agreement scores enormously both for the evaluation of crowd and TextRank summaries. Only after the mediation meetings, acceptable Cohen's \u03ba scores between experts could be achieved with all measures having substantial (0.6-0.8] or almost perfect agreement (0.80-1.0] for all measures except for NR, PU, and SI being weak in crowd summary evaluation (0.40-0.60] (Landis and Koch, 1977) .",
+                "cite_spans": [
+                    {
+                        "start": 448,
+                        "end": 459,
+                        "text": "Koch, 1977)",
+                        "ref_id": "BIBREF17"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 17,
+                        "end": 18,
+                        "text": "2",
+                        "ref_id": "TABREF1"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Results",
+                "sec_num": "4"
+            },
+            {
+                "text": "For TextRank summaries, the increase is considerably higher than the crowd summaries. Since the same experts evaluated the TextRank summaries under the same experimental conditions as in experiment 3, we can conclude that the characteristics of machine-generated summaries such as unnaturalness or non-fluency constitute a challenge even for experts before mediation. Further, the TextRank summaries included usually same kind of mistakes which made it easier for experts to agree on a specific evaluation scheme for each evaluation criteria during mediation sessions, leading to higeher agreement in comparison to crowd summaries.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Results",
+                "sec_num": "4"
+            },
+            {
+                "text": "The effect of mediation on the inter-rater agreement scores shows clearly that the mediation meetings are necessary for reliable expert evaluation, especially when evaluating machine-generated sum-maries. We plan to use the specific evaluation criteria shaped during expert mediation sessions to improve the task design in future work.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Results",
+                "sec_num": "4"
+            },
+            {
+                "text": "This section compares the results from experiment 2 with experiment 4 to measure the re-test reliability of crowd experiments. To do so, we calculated the Spearman correlations between the crowd evaluations from experiment 2 (3 crowd workers per item) and experiment 4 (24 crowd workers per item) for the six intrinsic measures. To have the same number of crowd workers per summary as in experiment 2, we selected the first three evaluations per summary from experiment 4. The black circles in Figure 1a show the correlation between these first three crowd evaluations from experiment 4 and crowd evaluation from experiment 2. The correlation coefficients range from 0.497 to 0.587 for all six measures, indicating a moderate re-test reliability of crowd evaluation.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 501,
+                        "end": 503,
+                        "text": "1a",
+                        "ref_id": "FIGREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "4.1.2"
+            },
+            {
+                "text": "However, choosing the first 3 out of 24 crowd raters for correlation analysis is neither a conscious nor reliable choice. Would we still get the same correlations if some of the remaining 21 crowd workers would have completed the task before the first three considered above? To investigate this, we randomized 100 times the order of 24 crowd evaluations and selected the first three evaluations to correlate them with the evaluation from experiment 2. Figure 1a shows the scatter plots for these correlations, ranging from weak to strong for all six measures. We see a noticeable difference between the initial correlations (black circles in Figure 1a ) and randomizations. Here, we observed that the correlations ranged from 0.2 to 0.75, showing that the crowdsourcing experiments with three crowd workers per summary still include high degree of unpredictability and can only be moderately reliable.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 460,
+                        "end": 462,
+                        "text": "1a",
+                        "ref_id": "FIGREF0"
+                    },
+                    {
+                        "start": 650,
+                        "end": 652,
+                        "text": "1a",
+                        "ref_id": "FIGREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "4.1.2"
+            },
+            {
+                "text": "If we increase the number of crowd workers per item, can we overcome this unpredictability? To investigate this, we divided the existing data from experiment 4 into two random groups, two groups each with 12 crowd workers per item, and calculated Spearman correlations between them. Figure 1b shows the correlation between these two randomized groups for the nine quality measures. In comparison to Figure 1a , the slope of randomized correlations in Figure 1b is lower and the mean correlation of randomizations is very strong except for PU and SI which are strong (\u03c1 OQ = 0.874, \u03c1 GR = 0.858, \u03c1 N R = 0.799, \u03c1 RC = 0.857, \u03c1 F O = 0.815, \u03c1 SC = 0.874, \u03c1 SU = 0.848, \u03c1 P U = 0.626, \u03c1 SI = 0.793).",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 290,
+                        "end": 292,
+                        "text": "1b",
+                        "ref_id": "FIGREF0"
+                    },
+                    {
+                        "start": 406,
+                        "end": 408,
+                        "text": "1a",
+                        "ref_id": "FIGREF0"
+                    },
+                    {
+                        "start": 458,
+                        "end": 460,
+                        "text": "1b",
+                        "ref_id": "FIGREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "4.1.2"
+            },
+            {
+                "text": "This result proves that the reliability of crowdsourcing experiments depends on the number of crowd workers per item and reliable crowdsourcing results cannot be achieved with three crowd workers per item.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Crowd Evaluation",
+                "sec_num": "4.1.2"
+            },
+            {
+                "text": "To investigate the effect of expertise and environment on the human summarization evaluation, we compare the results from experts (experiment 3), crowdsourcing (experiment 4), and laboratory (experiment 5) experiments, which are conducted on the same data set with the same task design.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Effect of Expertise and Environment",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "Figure 2 shows the boxplots of expert, crowd, and laboratory ratings for nine quality measures. Here, we see that the experts used the upper end of the scale more often than the non-experts and gave higher ratings on average. Further, the non-expert evaluations are slightly negatively skewed using a smaller portion of the scale.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 7,
+                        "end": 8,
+                        "text": "2",
+                        "ref_id": "FIGREF1"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Effect of Expertise and Environment",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "To explore if these differences statistically significant, we calculated the non-parametric ANOVA, Kruskal-Wallis Test, between expert, crowd, and laboratory ratings. The test results revealed no significant difference between the expert and crowd evaluations except for PU and between the crowd and laboratory except for SI. However, the expert evaluations differed significantly from laboratory evaluations. Experts gave significantly higher ratings than the laboratory participants for all measures except for SU and SI. Here, we observe that significant differences exist only between the intrinsic evaluations indicating that the intrinsic evaluations require more expertise than the extrinsic evaluation.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Effect of Expertise and Environment",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "Additionally, we calculated the Spearman correlations of expert evaluations with crowd and laboratory for all nine measures as shown in Figure 3 . We found that the correlation magnitudes between ex- pert and laboratory and between expert and crowd were very similar, ranging from moderate to very strong. However, the correlations between crowd and lab were very strong except for PU and remarkably higher than the correlations with experts. These results show that the environment does not have a significant effect on human evaluation, but the level of expertise affects the human evaluation.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 143,
+                        "end": 144,
+                        "text": "3",
+                        "ref_id": "FIGREF2"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Effect of Expertise and Environment",
+                "sec_num": "4.2"
+            },
+            {
+                "text": "To analyze the effect of the data quality itself on human evaluation, we compare the correlations between expert (experiment 3) and crowd (experiment 4) for crowd-generated summaries with the correlation between expert (experiment 7) and crowd (experiment 8) for TextRank-generated summaries. On average, the correlations for TextRank summaries for nine quality measures were 0.12 points lower than the crowd summaries. To determine if this is a significant difference, we applied Zou's confidence intervals test for independent variables (Zou, 2007) and found out that the differences were not statistically significant except for SC.",
+                "cite_spans": [
+                    {
+                        "start": 539,
+                        "end": 550,
+                        "text": "(Zou, 2007)",
+                        "ref_id": "BIBREF34"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Effect of Data Quality",
+                "sec_num": "4.3"
+            },
+            {
+                "text": "Further, we calculated non-parametric T-test, the Mann-Whitney U test, between crowd and expert ratings for TextRank summaries. The results revealed that the crowd workers rated OQ, RC, FO, SU, and PU of TextRank summaries significantly lower than the experts. In contrast, when evaluating crowd summaries, crowd ratings did not differ significantly from experts except for PU. This result indicates that crowd workers tend to give lower ratings than the experts for machine-generated summaries. However, the summary generation method does not affect the rank-order of their ratings, and the correlation between crowd and expert do not differ from each other significantly both for humanand machine-generated summaries. The goodness of automatic summarization evaluation metrics is generally measured by their correlation to human evaluations, usually expert evaluations (Bhandari et al., 2020) . In this section, we compare the correlations of commonly used automatic metrics ROUGE (Lin, 2004) and BERTScore (Zhang* et al., 2020) with expert and crowd evaluations for TextRank summaries to find out if the crowd workers can be used instead of experts. As human evaluation measures, we only considered the OQ, SU, and SI because the automatic metrics are content-based metrics and should rather be compared to content-based human evaluations (Lloret et al., 2013) . Table 3 shows the correlations of ROUGE and BERTScore with OQ, SU, and SI measured by experts and crowd. To determine if these correlation differences are significant, we applied Zou's confidence intervals test for overlapping dependent variables and found out that there is no significant difference between any correlation. This result indicates that crowd workers can be used instead of experts to determine the goodness of automatic metrics.",
+                "cite_spans": [
+                    {
+                        "start": 871,
+                        "end": 894,
+                        "text": "(Bhandari et al., 2020)",
+                        "ref_id": "BIBREF3"
+                    },
+                    {
+                        "start": 983,
+                        "end": 994,
+                        "text": "(Lin, 2004)",
+                        "ref_id": "BIBREF20"
+                    },
+                    {
+                        "start": 1009,
+                        "end": 1030,
+                        "text": "(Zhang* et al., 2020)",
+                        "ref_id": "BIBREF33"
+                    },
+                    {
+                        "start": 1342,
+                        "end": 1363,
+                        "text": "(Lloret et al., 2013)",
+                        "ref_id": "BIBREF22"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 1372,
+                        "end": 1373,
+                        "text": "3",
+                        "ref_id": "TABREF3"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Effect of Data Quality",
+                "sec_num": "4.3"
+            },
+            {
+                "text": "In this paper, we report a comparative analysis of series of human evaluation experiments with crowd workers, laboratory participants, and experts on two different data sets to determine the reliability of human evaluation for text summarization.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion and Future Work",
+                "sec_num": "5"
+            },
+            {
+                "text": "However, the research papers with expert evaluations for summarization have not reported any mediation meetings, let alone only 19 % reported the inter-rater agreement scores in the range of 0.3-0.5 (van der Lee et al., 2021) . This raises the question of expert reliability, and to avoid that, we recommend having mediation meetings with experts for reliable expert evaluation based on our results in section 4.1.1. With our analysis, we showed that mediation meetings are elementary to assure the reliability of expert evaluations for all quality measures.",
+                "cite_spans": [
+                    {
+                        "start": 208,
+                        "end": 225,
+                        "text": "Lee et al., 2021)",
+                        "ref_id": "BIBREF32"
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion and Future Work",
+                "sec_num": "5"
+            },
+            {
+                "text": "Further, we found out that the number of crowd workers per item determines the crowd evaluation's reliability. van der Lee et al. (2021) showed only 57 % of papers specified number of evaluators and the median was 3 among the papers which have reported the evaluator number. But our analysis in Section 4.1.2 showed that when using crowdsourcing, three crowd workers per item can only deliver moderately reliable results and around ten or more different crowd workers should evaluate each summary. This result is also inline with our previous findings in Iskender et al. (2020b,a) .",
+                "cite_spans": [
+                    {
+                        "start": 111,
+                        "end": 136,
+                        "text": "van der Lee et al. (2021)",
+                        "ref_id": "BIBREF32"
+                    },
+                    {
+                        "start": 555,
+                        "end": 580,
+                        "text": "Iskender et al. (2020b,a)",
+                        "ref_id": null
+                    }
+                ],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion and Future Work",
+                "sec_num": "5"
+            },
+            {
+                "text": "While the environment (crowd vs. lab) does not affect the human evaluations, the level of expertise might have affected the human evaluation. Although there are mostly strong correlations between the experts and non-experts, their evaluations do not match 100%. Depending on the evaluation aim or the end-user group of the summarization system, the evaluator's expertise should be determined, e.g., summarization systems developed for naive end-users should be evaluated by the naive end-users rather than the experts, and expert systems should be evaluated by linguistic experts.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion and Future Work",
+                "sec_num": "5"
+            },
+            {
+                "text": "Additionally, the summary generation method (human vs. machine) might cause a bias in crowd assessments. Because of machine summaries' unnaturalness, the crowd workers tended to rate machine summaries lower than the experts. The feedback that the summaries were very \"unnatural\" and \"robotic\" from the crowd workers in experiment 8 also confirms this finding. But still, crowd workers can be used as a direct substitute for experts to determine the goodness of automatic evaluation metrics developed for machine summaries.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion and Future Work",
+                "sec_num": "5"
+            },
+            {
+                "text": "However, this paper has some limitations regarding the data set and task design. We used one task design with a single rating scale (5-point MOS scale) and the same set of definitions and explanations for our evaluation criteria in all our experiments, which were conducted on small sized data sets. In future work, we plan to include different human evaluation criteria, compare different rating scales with each other, conduct A/B testing with a second task design, which includes improved definitions of evaluation criteria based on the expert mediation sessions, and expand the data set size to increase the statistical power of our analysis. Additionally, we plan to conduct virtual mediation sessions between two or three crowd workers to find out if we can reach similar results to experts with a small number of crowd workers.",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Conclusion and Future Work",
+                "sec_num": "5"
+            },
+            {
+                "text": "Despite the limitations of our paper, we believe that this paper makes a significant contribution to human evaluation research of text summarization. As Table 1 demonstrates, the time and organizational efforts and the cost of human experiments can be enormous. Especially, conducting laboratory and expert experiments required high organizational effort, and these experiments were completed in months while crowdsourcing experiments usually were finished in a couple of days. This shows how burdensome and time-consuming conducting human evaluation can be, which is a great challenge in a fast-moving field like summarization. Therefore, finding reliable ways of using crowdsourcing can be a promising solution and we hope to see more research in this field.",
+                "cite_spans": [],
+                "ref_spans": [
+                    {
+                        "start": 159,
+                        "end": 160,
+                        "text": "1",
+                        "ref_id": "TABREF0"
+                    }
+                ],
+                "eq_spans": [],
+                "section": "Conclusion and Future Work",
+                "sec_num": "5"
+            },
+            {
+                "text": "https://www.crowdee.com/",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "",
+                "sec_num": null
+            }
+        ],
+        "back_matter": [],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "b0",
+                "title": "Text summarization techniques: A brief survey",
+                "authors": [
+                    {
+                        "first": "Mehdi",
+                        "middle": [],
+                        "last": "Allahyari",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Seyed",
+                        "middle": [],
+                        "last": "Amin Pouriyeh",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Mehdi",
+                        "middle": [],
+                        "last": "Assefi",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Saeid",
+                        "middle": [],
+                        "last": "Safaei",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Elizabeth",
+                        "middle": [
+                            "D"
+                        ],
+                        "last": "Trippe",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Juan",
+                        "middle": [
+                            "B"
+                        ],
+                        "last": "Gutierrez",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Krys",
+                        "middle": [],
+                        "last": "Kochut",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2017,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Mehdi Allahyari, Seyed Amin Pouriyeh, Mehdi Assefi, Saeid Safaei, Elizabeth D. Trippe, Juan B. Gutierrez, and Krys Kochut. 2017. Text summarization tech- niques: A brief survey. CoRR, abs/1707.02268.",
+                "links": null
+            },
+            "BIBREF1": {
+                "ref_id": "b1",
+                "title": "Comparing automatic and human evaluation of NLG systems",
+                "authors": [
+                    {
+                        "first": "Anja",
+                        "middle": [],
+                        "last": "Belz",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ehud",
+                        "middle": [],
+                        "last": "Reiter",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2006,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Anja Belz and Ehud Reiter. 2006. Comparing auto- matic and human evaluation of NLG systems. In 11th Conference of the European Chapter of the Association for Computational Linguistics, Trento, Italy. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF2": {
+                "ref_id": "b2",
+                "title": "Disentangling the properties of human evaluation methods: A classification system to support comparability, meta-evaluation and reproducibility testing",
+                "authors": [
+                    {
+                        "first": "Anya",
+                        "middle": [],
+                        "last": "Belz",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Simon",
+                        "middle": [],
+                        "last": "Mille",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "David",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Howcroft",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 13th International Conference on Natural Language Generation",
+                "volume": "",
+                "issue": "",
+                "pages": "183--194",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Anya Belz, Simon Mille, and David M. Howcroft. 2020. Disentangling the properties of human eval- uation methods: A classification system to support comparability, meta-evaluation and reproducibility testing. In Proceedings of the 13th International Conference on Natural Language Generation, pages 183-194, Dublin, Ireland. Association for Computa- tional Linguistics.",
+                "links": null
+            },
+            "BIBREF3": {
+                "ref_id": "b3",
+                "title": "Reevaluating evaluation in text summarization",
+                "authors": [
+                    {
+                        "first": "Manik",
+                        "middle": [],
+                        "last": "Bhandari",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pranav",
+                        "middle": [],
+                        "last": "Narayan Gour",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Atabak",
+                        "middle": [],
+                        "last": "Ashfaq",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Pengfei",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Graham",
+                        "middle": [],
+                        "last": "Neubig",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+                "volume": "",
+                "issue": "",
+                "pages": "9347--9359",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/2020.emnlp-main.751"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Manik Bhandari, Pranav Narayan Gour, Atabak Ash- faq, Pengfei Liu, and Graham Neubig. 2020. Re- evaluating evaluation in text summarization. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), pages 9347-9359, Online. Association for Computa- tional Linguistics.",
+                "links": null
+            },
+            "BIBREF4": {
+                "ref_id": "b4",
+                "title": "Evaluation of text generation: A survey",
+                "authors": [
+                    {
+                        "first": "Asli",
+                        "middle": [],
+                        "last": "Celikyilmaz",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Elizabeth",
+                        "middle": [],
+                        "last": "Clark",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Jianfeng",
+                        "middle": [],
+                        "last": "Gao",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Asli Celikyilmaz, Elizabeth Clark, and Jianfeng Gao. 2020. Evaluation of text generation: A survey.",
+                "links": null
+            },
+            "BIBREF5": {
+                "ref_id": "b5",
+                "title": "Mind the gap: Dangers of divorcing evaluations of summary content from linguistic quality",
+                "authors": [
+                    {
+                        "first": "John",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Conroy",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Hoa",
+                        "middle": [
+                            "Trang"
+                        ],
+                        "last": "Dang",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2008,
+                "venue": "Proceedings of the 22nd International Conference on Computational Linguistics (Coling 2008)",
+                "volume": "",
+                "issue": "",
+                "pages": "145--152",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "John M. Conroy and Hoa Trang Dang. 2008. Mind the gap: Dangers of divorcing evaluations of sum- mary content from linguistic quality. In Proceedings of the 22nd International Conference on Compu- tational Linguistics (Coling 2008), pages 145-152, Manchester, UK. Coling 2008 Organizing Commit- tee.",
+                "links": null
+            },
+            "BIBREF6": {
+                "ref_id": "b6",
+                "title": "Overview of duc",
+                "authors": [
+                    {
+                        "first": "Trang",
+                        "middle": [],
+                        "last": "Hoa",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Dang",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2005,
+                "venue": "Proceedings of the document understanding conference",
+                "volume": "",
+                "issue": "",
+                "pages": "1--12",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Hoa Trang Dang. 2005. Overview of duc 2005. In Pro- ceedings of the document understanding conference, volume 2005, pages 1-12.",
+                "links": null
+            },
+            "BIBREF7": {
+                "ref_id": "b7",
+                "title": "Summeval: Re-evaluating summarization evaluation",
+                "authors": [
+                    {
+                        "first": "Alexander",
+                        "middle": [
+                            "R"
+                        ],
+                        "last": "Fabbri",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Wojciech",
+                        "middle": [],
+                        "last": "Kry\u015bci\u0144ski",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Bryan",
+                        "middle": [],
+                        "last": "Mccann",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Caiming",
+                        "middle": [],
+                        "last": "Xiong",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Richard",
+                        "middle": [],
+                        "last": "Socher",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dragomir",
+                        "middle": [],
+                        "last": "Radev",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Alexander R. Fabbri, Wojciech Kry\u015bci\u0144ski, Bryan McCann, Caiming Xiong, Richard Socher, and Dragomir Radev. 2020. Summeval: Re-evaluating summarization evaluation.",
+                "links": null
+            },
+            "BIBREF8": {
+                "ref_id": "b8",
+                "title": "Concept-map-based multi-document summarization using concept coreference resolution and global importance optimization",
+                "authors": [
+                    {
+                        "first": "Tobias",
+                        "middle": [],
+                        "last": "Falke",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Christian",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Meyer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Iryna",
+                        "middle": [],
+                        "last": "Gurevych",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2017,
+                "venue": "Proceedings of the Eighth International Joint Conference on Natural Language Processing",
+                "volume": "1",
+                "issue": "",
+                "pages": "801--811",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Tobias Falke, Christian M. Meyer, and Iryna Gurevych. 2017. Concept-map-based multi-document summa- rization using concept coreference resolution and global importance optimization. In Proceedings of the Eighth International Joint Conference on Natu- ral Language Processing (Volume 1: Long Papers), pages 801-811, Taipei, Taiwan. Asian Federation of Natural Language Processing.",
+                "links": null
+            },
+            "BIBREF9": {
+                "ref_id": "b9",
+                "title": "Controllable abstractive summarization",
+                "authors": [
+                    {
+                        "first": "Angela",
+                        "middle": [],
+                        "last": "Fan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "David",
+                        "middle": [],
+                        "last": "Grangier",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Michael",
+                        "middle": [],
+                        "last": "Auli",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "Proceedings of the 2nd Workshop on Neural Machine Translation and Generation",
+                "volume": "",
+                "issue": "",
+                "pages": "45--54",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/W18-2706"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Angela Fan, David Grangier, and Michael Auli. 2018. Controllable abstractive summarization. In Proceed- ings of the 2nd Workshop on Neural Machine Trans- lation and Generation, pages 45-54, Melbourne, Australia. Association for Computational Linguis- tics.",
+                "links": null
+            },
+            "BIBREF10": {
+                "ref_id": "b10",
+                "title": "APRIL: Interactively learning to summarise by combining active preference learning and reinforcement learning",
+                "authors": [
+                    {
+                        "first": "Yang",
+                        "middle": [],
+                        "last": "Gao",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Christian",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Meyer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Iryna",
+                        "middle": [],
+                        "last": "Gurevych",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "4120--4130",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/D18-1445"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Yang Gao, Christian M. Meyer, and Iryna Gurevych. 2018. APRIL: Interactively learning to summarise by combining active preference learning and rein- forcement learning. In Proceedings of the 2018 Con- ference on Empirical Methods in Natural Language Processing, pages 4120-4130, Brussels, Belgium. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF11": {
+                "ref_id": "b11",
+                "title": "Survey of the state of the art in natural language generation: Core tasks, applications and evaluation",
+                "authors": [
+                    {
+                        "first": "Albert",
+                        "middle": [],
+                        "last": "Gatt",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Emiel",
+                        "middle": [],
+                        "last": "Krahmer",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "J. Artif. Int. Res",
+                "volume": "61",
+                "issue": "1",
+                "pages": "65--170",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Albert Gatt and Emiel Krahmer. 2018. Survey of the state of the art in natural language generation: Core tasks, applications and evaluation. J. Artif. Int. Res., 61(1):65-170.",
+                "links": null
+            },
+            "BIBREF12": {
+                "ref_id": "b12",
+                "title": "Non-expert evaluation of summarization systems is risky",
+                "authors": [
+                    {
+                        "first": "Dan",
+                        "middle": [],
+                        "last": "Gillick",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yang",
+                        "middle": [],
+                        "last": "Liu",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2010,
+                "venue": "Proceedings of the NAACL HLT 2010 Workshop on Creating Speech and Language Data with Amazon's Mechanical Turk",
+                "volume": "",
+                "issue": "",
+                "pages": "148--151",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Dan Gillick and Yang Liu. 2010. Non-expert evalua- tion of summarization systems is risky. In Proceed- ings of the NAACL HLT 2010 Workshop on Creating Speech and Language Data with Amazon's Mechan- ical Turk, pages 148-151, Los Angeles. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF13": {
+                "ref_id": "b13",
+                "title": "Twenty years of confusion in human evaluation: NLG needs evaluation sheets and standardised definitions",
+                "authors": [
+                    {
+                        "first": "David",
+                        "middle": [
+                            "M"
+                        ],
+                        "last": "Howcroft",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Anya",
+                        "middle": [],
+                        "last": "Belz",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Miruna-Adriana",
+                        "middle": [],
+                        "last": "Clinciu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Dimitra",
+                        "middle": [],
+                        "last": "Gkatzia",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "A",
+                        "middle": [],
+                        "last": "Sadid",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Saad",
+                        "middle": [],
+                        "last": "Hasan",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Simon",
+                        "middle": [],
+                        "last": "Mahamood",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Mille",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sashank",
+                        "middle": [],
+                        "last": "Emiel Van Miltenburg",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Verena",
+                        "middle": [],
+                        "last": "Santhanam",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Rieser",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 13th International Conference on Natural Language Generation",
+                "volume": "",
+                "issue": "",
+                "pages": "169--182",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "David M. Howcroft, Anya Belz, Miruna-Adriana Clinciu, Dimitra Gkatzia, Sadid A. Hasan, Saad Mahamood, Simon Mille, Emiel van Miltenburg, Sashank Santhanam, and Verena Rieser. 2020. Twenty years of confusion in human evaluation: NLG needs evaluation sheets and standardised def- initions. In Proceedings of the 13th International Conference on Natural Language Generation, pages 169-182, Dublin, Ireland. Association for Computa- tional Linguistics.",
+                "links": null
+            },
+            "BIBREF14": {
+                "ref_id": "b14",
+                "title": "Best practices for crowd-based evaluation of German summarization: Comparing crowd, expert and automatic evaluation",
+                "authors": [
+                    {
+                        "first": "Neslihan",
+                        "middle": [],
+                        "last": "Iskender",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tim",
+                        "middle": [],
+                        "last": "Polzehl",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sebastian",
+                        "middle": [],
+                        "last": "M\u00f6ller",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the First Workshop on Evaluation and Comparison of NLP Systems",
+                "volume": "",
+                "issue": "",
+                "pages": "164--175",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/2020.eval4nlp-1.16"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Neslihan Iskender, Tim Polzehl, and Sebastian M\u00f6ller. 2020a. Best practices for crowd-based evaluation of German summarization: Comparing crowd, ex- pert and automatic evaluation. In Proceedings of the First Workshop on Evaluation and Comparison of NLP Systems, pages 164-175, Online. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF15": {
+                "ref_id": "b15",
+                "title": "Towards a reliable and robust methodology for crowd-based subjective quality assessment of query-based extractive text summarization",
+                "authors": [
+                    {
+                        "first": "Neslihan",
+                        "middle": [],
+                        "last": "Iskender",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tim",
+                        "middle": [],
+                        "last": "Polzehl",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sebastian",
+                        "middle": [],
+                        "last": "M\u00f6ller",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "Proceedings of the 12th Language Resources and Evaluation Conference",
+                "volume": "",
+                "issue": "",
+                "pages": "245--253",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Neslihan Iskender, Tim Polzehl, and Sebastian M\u00f6ller. 2020b. Towards a reliable and robust methodol- ogy for crowd-based subjective quality assessment of query-based extractive text summarization. In Proceedings of the 12th Language Resources and Evaluation Conference, pages 245-253, Marseille, France. European Language Resources Association.",
+                "links": null
+            },
+            "BIBREF16": {
+                "ref_id": "b16",
+                "title": "Evaluating Natural Language Processing Systems: An Analysis and Review",
+                "authors": [
+                    {
+                        "first": "Karen",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sparck",
+                        "middle": [],
+                        "last": "Jones",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Julia",
+                        "middle": [
+                            "R"
+                        ],
+                        "last": "Galliers",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1996,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Karen Sparck Jones and Julia R. Galliers. 1996. Eval- uating Natural Language Processing Systems: An Analysis and Review. Springer-Verlag, Berlin, Hei- delberg.",
+                "links": null
+            },
+            "BIBREF17": {
+                "ref_id": "b17",
+                "title": "The measurement of observer agreement for categorical data",
+                "authors": [
+                    {
+                        "first": "J",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Richard",
+                        "middle": [],
+                        "last": "Landis",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Gary",
+                        "middle": [
+                            "G"
+                        ],
+                        "last": "Koch",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1977,
+                "venue": "Biometrics",
+                "volume": "33",
+                "issue": "1",
+                "pages": "159--174",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "J. Richard Landis and Gary G. Koch. 1977. The mea- surement of observer agreement for categorical data. Biometrics, 33(1):159-174.",
+                "links": null
+            },
+            "BIBREF18": {
+                "ref_id": "b18",
+                "title": "Best practices for the human evaluation of automatically generated text",
+                "authors": [
+                    {
+                        "first": "Chris",
+                        "middle": [],
+                        "last": "Van Der Lee",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Albert",
+                        "middle": [],
+                        "last": "Gatt",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sander",
+                        "middle": [],
+                        "last": "Emiel Van Miltenburg",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Emiel",
+                        "middle": [],
+                        "last": "Wubben",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Krahmer",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2019,
+                "venue": "Proceedings of the 12th International Conference on Natural Language Generation",
+                "volume": "",
+                "issue": "",
+                "pages": "355--368",
+                "other_ids": {
+                    "DOI": [
+                        "10.18653/v1/W19-8643"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Chris van der Lee, Albert Gatt, Emiel van Miltenburg, Sander Wubben, and Emiel Krahmer. 2019. Best practices for the human evaluation of automatically generated text. In Proceedings of the 12th Interna- tional Conference on Natural Language Generation, pages 355-368, Tokyo, Japan. Association for Com- putational Linguistics.",
+                "links": null
+            },
+            "BIBREF19": {
+                "ref_id": "b19",
+                "title": "Evaluating the text quality, human likeness and tailoring component of PASS: A Dutch data-to-text system for soccer",
+                "authors": [
+                    {
+                        "first": "Chris",
+                        "middle": [],
+                        "last": "Van Der Lee",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Bart",
+                        "middle": [],
+                        "last": "Verduijn",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Emiel",
+                        "middle": [],
+                        "last": "Krahmer",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sander",
+                        "middle": [],
+                        "last": "Wubben",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "Proceedings of the 27th International Conference on Computational Linguistics",
+                "volume": "",
+                "issue": "",
+                "pages": "962--972",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Chris van der Lee, Bart Verduijn, Emiel Krahmer, and Sander Wubben. 2018. Evaluating the text quality, human likeness and tailoring component of PASS: A Dutch data-to-text system for soccer. In Proceed- ings of the 27th International Conference on Compu- tational Linguistics, pages 962-972, Santa Fe, New Mexico, USA. Association for Computational Lin- guistics.",
+                "links": null
+            },
+            "BIBREF20": {
+                "ref_id": "b20",
+                "title": "ROUGE: A package for automatic evaluation of summaries",
+                "authors": [
+                    {
+                        "first": "Chin-Yew",
+                        "middle": [],
+                        "last": "Lin",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2004,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "74--81",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Chin-Yew Lin. 2004. ROUGE: A package for auto- matic evaluation of summaries. pages 74-81.",
+                "links": null
+            },
+            "BIBREF21": {
+                "ref_id": "b21",
+                "title": "The delphi method",
+                "authors": [
+                    {
+                        "first": "Murray",
+                        "middle": [],
+                        "last": "Harold A Linstone",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Turoff",
+                        "suffix": ""
+                    }
+                ],
+                "year": 1975,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Harold A Linstone, Murray Turoff, et al. 1975. The delphi method. Addison-Wesley Reading, MA.",
+                "links": null
+            },
+            "BIBREF22": {
+                "ref_id": "b22",
+                "title": "Analyzing the capabilities of crowdsourcing services for text summarization",
+                "authors": [
+                    {
+                        "first": "Elena",
+                        "middle": [],
+                        "last": "Lloret",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Laura",
+                        "middle": [],
+                        "last": "Plaza",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ahmet",
+                        "middle": [],
+                        "last": "Aker",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2013,
+                "venue": "Language Resources and Evaluation",
+                "volume": "47",
+                "issue": "2",
+                "pages": "337--369",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Elena Lloret, Laura Plaza, and Ahmet Aker. 2013. Ana- lyzing the capabilities of crowdsourcing services for text summarization. Language Resources and Eval- uation, 47(2):337-369.",
+                "links": null
+            },
+            "BIBREF23": {
+                "ref_id": "b23",
+                "title": "The challenging task of summary evaluation: An overview",
+                "authors": [
+                    {
+                        "first": "Elena",
+                        "middle": [],
+                        "last": "Lloret",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Laura",
+                        "middle": [],
+                        "last": "Plaza",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ahmet",
+                        "middle": [],
+                        "last": "Aker",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "Lang. Resour. Eval",
+                "volume": "52",
+                "issue": "1",
+                "pages": "101--148",
+                "other_ids": {
+                    "DOI": [
+                        "10.1007/s10579-017-9399-2"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Elena Lloret, Laura Plaza, and Ahmet Aker. 2018. The challenging task of summary evaluation: An overview. Lang. Resour. Eval., 52(1):101-148.",
+                "links": null
+            },
+            "BIBREF24": {
+                "ref_id": "b24",
+                "title": "Automatically assessing machine summary content without a gold standard",
+                "authors": [
+                    {
+                        "first": "Annie",
+                        "middle": [],
+                        "last": "Louis",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Ani",
+                        "middle": [],
+                        "last": "Nenkova",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2013,
+                "venue": "Computational Linguistics",
+                "volume": "39",
+                "issue": "2",
+                "pages": "267--300",
+                "other_ids": {
+                    "DOI": [
+                        "10.1162/COLI_a_00123"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Annie Louis and Ani Nenkova. 2013. Automatically assessing machine summary content without a gold standard. Computational Linguistics, 39(2):267- 300.",
+                "links": null
+            },
+            "BIBREF25": {
+                "ref_id": "b25",
+                "title": "Summarization evaluation: An overview",
+                "authors": [
+                    {
+                        "first": "Inderjeet",
+                        "middle": [],
+                        "last": "Mani",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2001,
+                "venue": "",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Inderjeet Mani. 2001. Summarization evaluation: An overview.",
+                "links": null
+            },
+            "BIBREF26": {
+                "ref_id": "b26",
+                "title": "Summac: a text summarization evaluation",
+                "authors": [
+                    {
+                        "first": "Inderjeet",
+                        "middle": [],
+                        "last": "Mani",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Gary",
+                        "middle": [],
+                        "last": "Klein",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "David",
+                        "middle": [],
+                        "last": "House",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Lynette",
+                        "middle": [],
+                        "last": "Hirschman",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Therese",
+                        "middle": [],
+                        "last": "Firmin",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Beth",
+                        "middle": [],
+                        "last": "Sundheim",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2002,
+                "venue": "Natural Language Engineering",
+                "volume": "8",
+                "issue": "1",
+                "pages": "43--68",
+                "other_ids": {
+                    "DOI": [
+                        "10.1017/S1351324901002741"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Inderjeet Mani, Gary Klein, David House, Lynette Hirschman, Therese Firmin, and Beth Sundheim. 2002. Summac: a text summarization evaluation. Natural Language Engineering, 8(1):43-68.",
+                "links": null
+            },
+            "BIBREF27": {
+                "ref_id": "b27",
+                "title": "TextRank: Bringing order into text",
+                "authors": [
+                    {
+                        "first": "Rada",
+                        "middle": [],
+                        "last": "Mihalcea",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Paul",
+                        "middle": [],
+                        "last": "Tarau",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2004,
+                "venue": "Proceedings of the 2004 Conference on Empirical Methods in Natural Language Processing",
+                "volume": "",
+                "issue": "",
+                "pages": "404--411",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Rada Mihalcea and Paul Tarau. 2004. TextRank: Bringing order into text. In Proceedings of the 2004 Conference on Empirical Methods in Natural Lan- guage Processing, pages 404-411, Barcelona, Spain. Association for Computational Linguistics.",
+                "links": null
+            },
+            "BIBREF28": {
+                "ref_id": "b28",
+                "title": "P.808 subjective evaluation of speech quality with a crowdsourcing approach",
+                "authors": [
+                    {
+                        "first": "Babak",
+                        "middle": [],
+                        "last": "Naderi",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Sebastian",
+                        "middle": [],
+                        "last": "M\u00f6ller",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Tobias",
+                        "middle": [],
+                        "last": "Hossfeld",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Matthias",
+                        "middle": [],
+                        "last": "Hirth",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2018,
+                "venue": "ITU-T Recommendation P",
+                "volume": "808",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Babak Naderi, Sebastian M\u00f6ller, Tobias Hossfeld, and Matthias Hirth. 2018. P.808 subjective evaluation of speech quality with a crowdsourcing approach. ITU- T Recommendation P.808, International Telecom- munication Union, Geneva.",
+                "links": null
+            },
+            "BIBREF29": {
+                "ref_id": "b29",
+                "title": "An investigation into the validity of some metrics for automatically evaluating natural language generation systems",
+                "authors": [
+                    {
+                        "first": "Ehud",
+                        "middle": [],
+                        "last": "Reiter",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Anja",
+                        "middle": [],
+                        "last": "Belz",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2009,
+                "venue": "Computational Linguistics",
+                "volume": "35",
+                "issue": "4",
+                "pages": "529--558",
+                "other_ids": {
+                    "DOI": [
+                        "10.1162/coli.2009.35.4.35405"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Ehud Reiter and Anja Belz. 2009. An investigation into the validity of some metrics for automatically evalu- ating natural language generation systems. Compu- tational Linguistics, 35(4):529-558.",
+                "links": null
+            },
+            "BIBREF30": {
+                "ref_id": "b30",
+                "title": "Evaluation measures for text summarization",
+                "authors": [
+                    {
+                        "first": "Josef",
+                        "middle": [],
+                        "last": "Steinberger",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Karel",
+                        "middle": [],
+                        "last": "Je\u017eek",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2012,
+                "venue": "Computing and Informatics",
+                "volume": "28",
+                "issue": "2",
+                "pages": "251--275",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Josef Steinberger and Karel Je\u017eek. 2012. Evaluation measures for text summarization. Computing and Informatics, 28(2):251-275.",
+                "links": null
+            },
+            "BIBREF31": {
+                "ref_id": "b31",
+                "title": "Mean opinion score (mos) revisited: Methods and applications, limitations and alternatives",
+                "authors": [
+                    {
+                        "first": "Robert",
+                        "middle": [
+                            "C"
+                        ],
+                        "last": "Streijl",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Stefan",
+                        "middle": [],
+                        "last": "Winkler",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "David",
+                        "middle": [
+                            "S"
+                        ],
+                        "last": "Hands",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2016,
+                "venue": "Multimedia Syst",
+                "volume": "22",
+                "issue": "2",
+                "pages": "213--227",
+                "other_ids": {
+                    "DOI": [
+                        "10.1007/s00530-014-0446-1"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Robert C. Streijl, Stefan Winkler, and David S. Hands. 2016. Mean opinion score (mos) revisited: Methods and applications, limitations and alternatives. Multi- media Syst., 22(2):213-227.",
+                "links": null
+            },
+            "BIBREF32": {
+                "ref_id": "b32",
+                "title": "Human evaluation of automatically generated text: Current trends and best practice guidelines",
+                "authors": [
+                    {
+                        "first": "Chris",
+                        "middle": [],
+                        "last": "Van Der Lee",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Albert",
+                        "middle": [],
+                        "last": "Gatt",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Emiel",
+                        "middle": [],
+                        "last": "Emiel Van Miltenburg",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Krahmer",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2021,
+                "venue": "Computer Speech Language",
+                "volume": "67",
+                "issue": "",
+                "pages": "",
+                "other_ids": {
+                    "DOI": [
+                        "10.1016/j.csl.2020.101151"
+                    ]
+                },
+                "num": null,
+                "urls": [],
+                "raw_text": "Chris van der Lee, Albert Gatt, Emiel van Miltenburg, and Emiel Krahmer. 2021. Human evaluation of au- tomatically generated text: Current trends and best practice guidelines. Computer Speech Language, 67:101151.",
+                "links": null
+            },
+            "BIBREF33": {
+                "ref_id": "b33",
+                "title": "Bertscore: Evaluating text generation with bert",
+                "authors": [
+                    {
+                        "first": "Tianyi",
+                        "middle": [],
+                        "last": "Zhang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "*",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Varsha",
+                        "middle": [],
+                        "last": "Kishore",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "*",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Felix",
+                        "middle": [],
+                        "last": "Wu",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "*",
+                        "middle": [],
+                        "last": "",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Kilian",
+                        "middle": [
+                            "Q"
+                        ],
+                        "last": "Weinberger",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "Yoav",
+                        "middle": [],
+                        "last": "Artzi",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2020,
+                "venue": "International Conference on Learning Representations",
+                "volume": "",
+                "issue": "",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Tianyi Zhang*, Varsha Kishore*, Felix Wu*, Kilian Q. Weinberger, and Yoav Artzi. 2020. Bertscore: Eval- uating text generation with bert. In International Conference on Learning Representations.",
+                "links": null
+            },
+            "BIBREF34": {
+                "ref_id": "b34",
+                "title": "Toward using confidence intervals to compare correlations",
+                "authors": [
+                    {
+                        "first": "Yong",
+                        "middle": [],
+                        "last": "Guang",
+                        "suffix": ""
+                    },
+                    {
+                        "first": "",
+                        "middle": [],
+                        "last": "Zou",
+                        "suffix": ""
+                    }
+                ],
+                "year": 2007,
+                "venue": "Psychological methods",
+                "volume": "12",
+                "issue": "4",
+                "pages": "",
+                "other_ids": {},
+                "num": null,
+                "urls": [],
+                "raw_text": "Guang Yong Zou. 2007. Toward using confidence in- tervals to compare correlations. Psychological meth- ods, 12(4):399.",
+                "links": null
+            }
+        },
+        "ref_entries": {
+            "FIGREF0": {
+                "uris": null,
+                "fig_num": "1",
+                "text": "Figure 1: Spearman correlations of crowd evaluations from experiment 4 as 100 randomized groups of 3 crowd workers with crowd evaluations from experiment 2 (a) and Spearman correlations of crowd evaluations from experiment 4 as 100 randomized groups of 12 crowd workers with the remaining 12 crowd workers (b)",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF1": {
+                "uris": null,
+                "fig_num": "2",
+                "text": "Figure 2: Boxplots of expert evaluations (blue), crowd evaluations (green) and laboratory evaluations (orange) for crowd summaries",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF2": {
+                "uris": null,
+                "fig_num": "3",
+                "text": "Figure 3: Spearman correlations between expert and laboratory, expert and crowd, and crowd and laboratory for the nine quality measures",
+                "type_str": "figure",
+                "num": null
+            },
+            "FIGREF3": {
+                "uris": null,
+                "fig_num": "4",
+                "text": "Goodness of Automatic Metrics: With whom to compare?",
+                "type_str": "figure",
+                "num": null
+            },
+            "TABREF0": {
+                "text": "Overview of all human experiments",
+                "content": "<table><tr><td colspan=\"2\">Exp. No Type</td><td colspan=\"2\">Human Items</td><td>#Evaluator per Item</td><td>#Total Evaluator</td><td>Average Age</td><td colspan=\"2\">Gender Payment</td></tr><tr><td>1</td><td>Creation</td><td>Crowd</td><td>67 post-query pair</td><td>4</td><td>76</td><td>39.43</td><td colspan=\"2\">41m, 35f 1.2 C per task</td></tr><tr><td>2</td><td colspan=\"2\">Evaluation Crowd</td><td>256 summaries (output from 1.exp)</td><td>3</td><td>86</td><td>38.8</td><td colspan=\"2\">49m, 37f 1.2 C per task</td></tr><tr><td>3</td><td colspan=\"2\">Evaluation Expert</td><td>Selected 50 summ. from 1.exp output</td><td>2</td><td>2</td><td>26.5</td><td>2f</td><td>30 C per hour</td></tr><tr><td>4</td><td colspan=\"2\">Evaluation Crowd</td><td>Same as in 3.exp</td><td>24</td><td>46</td><td>42.47</td><td colspan=\"2\">27m, 19f 1.2 C per task</td></tr><tr><td>5</td><td colspan=\"2\">Evaluation Lab</td><td>Same as in 3.exp</td><td>24</td><td>71</td><td>29.30</td><td colspan=\"2\">38m, 33f 15 C per hour</td></tr><tr><td>6</td><td>Creation</td><td>Expert</td><td>27 post-query pair</td><td>2</td><td>2</td><td>26.5</td><td>2f</td><td>30 C per hour</td></tr><tr><td>7</td><td colspan=\"2\">Evaluation Expert</td><td colspan=\"2\">TextRank summ. of 27 post-query pair 2</td><td>2</td><td>26.5</td><td>2f</td><td>30 C per hour</td></tr><tr><td>8</td><td colspan=\"2\">Evaluation Crowd</td><td>Same as in 7.exp</td><td>10</td><td>21</td><td>28.4</td><td>15m, 6f</td><td>1.2 C per task</td></tr></table>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            },
+            "TABREF1": {
+                "text": "Raw agreement in % and Cohen's \u03ba scores between two experts for the evaluation of crowd summaries and TextRank summaries before mediation and after mediation",
+                "content": "<table><tr><td/><td/><td colspan=\"2\">Before Mediation</td><td/><td/><td colspan=\"2\">After Mediation</td><td/></tr><tr><td/><td colspan=\"2\">Crowd Summ.</td><td colspan=\"2\">TextRank Summ.</td><td colspan=\"2\">Crowd Summ.</td><td colspan=\"2\">TextRank Summ.</td></tr><tr><td/><td>Agr. in %</td><td>\u03ba</td><td>Agr. in %</td><td>\u03ba</td><td>Agr. in %</td><td>\u03ba</td><td>Agr. in %</td><td>\u03ba</td></tr><tr><td>OQ</td><td>54</td><td>0.228</td><td>22.2</td><td>-0.040</td><td>82</td><td>0.637</td><td>85.2</td><td>0.717</td></tr><tr><td>GR</td><td>42</td><td>0.078</td><td>18.5</td><td>0.086</td><td>78</td><td>0.626</td><td>88.9</td><td>0.809</td></tr><tr><td>NR</td><td>34</td><td>-0.012</td><td>11.1</td><td>-0.084</td><td>70</td><td>0.520</td><td>85.2</td><td>0.797</td></tr><tr><td>RC</td><td>56</td><td>0.381</td><td>29.6</td><td>0.013</td><td>88</td><td>0.819</td><td>92.6</td><td>0.882</td></tr><tr><td>FO</td><td>52</td><td>0.249</td><td>88.9</td><td>0.779</td><td>80</td><td>0.685</td><td>96.3</td><td>0.922</td></tr><tr><td>SC</td><td>42</td><td>0.212</td><td>22.2</td><td>0.070</td><td>82</td><td>0.743</td><td>85.2</td><td>0.783</td></tr><tr><td>SU</td><td>44</td><td>0.220</td><td>37</td><td>0.093</td><td>76</td><td>0.635</td><td>88.9</td><td>0.839</td></tr><tr><td>PU</td><td>38</td><td>0.005</td><td>48.1</td><td>0.169</td><td>70</td><td>0.469</td><td>92.6</td><td>0.856</td></tr><tr><td>SI</td><td>34</td><td>-0.038</td><td>40.7</td><td>0.234</td><td>78</td><td>0.565</td><td>92.6</td><td>0.886</td></tr><tr><td colspan=\"4\">4.1 Reliability of Human Evaluation</td><td/><td/><td/><td/><td/></tr><tr><td colspan=\"2\">4.1.1 Expert Evaluation</td><td/><td/><td/><td/><td/><td/><td/></tr></table>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            },
+            "TABREF3": {
+                "text": "Spearman correlations of ROUGE-1, ROUGE-2, ROUGE-L and BERTScore with expert and crowd evaluations for TextRank summaries",
+                "content": "<table/>",
+                "html": null,
+                "num": null,
+                "type_str": "table"
+            }
+        }
+    }
+}
