@@ -3,7 +3,7 @@ This repository provides the code implementation of HypoEval: Hypothesis-Guided 
 
 The hypothesis generation module of **HypoEval** is built upon [**HypoRefine**](https://arxiv.org/abs/2410.17309) and [**HypoGeniC**](https://arxiv.org/abs/2404.04326), check out the repository at [**ChicagoHAI/hypothesis-generation**](https://github.com/ChicagoHAI/hypothesis-generation).
 
-![hypoeval_fig1.png](https://github.com/itea1001/HypoEval/blob/main/hypoeval_fig1.png?raw=true)
+![hypoeval_fig1.png](https://github.com/ChicagoHAI/HypoEval-Gen/blob/main/hypoeval_fig1.png?raw=true)
 
 ## Use 0-shot Evaluators for Summarization and Story Generation
 
