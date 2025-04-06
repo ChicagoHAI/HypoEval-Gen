@@ -1,6 +1,4 @@
 import tqdm
-import asyncio
-import httpx
 import numpy as np
 import json
 import sys
