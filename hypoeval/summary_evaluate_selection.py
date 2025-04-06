@@ -16,11 +16,11 @@ from scipy.stats import spearmanr, pearsonr
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from LLM_wrapper import GPTWrapper, LocalVllmWrapper
 from LLM_wrapper.logger_config import LoggerConfig
-from hypoeval_replicate.extract_responses import extract_likert_score, batched_extract_likert_scores
-from hypoeval_replicate.utils import get_aspect_definition, retrieve_hypotheses
-from hypoeval_replicate.evaluate import batched_get_checklist_reward
-from hypoeval_replicate.utils import load_summeval_test, load_summeval_train
-from hypoeval_replicate.utils import load_newsroom_train, load_newsroom_test
+from hypoeval_reproduce.extract_responses import extract_likert_score, batched_extract_likert_scores
+from hypoeval_reproduce.utils import get_aspect_definition, retrieve_hypotheses
+from hypoeval_reproduce.evaluate import batched_get_checklist_reward
+from hypoeval_reproduce.utils import load_summeval_test, load_summeval_train
+from hypoeval_reproduce.utils import load_newsroom_train, load_newsroom_test
 
 def main(
     model_name = "gpt-4o-mini",

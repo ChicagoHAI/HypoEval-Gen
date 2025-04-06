@@ -14,8 +14,8 @@ import random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from LLM_wrapper import GPTWrapper, LocalVllmWrapper
 from LLM_wrapper.logger_config import LoggerConfig
-from hypoeval_replicate.extract_responses import extract_likert_score, batched_extract_likert_scores
-from hypoeval_replicate.utils import get_aspect_definition, get_substitute_dict
+from hypoeval_reproduce.extract_responses import extract_likert_score, batched_extract_likert_scores
+from hypoeval_reproduce.utils import get_aspect_definition, get_substitute_dict
 
 
 class SummaryEvaluator:

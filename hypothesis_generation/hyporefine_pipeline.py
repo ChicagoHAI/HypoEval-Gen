@@ -47,7 +47,7 @@ from hypothesis_agent.data_analysis_agent.union_generation import union_hypogeni
 from hypothesis_agent.data_analysis_agent.inference import MultiHypDefaultInference
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from hypoeval_replicate.utils import get_aspect_definition
+from hypoeval_reproduce.utils import get_aspect_definition
 
 LoggerConfig.setup_logger(level=logging.INFO)
 
