@@ -1,5 +1,5 @@
 # HypoEval: Hypothesis-Guided Evaluation for Natural Language Generation
-This repository provides the code implementation of HypoEval: Hypothesis-Guided Evaluation for Natural Language Generation (TODO: update url), as well as zero-shot evaluators for summarization and story generation using training data from the datasets used in the paper. With only 30 human annotations for each evaluated aspect, **HypoEval** first generates hypotheses that are decomposed dimensions of the evaluated aspect, and then uses a checklist-like approach to combine LLM's Likert scores on each hypothesis to acquire an overall score for an evaluated text. **HypoEval** provides automated interpretable evaluation of natural language generation, with high alignment with human evaluations.
+This repository provides the code implementation of [HypoEval: Hypothesis-Guided Evaluation of Natural Language Generation](https://arxiv.org/abs/2504.07174), as well as zero-shot evaluators for summarization and story generation using training data from the datasets used in the paper. With only 30 human annotations for each evaluated aspect, **HypoEval** first generates hypotheses that are decomposed dimensions of the evaluated aspect, and then uses a checklist-like approach to combine LLM's Likert scores on each hypothesis to acquire an overall score for an evaluated text. **HypoEval** provides automated interpretable evaluation of natural language generation, with high alignment with human evaluations.
 
 The hypothesis generation module of **HypoEval** is built upon [**HypoRefine**](https://arxiv.org/abs/2410.17309) and [**HypoGeniC**](https://arxiv.org/abs/2404.04326), check out the repository at [**ChicagoHAI/hypothesis-generation**](https://github.com/ChicagoHAI/hypothesis-generation).
 
@@ -91,3 +91,19 @@ python evaluate_pipeline.py --model_name MODEL_NAME --task_name TASK_NAME
 ```
 
 where TASK_NAME should be in `["summeval", "newsroom", "hanna", "writingprompt"]`.
+
+## Citation
+
+Please consider citing our work if it contributes to your research:
+
+```
+@misc{li2025hypoevalhypothesisguidedevaluationnatural,
+      title={HypoEval: Hypothesis-Guided Evaluation for Natural Language Generation}, 
+      author={Mingxuan Li and Hanchen Li and Chenhao Tan},
+      year={2025},
+      eprint={2504.07174},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2504.07174}, 
+}
+```
