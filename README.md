@@ -5,6 +5,10 @@ The hypothesis generation module of **HypoEval** is built upon [**HypoRefine**](
 
 ![hypoeval_fig1.png](https://github.com/ChicagoHAI/HypoEval-Gen/blob/main/hypoeval_fig1.png?raw=true)
 
+## Updates
+
+May'25: HypoEval is now incorporated in [**quotient-ai/judges**](https://github.com/quotient-ai/judges)!
+
 ## Use 0-shot Evaluators for Summarization and Story Generation
 
 We provide 0-shot hypothesis-guided evaluators for summaries and story generations, with the hypotheses generated and selected using training data in `data/`.
