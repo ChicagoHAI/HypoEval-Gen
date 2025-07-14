@@ -64,7 +64,7 @@ prompt_templates:
       The definition of ${aspect} is given by: ${definition}
       Think step by step.
       First step: Think about what is the trait that this pattern talks about.
-      Second step: Based on the pattern, what score on ${aspect} on ${aspect} will this summary receive when judged by human experts? The answer should be between 1 to 5.
+      Second step: Based on the pattern, what score on ${aspect} will this summary receive when judged by human experts? The answer should be between 1 to 5.
       (You should not overly critique the summary, your predicted score should be based on the pattern)
       You should be generous and not too strict when evaluating.
       Final step: give your final answer in the format of {Final answer: answer}
